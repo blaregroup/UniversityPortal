@@ -1,0 +1,22 @@
+
+
+## Setup In Ubuntu
+
+
+To Manage PHP Dependency Libraries and Modules, 
+Laravel Use *Composer*. To Make Your Process Easy, here I am providing you a 
+simple few series of commands to quickly setup laravel in your Ubuntu..
+ 
+- `sudo apt-get update`
+- `sudo apt-get install composer`
+- `sudo apt-get install php7.3-*`
+- `sudo apt-get install apache2 libapache2-mod-php7.3 mysql-server php7.3 php7.3-xml php7.3-gd php7.3-opcache php7.3-mbstring php7.3-mysql`
+- `composer global require laravel/installer`
+- `git clone https://github.com/blaregroup/UniversityPortal`
+- `cd UniversityPortal`
+- `echo "export PATH=$PATH:~/.config/composer/vendor/bin" >> ~/.bashrc`
+
+Start new Terminal And Now Laravel Setup is Ready To Go
+
+
+
