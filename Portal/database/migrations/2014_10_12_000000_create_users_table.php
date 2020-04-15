@@ -21,10 +21,14 @@ class CreateUsersTable extends Migration
             /*
             * Role Of User, Decided What user can do, 
             *
-            * 
+            * A For Admin
+            * T For Teacher
+            * S For Student
+            * But Keep in Mind.. I will never let you registered as Admin From Web Login
+            * For Admin Account, You have to run.. Admin Registration application from backend.
+            * !! Got That !! :)) 
             */ 
-            $table->enum('role', ['teacher', 'admin', 'student'])->default('student');
-            
+            $table->enum('role', ['T', 'A', 'S'])->default('S');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
