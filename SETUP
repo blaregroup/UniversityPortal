@@ -19,4 +19,29 @@ simple few series of commands to quickly setup laravel in your Ubuntu..
 Start new Terminal And Now Laravel Setup is Ready To Go
 
 
+# SETUP Procedure
+
+#`~/UniversityPortal$ laravel new Portal`
+# php artisan ui vue --auth
+# "npm install && npm run dev"
+# service mysql start
+# php artisan migrate
+
+
+
+DB_CONNECTION=sqlite
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=database/database.sqlite
+DB_USERNAME=root
+DB_PASSWORD=""
+
+
+
+composer install
+npm install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
 
