@@ -26,6 +26,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+/**
+*
+* Administration 
+*
+*/
+
+Route::get('admin/', 'admin@index')->middleware('onlyAdmin'); // Index
+Route::get('admin/perm/', 'admin@permission')->name('perm')->middleware('onlyAdmin');
+
+
 /** 
  * 
  *  Profile management link
@@ -39,10 +49,10 @@ Route::get('profile/{user}/personal/edit', 'profile@personal_update'); // person
 /**
  *  Student Side
  */
-Route::get('student/', 'student@index'); // Get Detail
-Route::get('student/syllabus/', 'student@syllabus'); // Get syllabus PDF
-Route::get('student/notification', 'student@notification'); // Notification Board
-Route::get('student/material', 'student@material'); // Video, PDF and Other Stuff To Share
+Route::get('student/', 'student@index')->middleware('onlyStudent'); // Get Detail
+Route::get('student/syllabus/', 'student@syllabus')->middleware('onlyStudent'); // Get syllabus PDF
+Route::get('student/notification', 'student@notification')->middleware('onlyStudent'); // Notification Board
+Route::get('student/material', 'student@material')->middleware('onlyStudent'); // Video, PDF and Other Stuff To Share
 
 /*
 * Teacher Side

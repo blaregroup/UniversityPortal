@@ -5,9 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Permission Granter</div>
 
-                    <a href="/admin/perm"> Grant Access To Users</a>
 
                 </div>
             </div>

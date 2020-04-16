@@ -29,6 +29,13 @@ class CreateUsersTable extends Migration
             * !! Got That !! :)) 
             */ 
             $table->enum('role', ['T', 'A', 'S'])->default('S');
+
+            /*
+            *
+            * Only Admin Can Active This. :)
+            *
+            */
+            $table->enum('active',['Y', 'N'])->default('N');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

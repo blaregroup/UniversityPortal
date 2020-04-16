@@ -22,7 +22,7 @@ class profile extends Controller
          *  Authentication Routine
          * 
          */
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /*
