@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
-                    <a href="/admin/perm"> Grant Access To Users</a>
+                    <a href="/admin/perm" class="btn btn-outline-primary"> Grant Access To Users</a>
 
                 </div>
             </div>

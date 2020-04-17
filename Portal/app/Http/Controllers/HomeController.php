@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -22,7 +24,24 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
+
     {
+        // check if user is authenticated or not
+        if(Auth::check()){
+
+            // get user object
+            $user = Auth::user();
+
+            // if user is a Teacher
+            if ($user->active!=='Y'){
+
+                // allow student
+            return view('home', ['message'=> 'Your account is not active. ask admin for Permission!' ]);
+
+            }
+            
+
+        }   
         return view('home');
     }
 

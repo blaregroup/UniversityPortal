@@ -28,6 +28,7 @@ class onlyTeacher
                 // allow student
                 return $next($request);
             }
+            
 
         }   
         return redirect('login');

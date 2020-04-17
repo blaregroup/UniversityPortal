@@ -33,7 +33,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 */
 
 Route::get('admin/', 'admin@index')->middleware('onlyAdmin'); // Index
-Route::get('admin/perm/', 'admin@permission')->name('perm')->middleware('onlyAdmin');
+Route::get('admin/perm/', 'admin@permission')->middleware('onlyAdmin');
+Route::post('admin/activate', 'admin@activate')->middleware('onlyAdmin');
+Route::post('admin/deactivate', 'admin@deactivate')->middleware('onlyAdmin');
+
+
+
+
 
 
 /** 
@@ -57,10 +63,10 @@ Route::get('student/material', 'student@material')->middleware('onlyStudent'); /
 /*
 * Teacher Side
 */
-Route::get('teacher/', 'teacher@index');
-Route::get('teacher/syllabus', 'teacher@syllabus');
-Route::get('teacher/notification', 'teacher@notification');
-Route::get('teacher/material', 'teacher@material');
+Route::get('teacher/', 'teacher@index')->middleware('onlyTeacher');
+Route::get('teacher/syllabus', 'teacher@syllabus')->middleware('onlyTeacher');
+Route::get('teacher/notification', 'teacher@notification')->middleware('onlyTeacher');
+Route::get('teacher/material', 'teacher@material')->middleware('onlyTeacher');
 
 
 /**
