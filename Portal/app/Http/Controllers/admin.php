@@ -14,7 +14,7 @@ class admin extends Controller
     	// Admin Name
     	$user = Auth::user();
 
-    	return view('administrator');
+    	return view('admin.administrator');
     }
 
 
@@ -60,6 +60,6 @@ class admin extends Controller
 
     	$noactive = DB::table('users')->where('active', 'N')->get();
     	$activeuser = DB::table('users')->where('active', 'Y')->where('id','!=', '1')->get();
-    	return view('grantpermission',['active'=>$activeuser ,'noactive'=>$noactive]);
+    	return view('admin.perm',['active'=>$activeuser ,'noactive'=>$noactive]);
     }
 }

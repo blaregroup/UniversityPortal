@@ -27,4 +27,13 @@ $user->role = "T";
 $user->save();
 
 
+$user = new App\Profile;
+$user->fname = "Full Name of Administrator";
+$user->description = "This is Administration Panel";
+$user->gender = "male";
+$user->mother_name = "No Need";
+$user->father_name = "No Need";
+$user->phone = "1234567897";
+$user->save();
+
 #exit

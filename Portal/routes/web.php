@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 // homepage
 Route::get('/', function () {
-    return view('whoareyou');
+    return view('welcome');
  });
 
 // route
