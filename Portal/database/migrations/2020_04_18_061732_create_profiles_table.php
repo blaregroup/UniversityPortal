@@ -19,7 +19,7 @@ class CreateProfilesTable extends Migration
             $table->string('fname');        // fullname
             $table->longText('description');  // description
             $table->enum('gender', ['male', 'female']); // gender
-            //$table->date('dob');            // date of birth
+            $table->date('dob');            // date of birth
             $table->string('mother_name');  // mother name
             $table->string('father_name');  // father name
 

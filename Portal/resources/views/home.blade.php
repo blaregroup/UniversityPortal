@@ -16,9 +16,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="/teacher" class="btn btn-primary">Teachers Corner</a>
-                    <a href="/student" class="btn btn-secondary">Student Corner</a>
-                    <a href="/admin" class="btn btn-success">Administrator Corner</a>
+
+                    <div class="card">
+                        
+                        <a href="/teacher" class="btn btn-outline-primary">Teachers</a>
+                        <a href="/student" class="btn btn-outline-secondary">Student</a>
+                        <a href="/admin" class="btn btn-outline-success">Administrator</a>
+                        <a href="/profile" class="btn btn-outline-info">Profile</a>
+
+                    </div>
                 </div>
 
 

@@ -47,10 +47,11 @@ Route::post('admin/deactivate', 'admin@deactivate')->middleware('onlyAdmin');
  *  Profile management link
  * 
  * */ 
+Route::get('profile/', 'profile@mine_profile'); // Check Auth and Transfer User to its User Id
 Route::get('profile/{user}', 'profile@index'); // Get details
 Route::get('profile/{user}/personal', 'profile@personal'); // personal info 
 Route::get('profile/{user}/personal/edit', 'profile@personal_update'); // personal info
-
+Route::post('profile/{user}/personal/edit', 'profile@save_changes'); // Saved
 
 /**
  *  Student Side
