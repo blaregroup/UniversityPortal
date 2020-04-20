@@ -71,7 +71,7 @@ class profile extends Controller
             }
         }
         else{
-            return "YOu are not account holder to View Personal Details";
+            return "You are not account holder to View Personal Details";
         }
 
     }

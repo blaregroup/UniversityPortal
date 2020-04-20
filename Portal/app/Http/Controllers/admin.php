@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use DB;
+use Hash;
 use Illuminate\Http\Request;
 
 class admin extends Controller
@@ -10,47 +11,55 @@ class admin extends Controller
 
     // administrator index page
     public function index(){
-
-    	// Admin Name
-    	$user = Auth::user();
-
     	return view('admin.administrator');
     }
 
-
-    public function activate(Request $request){
-    	// if user is authorized
-    	if ($request->user()) {
-    		// if request is from admin
-    		if ($request->user()->role==='A') {
-    			foreach ($request->all() as $key => $value) {
-    				if ($key!=='_token') { // except token field
-    									// making user active
- 						   				$tmp = DB::table('users')->where('id', $key)->update(['active'=>'Y']); // user activated
-    				}
-    			}		
-    		}
-    	}
-    	return redirect('/admin/perm');
-    	
-    	
+    // add user
+    public function user($id='1'){
+        $info = DB::table('users')->where('id', $id)->get()->first();
+        //dd($info);
+        return view('admin.user', ['info'=>$info]);
     }
 
+    // add user
+    public function add(Request $request){
+
+        $value = $request->except('_token');
+        DB::table('users')->insert($value);
+
+        return redirect("admin/add");
+    }
+
+    // edit user information
+    public function edit(Request $request){
+        DB::table('users')->where('id', $request->id)->update($request->except('_token', 'password','id'));
+
+        if($request->password!=null){
+            DB::table('users')->where('id', $request->id)->update(['password' => Hash::make($request->password)]);
+        }
+        return redirect('admin/add/'.$request->id);
+    
+    }
+
+    // get activate
+    public function activate(Request $request){
+    	// if request is from admin
+		if ($request->user()->role==='A') {
+			foreach ($request->except('_token') as $key => $value) {
+			DB::table('users')->where('id', $key)->update(['active'=>'Y']); // user activated	
+			}		
+		}
+    	return redirect('/admin/perm');    	
+    }
+
+
     public function deactivate(Request $request){
-    	// if user is authorized
-    	if($request->user()){
-
-    		// if request is from admin
-    		if($request->user()->role==='A'){
-    			foreach ($request->all() as $key => $value) {
-    			if ($key!=='_token') { // except token field
-    									// making user active
- 						   				$tmp = DB::table('users')->where('id', $key)->update(['active'=>'N']); // users deactivate
-    				}
-    			}
-
-    		}
-    	}
+		// if request is from admin
+		if($request->user()->role==='A'){
+            foreach ($request->except('_token') as $key => $value) {
+			DB::table('users')->where('id', $key)->update(['active'=>'N']); // users deactivate
+			}
+		}
     	return redirect('/admin/perm');
     }
 

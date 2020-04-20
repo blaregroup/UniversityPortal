@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
-
+                    <a href="/admin/add" class="btn btn-outline-primary"> Add Users</a>
                     <a href="/admin/perm" class="btn btn-outline-primary"> Grant Access To Users</a>
 
                 </div>
