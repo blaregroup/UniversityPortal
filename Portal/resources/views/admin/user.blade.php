@@ -5,21 +5,48 @@
     <div class="row justify-content-center">
         
 
-        <div class="col-md-8 border border-dark p-3">
+        <div class="col-md-8">
             
 
-            @if ($info->id=='1')
-              <span class="badge badge-success w-100"> ME </span>
-            @else
-              <span class="badge badge-secondary w-100"> Other </span>
-            
-            @endif
+        @if ($info->role=='A')
+          <span class="badge badge-success w-100"> Admin </span>
+        @elseif ($info->role=='S')
+          <span class="badge badge-secondary w-100"> Student </span>
+        @else ($info->role=='T')
+        <span class="badge badge-warning w-100"> Teacher </span>
+        @endif
 
-       <div class="row border border-info p-3">
-              <form action="/admin/edit" method='post' class="border border-primary p-3 m-2">
+
+
+       <div class="row border border-info p-3 m-5">
+              <div class="card card-primary"> 
+                <p class="m-2"> Select  User </p>
+          <ul class = "list-group p-lg-2">
+
+                @foreach ($user as $u)
+         
+
+              <li class = "list-group-item">
+                      <a href="{{ $u->id }}">
+                        
+                      <span class="badge badge-default"> {{ $u->name }} </span>
+                      <span class="badge badge-default"> {{ $u->email }} </span>
+
+                      </a>
+
+              </li>
+
+                @endforeach
+
+
+          </ul>
+
+           </div>
+
+              <form action="/admin/edit" method='post' class="border border-primary p-3 m-3">
                       @csrf
                   <div class="banner">
-                    <h1>Edit Detail</h1>
+                    <h4> Edit {{ $info->name }} </h4>
                   </div>
                   <input type="hidden" name="id" value="{{ $info->id }}" />
                   <div class="item">
@@ -47,9 +74,8 @@
                     <button type="submit" href="/">Save</button>
                   </div>
               </form>
-
-
-        <div class="col-md-7 border border-dark rounded p-3">
+            </div>
+        <div class="col-md-7 border border-dark rounded p-3 m-5">
             
 
                   <div class="banner">

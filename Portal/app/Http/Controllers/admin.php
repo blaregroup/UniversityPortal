@@ -17,8 +17,8 @@ class admin extends Controller
     // add user
     public function user($id='1'){
         $info = DB::table('users')->where('id', $id)->get()->first();
-        //dd($info);
-        return view('admin.user', ['info'=>$info]);
+        $user = DB::table('users')->select('id', 'name', 'email')->get();
+        return view('admin.user', ['info'=>$info, 'user'=>$user]);
     }
 
     // add user
