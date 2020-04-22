@@ -36,7 +36,7 @@ class HomeController extends Controller
             if ($user->active!=='Y'){
 
                 // allow student
-            return view('student.student', ['message'=> 'Your account is not active. ask admin for Permission!' ]);
+            return view('home', ['message'=> 'Your account is not active. ask admin for Permission!' ]);
 
             }
             

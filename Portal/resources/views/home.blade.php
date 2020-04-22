@@ -4,14 +4,7 @@
 
 @section('content')
 
-    
-@include('auth.login') 
 <div class="container">
-    @yield('content')
-</div>
-
-{{-- <div class="container">
-    
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -38,5 +31,5 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 @endsection
