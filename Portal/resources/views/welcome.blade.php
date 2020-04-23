@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Knowledge Portal Landing Page</title>
+    <title>{{ config('app.name', 'University Portal ') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -77,7 +77,7 @@
         }
 
         .cover-container {
-        max-width: 42em;
+        max-width: 100em;
         }
 
 
@@ -149,32 +149,37 @@
 </head>
 
 <body class="text-center">
-    <div class="cover-container d-flex w-100 h-75 p-3 mx-auto flex-column">
+    <div class="cover-container d-flex w-100 h-75 p-3    mx-auto flex-column">
   <header class="masthead mb-auto">
     <div class="inner">
-      <h3 class="masthead-brand"> BlareGroup</h3>
+      <a href="/"><h3 class="masthead-brand">{{ config('app.name', 'Laravel') }}</h3></a>
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="#">What's this</a>
+        <a class="nav-link active " href="/about">About</a>
+        <a class="nav-link active" href="/contact">Contact</a>
+
 
       </nav>
     </div>
   </header>
 
-  <main role="main" class="inner cover pb-lg-5">
-    <h1 class="cover-heading">Welcome Visitor.</h1>
-    <p class="lead">
-        Welcome Visitor! This is Knowledge Portal App By BlareGroup.
-        Here, Students, Teachers and College Faculty Share Their Homeworks Only.
-        If You are a Hacker! Buddy! Leave this Site. Nothing important
-        here. Waste Of Time :)
+  <main role="main" class="inner cover  pb-lg-10  ">
+    <h1 class="cover-heading ">University Portal</h1>
+    <p class="lead ">
+        A Platform to Build Modern Education in a Systematic manner
     </p>
     <p class="lead">
-      <a href="/home" class="btn btn-lg btn-secondary">Login</a>
+      <a href="/login" class="btn btn-lg btn-secondary w-16">Login</a>
+      <p> or </p>
+      <a href="/register" class="btn btn-lg btn-secondary ">Register</a>
     </p>
+
   </main>
 
 </div>
+<div class="inner cover fixed-bottom align-middle">
+    <p>&copy BlareGroup - A Software Solution Company </p>
 
+</div>
 
 
 </body>

@@ -19,6 +19,16 @@ Route::get('/', function () {
     return view('welcome');
  });
 
+// about page
+Route::get('/about', function () {
+    return view('about');
+ });
+
+// contact page
+Route::get('/contact', function () {
+    return view('contact');
+ });
+
 // route
 Auth::routes();
 

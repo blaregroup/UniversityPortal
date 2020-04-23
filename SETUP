@@ -22,11 +22,10 @@ Start new Terminal And Now Laravel Setup is Ready To Go
 # SETUP Procedure
 
 #`~/UniversityPortal$ laravel new Portal`
+# composer install
 # php artisan ui vue --auth
 # "npm install && npm run dev"
 # service mysql start
-# php artisan migrate
-
 
 
 DB_CONNECTION=sqlite
@@ -38,10 +37,12 @@ DB_PASSWORD=""
 
 
 
-composer install
+
+
+# php artisan migrate
 npm install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate
 php artisan db:seed
-
+php artisan serve
