@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use auth;
 use DB;
-class profile extends Controller
+class ProfileHandler extends Controller
 {
 
     /**

@@ -8,14 +8,13 @@
         <div class="col-md-8">
             
 
-        @if ($info->role=='A')
+        @if ($info->role==='admin')
           <span class="badge badge-success w-100"> Admin </span>
-        @elseif ($info->role=='S')
+        @elseif ($info->role==='student')
           <span class="badge badge-secondary w-100"> Student </span>
-        @else ($info->role=='T')
+        @else ($info->role==='teacher')
         <span class="badge badge-warning w-100"> Teacher </span>
         @endif
-
 
 
        <div class="row border border-info p-3 m-5">
@@ -27,7 +26,7 @@
          
 
               <li class = "list-group-item">
-                      <a href="{{ $u->id }}">
+                      <a href="/admin/add/{{ $u->id }}">
                         
                       <span class="badge badge-default"> {{ $u->name }} </span>
                       <span class="badge badge-default"> {{ $u->email }} </span>

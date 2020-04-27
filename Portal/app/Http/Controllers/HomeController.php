@@ -28,21 +28,20 @@ class HomeController extends Controller
     {
         // check if user is authenticated or not
         if(Auth::check()){
-
             // get user object
-            $user = Auth::user();
+            if(!Auth::user()->getactive()){
 
-            // if user is a Teacher
-            if ($user->active!=='Y'){
-
-                // allow student
+            // allow student
             return view('home', ['message'=> 'Your account is not active. ask admin for Permission!' ]);
-
+            }
+            else{
+                return view('home');
             }
             
 
+        }else{
+            return redirect('login');
         }   
-        return view('home');
     }
 
 }

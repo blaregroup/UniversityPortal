@@ -16,20 +16,14 @@ class onlyAdmin
      */
     public function handle($request, Closure $next)
     {
-       
         // check if user is authenticated or not
         if(Auth::check()){
-
-            // get user object
-            $user = Auth::user();
-
             // if user is a admin
-            if($user->role==='A'){
+            if(Auth::user()->getaccess()==="high"){
 
                 // allow admin
                 return $next($request);
             }
-
         }   
         return redirect('login');
         

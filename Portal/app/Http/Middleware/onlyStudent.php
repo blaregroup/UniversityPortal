@@ -18,17 +18,12 @@ class onlyStudent
     {
         // check if user is authenticated or not
         if(Auth::check()){
+            // if user is a admin
+            if(Auth::user()->getaccess()==="low"){
 
-            // get user object
-            $user = Auth::user();
-
-            // if user is a student
-            if (($user->role==='S')&&($user->active==='Y')){
-
-                // allow student
+                // allow admin
                 return $next($request);
             }
-
         }   
         return redirect('login');
     }

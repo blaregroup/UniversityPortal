@@ -1,0 +1,20 @@
+
+==========================================
+    USER MODEL
+==========================================
+
+    public function createProfile(){
+
+    public function Profile()
+    public function createNotification($message)
+
+    public function Notice(){
+    public function removeNotification($id)
+    public function createRole($role="student", $access="low", $active="0")
+    public function Role()
+    public function activate()
+    public function deactivate()
+    public function getactive()
+    public function getrole()
+    public function getaccess()
+    public function message($sendto, $message)

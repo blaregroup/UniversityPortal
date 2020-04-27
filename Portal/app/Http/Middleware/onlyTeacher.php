@@ -15,22 +15,15 @@ class onlyTeacher
      */
     public function handle($request, Closure $next)
     {
-        
         // check if user is authenticated or not
         if(Auth::check()){
+            // if user is a admin
+            if(Auth::user()->getaccess()==="median"){
 
-            // get user object
-            $user = Auth::user();
-
-            // if user is a Teacher
-            if (($user->role==='T')&&($user->active==='Y')){
-
-                // allow student
+                // allow admin
                 return $next($request);
             }
-            
-
-        }   
+        }      
         return redirect('login');
     }
 }

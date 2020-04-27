@@ -27,16 +27,10 @@ $user3->email = "teacher@nothing.com";
 $user3->password = Hash::make('admin@123');
 $user3->save();
 
-
-
-# adding roles
-$role = new App\Roles;
-$role->role="admin";
-$role->access="high";
-$role->active="1";
-$role->user_id="2";
-$role->save();
-
+# activate admin account
+$user1->createRole($role="admin", $access="high", $active="1");
+$user2->createRole($role="student", $access="low", $active="0");
+$user3->createRole($role="teacher", $access="median", $active="0");
 
 # creating dummy profile accounts
 

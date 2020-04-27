@@ -188,10 +188,16 @@ class User extends Authenticatable
     @return boolean
     */
     public function getactive(){
-        if($this->Role()->first()->active=="1"){
-            return true;
-        }else{
+        if ($this->Role()->first()==null) {
+            # code...
             return false;
+        }else{
+            if($this->Role()->first()->active=="1"){
+                return true;
+            }else{
+                return false;
+            }
+
         }
 
     }
