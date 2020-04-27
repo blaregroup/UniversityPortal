@@ -17,7 +17,8 @@ class onlyTeacher
     {
         // check if user is authenticated or not
         if(Auth::check()){
-            // if user is a admin
+            
+            // If user had Teacher Permission
             if(Auth::user()->getaccess()==="median"){
 
                 // allow admin

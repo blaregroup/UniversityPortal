@@ -16,36 +16,34 @@ use Illuminate\Support\Facades\Route;
 
 // homepage
 Route::get('/', function () {
-    return view('welcome');
+    return view('WelcomePage');
  });
 
 // about page
 Route::get('/about', function () {
-    return view('about');
+    return view('AboutPage');
  });
 
 // contact page
 Route::get('/contact', function () {
-    return view('contact');
+    return view('ContactPage');
  });
 
 // Login route
 Auth::routes();
 
 // Home Controller
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@Index')->name('home');
 
 
-/**
-*
+/*
 * Administration Url Section 
-*
 */
-Route::get( 'admin/', 			'AdminHandler@index')->middleware('onlyAdmin'); // Index
+Route::get( 'admin/', 			'AdminHandler@Index')->middleware('onlyAdmin'); // Index
 Route::get( 'admin/perm/', 		'AdminHandler@permission')->middleware('onlyAdmin');
 Route::get( 'admin/add/{id?}', 	'AdminHandler@AllUser')->middleware('onlyAdmin');
-//Route::post('admin/add', 		'AdminHandler@AddUser')->middleware('onlyAdmin');
-//Route::post('admin/edit', 		'AdminHandler@edit')->middleware('onlyAdmin');
+Route::post('admin/add', 		'AdminHandler@AddUser')->middleware('onlyAdmin');
+Route::post('admin/edit', 		'AdminHandler@Edit')->middleware('onlyAdmin');
 Route::post('admin/activate', 	'AdminHandler@Grant')->middleware('onlyAdmin');
 Route::post('admin/deactivate', 'AdminHandler@rGrant')->middleware('onlyAdmin');
 
@@ -55,17 +53,15 @@ Route::post('admin/deactivate', 'AdminHandler@rGrant')->middleware('onlyAdmin');
 
 
 /* 
- * 
  *  Profile management link
- * 
- *  
-Route::get('profile/', 'profile@mine_profile'); // Check Auth and Transfer User to its User Id
-Route::get('profile/{user}', 'profile@index'); // Get details
-Route::get('profile/{user}/personal', 'profile@personal'); // personal info 
-Route::get('profile/{user}/personal/edit', 'profile@personal_update'); // personal info
-Route::post('profile/{user}/personal/edit', 'profile@save_changes'); // Saved
+ */ 
+Route::get('profile/', 'ProfileHandler@MineProfile'); // redirect to profile/{user_id} 
+Route::get('profile/personal', 'ProfileHandler@Personal'); // personal info 
+Route::get('profile/personal/edit', 'ProfileHandler@PersonalUpdate'); // personal info
+Route::post('profile/personal/edit', 'ProfileHandler@SaveChange'); // Saved
+Route::get('profile/{user}', 'ProfileHandler@Index'); // Get details
 
-
+/*
  *  Student Side
 Route::get('student/', 'student@index')->middleware('onlyStudent'); // Get Detail
 Route::get('student/syllabus/', 'student@syllabus')->middleware('onlyStudent'); // Get syllabus PDF

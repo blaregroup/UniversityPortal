@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use auth;
 use DB;
+use App\User;
+use App\Profile;
+
+
 class ProfileHandler extends Controller
 {
 
@@ -27,16 +31,22 @@ class ProfileHandler extends Controller
     }
 
     /*
-        Show Anyone Common Profile Information    
-    */
-    public function index($id){
-        
-        // check if $id exists in profile table
-        if(DB::table('profiles')->where('id',$id)->exists()){
-            $info = DB::table('profiles')->where('id', $id)->first();
+        This function basically Render Profile Basica Information
+        from database and generate view to present it.
+        Using This, Any User can see anyone else Profile but only basic
+        Informations
 
-            //return 'Profile Name : '.$info->fname.' | Description : '.$info->description;
-            return view('profile.profile', ['info'=>$info
+        @param Integer $id -> User Table ID
+
+    */
+    public function Index($id){
+
+        $profile = Profile::where('user_id', $id)->first();
+        
+
+        // check profile exists
+        if($profile){
+            return view('profile.ProfilePage', ['info'=>$profile
             ]);
         }
         else{
@@ -46,67 +56,71 @@ class ProfileHandler extends Controller
         
     }
 
-    // redirect to my profile
-    public function mine_profile(){
-        return redirect('/profile/'.Auth::user()->id.'/personal/');
+    /*
+
+        Redirect to User Personal Profile Section
+    */
+    public function MineProfile(){
+        return redirect('/profile/personal/');
     }
 
     /**
-     * 
-     * 
+     *  This function Render Logged In User Profile Complete Detail From Profile Table
+     *  and Present It.
      */
 
-    public function personal($id){
-        // check if user is account holder or not
-        if (Auth::user()->id==$id) {
-   
-            // check if $id exists in profile table
-            if(DB::table('profiles')->where('id',$id)->exists()){
-                $info = DB::table('profiles')->where('id', $id)->first();
-                return view('profile.personal', ['info'=>$info]);
-            }
-            else{
+    public function Personal(Request $request){
 
-                return 'Profile Page Not Generated Yet';    
-            }
-        }
-        else{
-            return "You are not account holder to View Personal Details";
-        }
-
-    }
-
-    // update information
-    public function personal_update($id){
-
-     // check if user is account holder or not
-    if (Auth::user()->id==$id) {
-   
-            // check if $id exists in profile table
-            if(DB::table('profiles')->where('id',$id)->exists()){
-                $info = DB::table('profiles')->where('id', $id)->first();
-                return view('profile.edit', ['info'=>$info]);
-            }
-            else{
-
-                return 'Profile Page Not Generated Yet';    
-            }
-        }
-        else{
-            return "You are not account holder to View Personal Details";
-        }
+        // Get user profile object from profile table through foreign key of user object
+        $profile = $request->user()->Profile()->first();
 
 
-    }
+        if($profile){
 
-    public function save_changes(Request $request, $id){
-        if (Auth::user()->id==$id) {
-            $value = $request->except('_token');
-            //dd($value);
-            DB::table('profiles')->where('id', $id)->update($value);
-            
-        }
+            return view('profile.DetailProfile', ['info'=>$profile]);
         
-        return redirect('/profile/'.Auth::user()->id.'/personal/edit');
+        }
+        else{
+
+            return 'Profile Page Not Generated Yet';    
+        }
+
+
+    }
+
+    /*
+        This Function Preset Profile Table Details of LoggedIn User
+        In Editor Mode. So, that User can make changes
+
+    */
+    public function PersonalUpdate(Request $request){
+
+        // Get user profile object from profile table through foreign key of user object
+        $profile = $request->user()->Profile()->first();
+   
+        if($profile){
+            return view('profile.DetailEditor', ['info'=>$profile]);
+        }
+        else{
+
+            return 'I Think Profile Page Not Generated Yet';    
+        }
+    }
+
+    /*
+        This function receive Post Request for Profile Details Changes
+        from Logged In User.
+
+        Using This Function, User Update Its Profile Details in Profile Table
+    */
+
+    public function SaveChange(Request $request){
+        
+        $value = $request->except('_token');
+        //dd($request->user()->id);
+
+        DB::table('profiles')->where('user_id', $request->user()->id)->update($value);
+            
+        return redirect('/profile/personal/edit');
     }
 }

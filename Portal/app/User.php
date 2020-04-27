@@ -88,8 +88,7 @@ class User extends Authenticatable
         ]);
     }
 
-    /* Get all notices */
-
+   
 
     /*
     Get notification table

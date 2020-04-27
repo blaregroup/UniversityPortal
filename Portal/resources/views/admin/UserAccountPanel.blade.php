@@ -80,7 +80,7 @@
                   <div class="banner">
                     <h1>New User</h1>
                   </div>
-            <form action="./add", method="post">
+            <form action="/admin/add", method="post">
                   @csrf
 
                         <div class="form-group row">
@@ -114,22 +114,31 @@
 
                         
                         <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">Account State</label>
+                        <label class="col-md-4 col-form-label text-md-right">State</label>
                              <select id="active" name="active">
-                                  <option value="Y" selected>Active</option>
-                                  <option value="N">Deactive</option>
+                                  <option value="1" selected>Active</option>
+                                  <option value="0">Deactive</option>
                             </select> 
                         </div>
 
 
                         <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">Account State</label>
+                        <label class="col-md-4 col-form-label text-md-right">Role</label>
                              <select id="role" name="role">
-                                  <option value="S" selected>Student</option>
-                                  <option value="T">Teacher</option>
+                                  <option value="student" selected>Student</option>
+                                  <option value="teacher">Teacher</option>
                             </select> 
                         </div>
 
+
+                        <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">Access</label>
+                             <select id="access" name="access">
+                                  <option value="low" selected>Student</option>
+                                  <option value="median">Teacher</option>
+                                  <option value="high">Admin</option>
+                            </select> 
+                        </div>
 
 
                         <div class="form-group row mb-0">

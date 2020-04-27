@@ -18,7 +18,8 @@ class onlyAdmin
     {
         // check if user is authenticated or not
         if(Auth::check()){
-            // if user is a admin
+
+            // if user had High Access Permission
             if(Auth::user()->getaccess()==="high"){
 
                 // allow admin

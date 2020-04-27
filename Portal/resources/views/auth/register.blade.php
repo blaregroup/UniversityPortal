@@ -39,7 +39,15 @@
                             </div>
                         </div>
 
-                        
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Role</label>
+                            <div class="col-md-6">
+                            <select id="role" name="role">
+                                  <option value="student" selected>Student</option>
+                                  <option value="teacher">Teacher</option>
+                            </select> 
+                            </div>
+                        </div>                        
 
 
                         <div class="form-group row">

@@ -73,18 +73,13 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);
+        if($data['role']==='student'){
+            $user->createRole($role="student", $access="low", $active="0");
+        }else{
+            $user->createRole($role="teacher", $access="median", $active="0");
+        }
         
-        Profile::create([
-
-            'fname' => $data['name'],
-            'description' => "Description",
-            'dob' => "1999-01-01",
-            'gender' => "male",
-            'mother_name' => "None",
-            'father_name' => "None",
-            'phone' => "0000000000"
-
-        ]);
+        $user->createProfile();
         return $user;
 
     }

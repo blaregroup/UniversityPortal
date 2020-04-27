@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -23,24 +23,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function Index(){
+    // check if user account is active or not
+    if(!Auth::user()->getactive()){
 
-    {
-        // check if user is authenticated or not
-        if(Auth::check()){
-            // get user object
-            if(!Auth::user()->getactive()){
+        // if account is not active
+        return view('HomePage', ['message'=> 'Your account is not active. ask admin for Permission!' ]);
+    }else{
 
-            // allow student
-            return view('home', ['message'=> 'Your account is not active. ask admin for Permission!' ]);
-            }
-            else{
-                return view('home');
-            }
-            
-
-        }else{
-            return redirect('login');
+        return view('HomePage');
         }   
     }
 

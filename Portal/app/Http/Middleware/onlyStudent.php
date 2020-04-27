@@ -18,7 +18,8 @@ class onlyStudent
     {
         // check if user is authenticated or not
         if(Auth::check()){
-            // if user is a admin
+
+            // if user had low access
             if(Auth::user()->getaccess()==="low"){
 
                 // allow admin

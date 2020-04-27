@@ -32,6 +32,11 @@ $user1->createRole($role="admin", $access="high", $active="1");
 $user2->createRole($role="student", $access="low", $active="0");
 $user3->createRole($role="teacher", $access="median", $active="0");
 
+$user1->createProfile()
+$user2->createProfile()
+$user3->createProfile()
+
+
 # creating dummy profile accounts
 
 #$user = new App\Profile;
