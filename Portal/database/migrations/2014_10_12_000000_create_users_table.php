@@ -4,6 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
+/*
+
+Table Name  : users 
+Column Name : name, email, role, active, password 
+
+*/
+
+
+
 class CreateUsersTable extends Migration
 {
     /**
@@ -19,24 +29,6 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            /*
-            * Role Of User, Decided What user can do, 
-            *
-            * A For Admin
-            * T For Teacher
-            * S For Student
-            * But Keep in Mind.. I will never let you registered as Admin From Web Login
-            * For Admin Account, You have to run.. Admin Registration application from backend.
-            * !! Got That !! :)) 
-            */ 
-            $table->enum('role', ['T', 'A', 'S'])->default('S');
-
-            /*
-            *
-            * Only Admin Can Active This. :)
-            *
-            */
-            $table->enum('active',['Y', 'N'])->default('N');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

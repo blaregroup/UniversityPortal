@@ -6,63 +6,69 @@
 # Creating Dummy login accounts
 # ==================================================================
 
-# admin
-$user = new App\User;
-$user->name = "Administrator";
-$user->email = "admin@nothing.com";
-$user->password = Hash::make('admin@123');
-$user->role = "A";
-$user->active = "Y";
-$user->save();
+# Admin
+$user1 = new App\User;
+$user1->name = "Administrator";
+$user1->email = "admin@nothing.com";
+$user1->password = Hash::make('admin@123');
+$user1->save();
 
-# dummy student
-$user = new App\User;
-$user->name = "Student";
-$user->email = "student@nothing.com";
-$user->password = Hash::make('admin@123');
-$user->role = "S";
-$user->save();
+# Student
+$user2 = new App\User;
+$user2->name = "Student";
+$user2->email = "student@nothing.com";
+$user2->password = Hash::make('admin@123');
+$user2->save();
 
-# dummy teacher
-$user = new App\User;
-$user->name = "Teacher";
-$user->email = "teacher@nothing.com";
-$user->password = Hash::make('admin@123');
-$user->role = "T";
-$user->save();
+# Teacher
+$user3 = new App\User;
+$user3->name = "Teacher";
+$user3->email = "teacher@nothing.com";
+$user3->password = Hash::make('admin@123');
+$user3->save();
+
+
+
+# adding roles
+$role = new App\Roles;
+$role->role="admin";
+$role->access="high";
+$role->active="1";
+$role->user_id="2";
+$role->save();
 
 
 # creating dummy profile accounts
 
-$user = new App\Profile;
-$user->fname = "I am Admin";
-$user->description = "This is Administration Panel";
-$user->dob = "2018-01-05";
-$user->gender = "male";
-$user->mother_name = "No Need";
-$user->father_name = "No Need";
-$user->phone = "1234567897";
-$user->save();
+#$user = new App\Profile;
+#$user->fname = "I am Admin";
+#$user->description = "This is Administration Panel";
+#$user->dob = "2018-01-05";
+#$user->gender = "male";
+#$user->mother_name = "No Need";
+#$user->father_name = "No Need";
+#$user->phone = "1234567897";
+#$user->save();
 
-$user = new App\Profile;
-$user->fname = "I am Student";
-$user->description = "This is Student Panel";
-$user->dob = "2018-01-05";
-$user->gender = "male";
-$user->mother_name = "No Need";
-$user->father_name = "No Need";
-$user->phone = "1234567897";
-$user->save();
+#$user = new App\Profile;
+#$user->fname = "I am Student";
+#$user->description = "This is Student Panel";
+#$user->dob = "2018-01-05";
+#$user->gender = "male";
+#$user->mother_name = "No Need";
+#$user->father_name = "No Need";
+#$user->phone = "1234567897";
+#$user->save();
 
-$user = new App\Profile;
-$user->fname = "I am Teacher";
-$user->description = "This is Teacher Panel";
-$user->dob = "2018-01-05";
-$user->gender = "female";
-$user->mother_name = "No Need";
-$user->father_name = "No Need";
-$user->phone = "1234567897";
-$user->save();
+#$user = new App\Profile;
+#$user->fname = "I am Teacher";
+#$user->description = "This is Teacher Panel";
+#$user->dob = "2018-01-05";
+#$user->gender = "female";
+#$user->mother_name = "No Need";
+#$user->father_name = "No Need";
+#$user->phone = "1234567897";
+#$user->save();
 
 
 #exit

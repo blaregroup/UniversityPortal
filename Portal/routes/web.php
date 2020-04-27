@@ -42,14 +42,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 *
 */
 
-Route::get('admin/', 'admin@index')->middleware('onlyAdmin'); // Index
-Route::get('admin/perm/', 'admin@permission')->middleware('onlyAdmin');
-
-Route::get('admin/add/{id?}', 'admin@user')->middleware('onlyAdmin');
-Route::post('admin/add', 'admin@add')->middleware('onlyAdmin');
-Route::post('admin/edit', 'admin@edit')->middleware('onlyAdmin');
-
-Route::post('admin/activate', 'admin@activate')->middleware('onlyAdmin');
+Route::get( 'admin/', 			'admin@index')->middleware('onlyAdmin'); // Index
+Route::get( 'admin/perm/', 		'admin@permission')->middleware('onlyAdmin');
+Route::get( 'admin/add/{id?}', 	'admin@user')->middleware('onlyAdmin');
+Route::post('admin/add', 		'admin@add')->middleware('onlyAdmin');
+Route::post('admin/edit', 		'admin@edit')->middleware('onlyAdmin');
+Route::post('admin/activate', 	'admin@activate')->middleware('onlyAdmin');
 Route::post('admin/deactivate', 'admin@deactivate')->middleware('onlyAdmin');
 
 

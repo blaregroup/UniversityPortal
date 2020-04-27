@@ -14,14 +14,29 @@ class admin extends Controller
     	return view('admin.administrator');
     }
 
-    // add user
+
+
+
+
+    /*
+
+    To handle Login Settings
+    
+    */
     public function user($id='1'){
         $info = DB::table('users')->where('id', $id)->get()->first();
         $user = DB::table('users')->select('id', 'name', 'email')->get();
         return view('admin.user', ['info'=>$info, 'user'=>$user]);
     }
 
-    // add user
+
+
+
+    /* 
+
+    add user
+
+    */
     public function add(Request $request){
 
         $value = $request->except('_token');

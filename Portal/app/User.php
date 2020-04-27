@@ -38,7 +38,205 @@ class User extends Authenticatable
     ];
 
 
-    public function Profile(){
-        return $this->hasOne('App\Profile', 'id');
+    /*
+    To create new profile
+
+    */
+    public function createProfile(){
+        /*
+        Table name  : profiles
+        Column name : user_id, fname, description, gender, dob, mother_name, father_name, phone, mphone, fphone, alphone 
+        */
+
+        if($this->Profile()->first()==null){
+            Profile::create([
+                'user_id'=>$this->id,
+                'fname' =>'new user number'.$this->id,
+                'description'=>"Empty"
+            ]);
+
+            return true;
+        }else{
+
+            return false;
+        }
     }
+
+    /*
+    Get profile table
+    */ 
+    public function Profile(){    
+        return $this->hasOne('App\Profile');
+    }
+
+    /* 
+    Create Notice records
+    @param string $message
+
+    */
+    public function createNotification($message){
+        
+        /*
+
+            Notice::insert(['user_id'=>'1', 'message'=>'yp']);
+
+        */
+
+        return Notice::create([
+            'user_id'=>$this->id,
+            'message'=>$message
+        ]);
+    }
+
+    /* Get all notices */
+
+
+    /*
+    Get notification table
+    
+    @return Notice model object
+    */
+    public function Notice(){
+        return $this->hasMany('App\Notice');
+    }
+
+    /*
+    Delete notification 
+
+    @param string $id -> notification message id
+
+    @return notification
+    */
+    public function removeNotification($id){
+        $n = Notice::find($id);
+
+        if($n){
+            return $n->delete();
+        }
+        return false;
+
+    }
+
+    /*
+
+    Function To create new role  
+    @param string $student ["student", "admin", "teacher"]
+    @param string $access ["low", "median", "high"]
+    @param string @active ["0", "1"]
+
+    */
+    public function createRole($role="student", $access="low", $active="0"){
+
+    /* 
+        Role table schema
+        Table Name : role
+        Column Name : role, access, active, user_id
+
+    */
+
+        if($this->Role()->first()==null){
+
+            Roles::create([
+                'role'=>$role,
+                'access'=>$access,
+                'active'=>$active,
+                'user_id'=>$this->id
+            ]);
+            return $this->Role()->first();
+        }else{
+            return false;
+        }
+    }
+
+
+    /*
+     Get user role model object
+
+     @return role object
+    */
+    public function Role(){
+        $role = $this->hasOne('App\Roles');
+        if($role==null){
+            return $this->createRole();
+        }else{
+            return $role;
+        }
+    }
+
+    /* 
+    activate user account
+     */
+    public function activate(){
+        $role = $this->Role()->first();
+        $role->active="1";
+        return $role->save();
+    }
+
+    /*
+    Deactivate user account
+    */
+    public function deactivate(){
+        $role = $this->Role()->first();
+        $role->active="0";
+        return $role->save();
+    }
+
+
+    /*
+    User account active status
+    
+    @return boolean
+    */
+    public function getactive(){
+        if($this->Role()->first()->active=="1"){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    /*
+    Return user role 
+
+    @return string ["student", "teacher", "admin"]
+    */
+    public function getrole(){
+        return $this->Role()->first()->role;
+    }
+
+    /*
+    Returns the access type of User
+
+    @return string ["low", 'mediam', 'high']
+    */
+    public function getaccess(){
+        if($this->getactive()){
+            return $this->Role()->first()->access;
+        }else{
+            return false;
+        }
+    }
+
+
+
+    /*
+    Create message record
+
+    @param string $sendto -> User ID Foreign Key
+    @param string $message -> Text message
+
+    @return Message Object
+    */
+    public function message($sendto, $message){
+        return Message::create([
+            'sender_id'=>$this->id,
+            'receiver_id'=>$sendto,
+            'text'=>$message
+        ]);
+    }
+
+
+    
 }
+
