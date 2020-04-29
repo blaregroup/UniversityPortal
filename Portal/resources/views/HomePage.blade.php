@@ -23,6 +23,7 @@
                         <a href="/student" class="btn btn-outline-secondary">Student</a>
                         <a href="/admin" class="btn btn-outline-success">Administrator</a>
                         <a href="/profile" class="btn btn-outline-info">Profile</a>
+                        <a href="/upload" class="btn btn-outline-secondary">UploadFile</a>
 
                     </div>
                 </div>
