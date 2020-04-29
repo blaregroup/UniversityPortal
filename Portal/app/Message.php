@@ -15,7 +15,7 @@ Column Name : sender_id, receiver_id, text
 class Message extends Model
 {
     //
-    eprotected $fillable = [
+    protected $fillable = [
     	'sender_id',
     	'receiver_id',
     	'text'
