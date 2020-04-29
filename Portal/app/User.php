@@ -242,6 +242,25 @@ class User extends Authenticatable
     }
 
 
+
+    public function upload($name, $description, $originalname, $pathname){
+        
+        
+        return Document::create([
+            'name'=> $name, 
+            'Description'=>$description, 
+            'originalname'=>$originalname, 
+            'hashname'=>$pathname, 
+            'user_id'=>$this->id
+        ]);
+    }
+
+
+    public function uploads(){
+        return $this->hasMany('App\Document');
+    }
+
+
     
 }
 

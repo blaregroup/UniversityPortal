@@ -80,5 +80,4 @@ Route::get('teacher/material', 'teacher@material')->middleware('onlyTeacher');
 */
 
 
-
-
+Route::match(['get', 'post'],'/upload','DocumentController@UploadFile');
