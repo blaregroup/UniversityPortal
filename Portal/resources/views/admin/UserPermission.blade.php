@@ -49,7 +49,7 @@
 	       		@endif
 	       	</div>
 	       	<div class="col-sm-2">{{ $a->created_at }}</div>
-	       	<div class="col-sm-1"><input type="checkbox" name="{{ $a->id }}" /></div>
+	       	<div class="col-sm-1"><input type="radio" name="userid" value="{{ $a->id }}" /></div>
 
 	       </div>
 
@@ -103,7 +103,8 @@
 	       		@endif
 	       	</div>
 	       	<div class="col-sm-2">{{ $a->created_at }}</div>
-	       	<div class="col-sm-1"><input type="checkbox" name="{{ $a->id }}" /></div>
+	       	<div class="col-sm-1">
+	       		<input type="radio" name="userid" value="{{ $a->id }}" /></div>
 
 	       </div>
 

@@ -25,8 +25,8 @@ class Subject extends Migration
             $table->integer('subcode'); // subject code
             $table->string('name');
             $table->longText('description');
-            $table->unsignedBigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses'); 
+            $table->bigInteger('course_id')->nullable()->unsigned();
+            $table->foreign('course_id')->nullable()->references('id')->on('courses');
             $table->timestamps();
         });
     }

@@ -42,10 +42,12 @@ Route::get('/home', 'HomeController@Index')->name('home');
 Route::get( 'admin/', 			'AdminHandler@Index')->middleware('onlyAdmin'); // Index
 Route::get( 'admin/perm/', 		'AdminHandler@permission')->middleware('onlyAdmin');
 Route::get( 'admin/add/{id?}', 	'AdminHandler@AllUser')->middleware('onlyAdmin');
+Route::match(['get','post'], 'admin/course', 	'AdminHandler@Course')->middleware('onlyAdmin');
 Route::post('admin/add', 		'AdminHandler@AddUser')->middleware('onlyAdmin');
 Route::post('admin/edit', 		'AdminHandler@Edit')->middleware('onlyAdmin');
 Route::post('admin/activate', 	'AdminHandler@Grant')->middleware('onlyAdmin');
 Route::post('admin/deactivate', 'AdminHandler@rGrant')->middleware('onlyAdmin');
+
 
 
 Route::match(['get', 'post'],'/upload','DocumentController@UploadFile');

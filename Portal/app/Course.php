@@ -27,7 +27,7 @@ class Course extends Model
 			'subcode'=>$subject_code, 
     		'name'=>$subject_name,
     		'description'=>$subject_description, 
-    		'course_id'=>$this->id
+    		'course_id'=>$this->id,
     	]);
 		
 	}

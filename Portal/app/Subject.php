@@ -20,6 +20,7 @@ class Subject extends Model
     	'name',
     	'description', 
     	'course_id',
+    
     ];
 
 

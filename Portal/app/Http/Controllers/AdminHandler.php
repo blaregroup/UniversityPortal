@@ -5,6 +5,8 @@ use Auth;
 use DB;
 use Hash;
 use App\User;
+use App\Course;
+use App\Subject;
 use Illuminate\Http\Request;
 
 
@@ -94,10 +96,9 @@ class AdminHandler extends Controller
 
     	// Check if user had admin permission
 		if ($request->user()->getaccess()==='high') {
-
-			foreach ($request->except('_token') as $key => $value) {
-			     DB::table('roles')->where('id', $key)->update(['active'=>$n]); // user activated	
-			}		
+		
+		     DB::table('roles')->where('id', $request->input('userid'))
+             ->update(['active'=>$n]); // user activated	
 		}
     	return redirect('/admin/perm');
     }
@@ -144,5 +145,106 @@ class AdminHandler extends Controller
             ->where('users.id','!=','1')
             ->get();
         return view('admin.UserPermission',['active'=>$active ,'noactive'=>$noactive]);
+    }
+
+
+    /*
+
+            >>> Course::find('1')->subject()->get()
+        => Illuminate\Database\Eloquent\Collection {#3078
+             all: [
+               App\Subject {#3082
+                 id: "1",
+                 subcode: "MCA1",
+                 name: "MCA_SUB1",
+                 description: "MCA_SUB_DESCRIPTION",
+                 course_id: "1",
+                 created_at: "2020-04-30 11:11:35",
+                 updated_at: "2020-04-30 11:11:35",
+               },
+               App\Subject {#3083
+                 id: "2",
+                 subcode: "MCA2",
+                 name: "MCA_SUB2",
+                 description: "MCA_SUB_DESCRIPTION",
+                 course_id: "1",
+                 created_at: "2020-04-30 11:11:35",
+                 updated_at: "2020-04-30 11:11:35",
+               },
+               App\Subject {#3084
+                 id: "3",
+                 subcode: "MCA3",
+                 name: "MCA_SUB3",
+                 description: "MCA_SUB_DESCRIPTION",
+                 course_id: "1",
+                 created_at: "2020-04-30 11:11:35",
+                 updated_at: "2020-04-30 11:11:35",
+               },
+             ],
+           }
+        >>> Course::find('1')
+        => App\Course {#3081
+             id: "1",
+             name: "MCA",
+             Description: "MCA",
+             created_at: "2020-04-30 11:11:35",
+             updated_at: "2020-04-30 11:11:35",
+           }
+
+*/
+    // Course 
+    public function Course(Request $request){
+
+        $cmd=$request->input('cmd');
+        if ($cmd) {
+            if ($cmd==='addcourse' 
+                && $request->input('course') 
+                && $request->input('description') ) {
+
+                Course::create([
+                    'name'=>$request->input('course'),
+                    'Description'=>$request->input('description')
+                ]);
+            
+            }elseif ($cmd==='addsubject' 
+                && $request->input('subcode')
+                && $request->input('name')
+                && $request->input('description') ) {
+
+                Subject::create([
+                    'subcode'=>$request->input('subcode'),
+                    'name'=>$request->input('name'),
+                    'description'=>$request->input('description')
+                ]);
+
+                # code...
+            }elseif($cmd==='addsubject'
+                && $request->input('subcode')
+                && $request->input('course_id')){
+                //dd($request->input());
+                Subject::find($request->input('subcode'))
+                ->update(['course_id'=>$request->input('course_id')]);
+
+            }else{
+
+            }
+        }
+        $course_id = $request->input("id");
+
+        if ($course_id) {
+            $Course = Course::find($course_id);
+            if ($Course) {
+                $Subject=Course::find($course_id)->subject()->get();
+                return view('admin.Course', ['AllCourse'=>Course::all(),
+                    'Course'=>$Course,
+                    'Subject'=>$Subject,
+                    'AllSubject'=>Subject::all(),
+                ]);            
+                # code...
+            }
+        }        
+        return view('admin.Course', ['AllCourse'=>Course::all()]);
+        
+
     }
 }

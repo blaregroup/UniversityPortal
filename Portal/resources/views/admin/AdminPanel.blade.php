@@ -10,6 +10,7 @@
                 <a href="/admin/perm" class="btn btn-outline-danger btn-sm"> Privilage</a>
                 <a href="/upload" class="btn btn-outline-success btn-sm"> Uploads</a>
                 <a href="/profile/personal" class="btn btn-outline-info btn-sm">Profile</a>
+                <a href="/admin/course" class="btn btn-outline-dark btn-sm">Course</a>
                 <a href="/admin/perm" class="btn btn-outline-success btn-sm"> Notification</a>
             
             </div>
