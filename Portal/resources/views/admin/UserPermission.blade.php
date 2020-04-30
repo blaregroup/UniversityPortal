@@ -3,93 +3,115 @@
 
 
 @section('content')
+<a href="/admin" class="btn btn-primary bg-inverse"> Back To Dashboard</a>
 <div class="container">
 <div class="row justify-content-center">
-<div class="col-md-8">
+<div class="col-lg-12">
 
-		Deactive Users
+	<div class="card">
+		<div class="card-header">Requests</div>
+       <div class="row font-weight-bold m-2">
+       	
+       	<div class="col-sm-1"> S.No </div>
+       	<div class="col-sm-2">Name </div>
+       	<div class="col-sm-3">Email</div>
+       	<div class="col-sm-2">Role</div>
+       	<div class="col-sm-1">Privilage</div>
+       	<div class="col-sm-2">RequestTime</div>
+       	
+       </div>
 
 		<form method="POST" action="./activate">
-		    @csrf
+    	@csrf
 
-			<ul class = "list-group p-lg-2">
+        @foreach ($noactive as $a)
 
-		        @foreach ($noactive as $a)
+	       <div class="row m-1">
+	       	
+	       	<div class="col-sm-1">{{ $loop->iteration }}</div>
+	       	<div class="col-sm-2">{{ $a->name }} </div>
+	       	<div class="col-sm-3">{{ $a->email }}</div>
+	       	<div class="col-sm-2 text-capitalize">{{ $a->role }}</div>
 
+	       	<div class="col-sm-1">
+	       		@if($a->access==='low')
+	       			<span class="badge badge-pill badge-success">
+	       				{{ $a->access}}
+	       			</span>
+	       		@elseif ($a->access==='median')
+	       			<span class="badge badge-pill badge-warning">
+	       				{{ $a->access}}
+	       			</span>
+	       		@else
+	       			 <span class="badge badge-pill badge-danger">
+	       				{{ $a->access}}
+	       			</span>      		
+	       		@endif
+	       	</div>
+	       	<div class="col-sm-2">{{ $a->created_at }}</div>
+	       	<div class="col-sm-1"><input type="checkbox" name="{{ $a->id }}" /></div>
 
-				<li class = "list-group-item">
-			    	<div class="checkbox">
-				        	<input type="checkbox" name="{{ $a->id }}" />
-					        <label for="checkbox">
-											
-								<span class="badge badge-primary"> {{ $a->name }} </span>
-								<span class="badge badge-default"> {{ $a->email }} </span>
-								<span class="badge badge-default"> {{ $a->created_at }} </span>
-								<span class="badge badge-default"> {{ $a->access }} </span>
-								<span class="badge badge-danger">
-								
-								@if($a->role==='student')
-									Student
-								@else
-									Teacher
-								@endif
-								</span>					           
+	       </div>
 
-					        </label>
-				    </div>
-				</li>
-
-	        @endforeach
-
-
-		</ul>
-		<input type="submit" value="Grant Permission" class="p-2 float-right btn btn-outline-dark">
-	</form>
+        @endforeach
+			<input type="submit" value="Grant" class="btn btn-outline-danger float-right m-2 mr-5">
+		</form>
+		
+	</div>
 </div>
 
-<div class="col-md-8 p-4">
 
-	Active Users
+<div class="col-lg-12 mt-3">
+	<div class="card">
+	<div class="card-header">Active</div>
+       <div class="row m-2 font-weight-bold">
+       	
+       	<div class="col-sm-1"> S.No </div>
+       	<div class="col-sm-2">Name </div>
+       	<div class="col-sm-3">Email</div>
+       	<div class="col-sm-2">Role</div>
+       	<div class="col-sm-1">Privilage</div>
+       	<div class="col-sm-2">RequestTime</div>
+       	
+       </div>
+
 
 	<form method="POST" action="./deactivate">
 	    @csrf
-
-		<ul class = "list-group p-lg-2">
-
 	        @foreach ($active as $a)
 	 
+	       <div class="row m-1">
+	       	
+	       	<div class="col-sm-1">{{ $loop->iteration }}</div>
+	       	<div class="col-sm-2">{{ $a->name }} </div>
+	       	<div class="col-sm-3">{{ $a->email }}</div>
+	       	<div class="col-sm-2 text-capitalize">{{ $a->role }}</div>
+	       	
+	       	<div class="col-sm-1">
+	       		@if($a->access==='low')
+	       			<span class="badge badge-pill badge-success">
+	       				{{ $a->access}}
+	       			</span>
+	       		@elseif ($a->access==='median')
+	       			<span class="badge badge-pill badge-warning">
+	       				{{ $a->access}}
+	       			</span>
+	       		@else
+	       			 <span class="badge badge-pill badge-danger">
+	       				{{ $a->access}}
+	       			</span>      		
+	       		@endif
+	       	</div>
+	       	<div class="col-sm-2">{{ $a->created_at }}</div>
+	       	<div class="col-sm-1"><input type="checkbox" name="{{ $a->id }}" /></div>
 
-				<li class = "list-group-item">
-				    	<div class="checkbox">
-					        	<input type="checkbox" name="{{ $a->id }}" />
-						        <label for="checkbox">
-												
-									<span class="badge badge-default"> {{ $a->name }} </span>
-									<span class="badge badge-default"> {{ $a->email }} </span>
-									<span class="badge badge-default"> {{ $a->created_at }} </span>
-									<span class="badge badge-default"> {{ $a->access }} </span>
-									<span class="badge badge-success">
-									
-									@if($a->role==='student')
-										Student
-									@else
-										Teacher
-									@endif
-									</span>
-						        </label>
-					    </div>
-					</li>
+	       </div>
 
-		        @endforeach
-
-
-			</ul>
-			<input type="submit" value="Dismiss Permission" class="p-2 float-right btn btn-outline-primary">
+        @endforeach
+			<input type="submit" value="Revoke" class="btn btn-outline-primary float-right m-2 mr-5">
 		</form>
+
+	</div>
 </div>
 
-
-</div>
-
-</div>
 @endsection

@@ -16,9 +16,15 @@ class Subject extends Model
 {
     //
     protected $fillable = [
-    	'code', 
+    	'subcode', 
     	'name',
     	'description', 
-    	'teacher'];
+    	'course_id',
+    ];
+
+
+    public function course(){
+    	return $this->belongsTo('App\Course');
+    }
 
 }

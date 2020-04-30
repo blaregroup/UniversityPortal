@@ -48,6 +48,7 @@ Route::post('admin/activate', 	'AdminHandler@Grant')->middleware('onlyAdmin');
 Route::post('admin/deactivate', 'AdminHandler@rGrant')->middleware('onlyAdmin');
 
 
+Route::match(['get', 'post'],'/upload','DocumentController@UploadFile');
 
 
 
@@ -79,5 +80,3 @@ Route::get('teacher/material', 'teacher@material')->middleware('onlyTeacher');
 *
 */
 
-
-Route::match(['get', 'post'],'/upload','DocumentController@UploadFile');
