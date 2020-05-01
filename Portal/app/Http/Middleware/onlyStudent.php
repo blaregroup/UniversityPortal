@@ -25,6 +25,8 @@ class onlyStudent
                 // allow admin
                 return $next($request);
             }
+
+
         }   
         return redirect('login');
     }

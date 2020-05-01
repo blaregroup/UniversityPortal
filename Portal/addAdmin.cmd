@@ -38,6 +38,12 @@ $user1->createProfile();
 $user2->createProfile();
 $user3->createProfile();
 
+$user1->createNotification("TitleOne", "This Is Text Two Notification");
+$user1->createNotification("TitleTwo", "This Is Text Two Notification");
+$user2->createNotification("TitleThree", "This Is Text Two Notification");
+$user3->createNotification("TitleFour", "This Is Text Two Notification");
+
+
 
 # create subjects
 $course1 = Course::create(['name'=>'MCA', 'Description'=>'MCA']);

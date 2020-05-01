@@ -74,7 +74,7 @@ class User extends Authenticatable
     @param string $message
 
     */
-    public function createNotification($message){
+    public function createNotification($title, $message){
         
         /*
 
@@ -83,6 +83,7 @@ class User extends Authenticatable
         */
 
         return Notice::create([
+            'title'=>$title,
             'user_id'=>$this->id,
             'message'=>$message
         ]);

@@ -16,9 +16,11 @@
                         @foreach ($user as $u)
                         <li class = "list-group-item">
                           <a href="/admin/add/{{ $u->id }}">
-                          <span class="badge badge-default"> {{ $u->name }} </span>
-                          <span class="badge badge-default"> {{ $u->email }} </span>
+                          <span class="text-capitalize"> -> {{ $u->name }} -> </span>
+                          
+                          <span class="font-weight-bold"> {{ $u->email }} </span>
                           </a>
+
                         </li>
                         @endforeach
                         </ul>
@@ -61,6 +63,88 @@
                             <input type="text" name="password" placeholder="Leave Blank For No Change" />
                         </div>
                     </div>
+
+
+
+                    <div class="form-group row mt-3">
+                        <label class="col-md-4 col-form-label">State</label>
+                        <select id="active" name="active" class="col-md-8 form-control">
+                            <option value="1"
+                            @if($info->active==='1')
+                            selected="1"
+                            @endif
+                            >Active</option>
+                            <option value="0"
+                            @if($info->active==='0')
+                            selected="0"
+                            @endif
+                            >Deactive</option>
+                        </select> 
+                    </div>
+
+
+                    <div class="form-group row mt-3">
+                        <label class="col-md-4 col-form-label">Role</label>
+                        <select id="role" name="role" class="col-md-8 form-control">
+                            <option value="student" 
+                            @if ($info->role==='student')
+
+                            selected="1"
+                            
+                            @endif
+
+                            >Student</option>
+                            <option value="teacher"
+
+                            @if($info->role==='teacher')
+                            selected="1"
+
+                            @endif
+
+                            >Teacher</option>
+
+                            <option value="admin"
+
+                            @if($info->role==='admin')
+                            selected="1"
+
+                            @endif
+
+                            >Admin</option>
+
+                        </select> 
+                    </div>
+
+
+                    <div class="form-group row mt-3">
+                        <label class="col-md-4 col-form-label">Access</label>
+                        <select id="access" name="access" class="col-md-8 form-control">
+                            <option value="low" 
+                            @if ($info->access==='low')
+
+                            selected="1"
+                            
+                            @endif
+
+                            >Low</option>
+                            <option value="median"
+
+                            @if ($info->access==='median')
+
+                            selected="1"
+                            
+                            @endif
+
+                            >Median</option>
+                            <option value="high"
+                            @if ($info->access==='high')
+                            selected="1"
+                            @endif
+
+                            >High</option>
+                        </select> 
+                    </div>
+
 
                     <div class="btn btn-block mt-3">
                         <button type="submit" href="/" class="btn btn-outline-danger">Save</button>

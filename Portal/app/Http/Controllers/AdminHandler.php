@@ -39,7 +39,24 @@ class AdminHandler extends Controller
         $user = DB::table('users')
             ->select('id', 'name', 'email')
             ->get();
+        /*
 
+         +"id": "1",
+         +"name": "Administrator",
+         +"email": "admin@nothing.com",
+         +"email_verified_at": null,
+         +"password": "$2y$10$PiIC.o38JaXH0VFuwkY9TO/9Ld7bMmcBu54N9AK/guKcsISVQscWm",
+         +"remember_token": null,
+         +"created_at": "2020-04-30 16:30:48",
+         +"updated_at": "2020-04-30 16:30:48",
+         +"role": "admin",
+         +"access": "high",
+         +"active": "1",
+         +"user_id": "1",
+         +"course_id": null,
+         +"subject_id": null,
+
+        */
 
         return view('admin.UserAccountPanel', ['info'=>$info, 'user'=>$user]);
     }
@@ -77,9 +94,21 @@ class AdminHandler extends Controller
         //dd($request);
 
         // update user details into users table.. Except Password.. Password remain same
+        $value = $request->except('_token');
         DB::table('users')
             ->where('id', $request->id)
-            ->update($request->except('_token', 'password','id'));
+            ->update([
+            'name' => $value['name'],
+            'email' => $value['email'],
+            ]);
+
+        DB::table('roles')
+            ->where('user_id', $request->id)
+            ->update([
+                'role'=>$value['role'],
+                'access'=>$value['access'],
+                'active'=>$value['active']
+            ]);
 
         if($request->password!=null){
             // update user details into users table Including new password

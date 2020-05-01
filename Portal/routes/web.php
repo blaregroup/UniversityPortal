@@ -49,7 +49,17 @@ Route::post('admin/activate', 	'AdminHandler@Grant')->middleware('onlyAdmin');
 Route::post('admin/deactivate', 'AdminHandler@rGrant')->middleware('onlyAdmin');
 
 
+/*
+Notice
+*/
 
+Route::get('/notice',	'HomeController@Notice');
+Route::post('/notice/create',	'HomeController@NoticeCreate');
+Route::get('/notice/delete',	'HomeController@NoticeDelete');
+
+/*
+Document Uploads
+*/
 Route::match(['get', 'post'],'/upload','DocumentController@UploadFile');
 
 

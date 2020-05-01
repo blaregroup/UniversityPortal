@@ -11,8 +11,28 @@
                 <a href="/upload" class="btn btn-outline-success btn-sm"> Uploads</a>
                 <a href="/profile/personal" class="btn btn-outline-info btn-sm">Profile</a>
                 <a href="/admin/course" class="btn btn-outline-dark btn-sm">Course</a>
-                <a href="/admin/perm" class="btn btn-outline-success btn-sm"> Notification</a>
+                <a href="/notice" class="btn btn-outline-success btn-sm"> Notification</a>
             
+            </div>
+
+            <div class="card mt-5">
+                <div class="card-header">
+                    Write Notification
+                </div>
+                <div class="card-body">
+                    <div class="item">
+                        Message *
+                    </div>
+                    <form action="" method="POST">
+                        
+                        <textarea type="textarea" name="message" class="mt-2" placeholder="Write Here Your Message">
+                        </textarea>
+
+                        <input type="submit" value="Generate" class="btn btn-primary float-right mt-2" />
+
+                    </form>
+                </div>
+
             </div>
 
         </div>

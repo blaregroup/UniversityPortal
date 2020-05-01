@@ -17,7 +17,8 @@ class Notice extends Model
 
 	protected $fillable = [
 		'message', 
-		'user_id'
+		'user_id',
+		'title'
 	];
 
     public function User(){
