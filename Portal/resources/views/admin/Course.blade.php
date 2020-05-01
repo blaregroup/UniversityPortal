@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<a href="/admin" class="btn btn-primary bg-inverse"> Back To Dashboard</a>
 <div class="container">
     <div class="row">
         <div class="col-md-3">

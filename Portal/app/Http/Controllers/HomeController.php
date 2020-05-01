@@ -28,7 +28,7 @@ class HomeController extends Controller
     if(!Auth::user()->getactive()){
 
         // if account is not active
-        return view('HomePage', ['message'=> 'Your account is not active. ask admin for Permission!' ]);
+        return view('HomePage', ['error'=> 'Your account is not active. ask admin for Permission!' ]);
     }else{
 
         return view('HomePage');

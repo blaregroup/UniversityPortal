@@ -21,8 +21,22 @@
 </head>
 <body>
     @if($message ?? '')
-    <div class="alert alert-danger w-100">{{$message ?? '' }}</div>
+    <div class="alert alert-primary w-100">{{$message ?? '' }}</div>
     @endif
+
+    @if($error ?? '')
+    <div class="alert alert-danger w-100">{{ $error ?? '' }}</div>
+    @endif
+
+    @if($warning ?? '')
+    <div class="alert alert-warning w-100">{{$warning ?? '' }}</div>
+    @endif    
+
+    @if($success ?? '')
+    <div class="alert alert-success w-100">{{$success ?? '' }}</div>
+    @endif
+
+
 
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -30,6 +44,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -60,6 +75,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div>
+                                    <a class="dropdown-item" href="/home">Home</a>
+                                    <a class="dropdown-item" href="/profile">Profile</a>
+                                </div>
+                                <hr>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

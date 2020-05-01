@@ -21,7 +21,10 @@ class DocumentController extends Controller
 		if($request->method()==='POST'){
 			$output = $this->Uploader($request);
 			if($output){
-				return view('teacher.UploadFiles', ['message'=>'Successfully Uploaded']);
+				return view('teacher.UploadFiles', ['success'=>'Successfully Uploaded']);
+			}
+			else{
+				return view('teacher.UploadFiles', ['error'=>'Document Not found']);	
 			}
 		}else{
 			return view('teacher.UploadFiles');
