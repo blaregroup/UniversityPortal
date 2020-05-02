@@ -1,73 +1,44 @@
 @extends('layouts.app')
 
+@section('rpanel')
+
+
+<div class="mt-3">
+
+
+  
+   <div class="card mt-3">
+        <div class="card-subtitle m-3 font-weight-bold">
+            Add Subject
+        </div>
+
+       <div class="card-body">
+
+        <form action='course?cmd=addsubject' method="POST">
+            @csrf
+
+            <label class="form-control-label mt-1">Code </label>
+            <input type="text" name="subcode" class="form-control" />
+
+            <label class="form-control-label mt-1">Name </label>
+            <input type="text" name="name" class="form-control" />
+            <label class="form-control-label mt-1">Description</label>
+            <input type="text" name="description" class="form-control" />
+
+            <input type="submit" name="submit" value="Add" class="btn btn-primary m-1">
+        </form>
+           
+       </div>
+   </div>
+
+</div>
+
+@endsection
+
 @section('content')
-<a href="/admin" class="btn btn-primary bg-inverse"> Back To Dashboard</a>
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-           <div class="card">
-                <div class="card-header">
-                    Add New Course
-                </div>
-
-               <div class="card-body">
-
-                <form action='course?cmd=addcourse' method="POST">
-                    @csrf
-                    <label class="form-control-label">Name</label>
-                    <input type="text" name="course" class="form-control" />
-                    <label class="form-control-label mt-1">Description</label>
-                    <input type="text" name="description" class="form-control" />
-
-                    <input type="submit" name="submit" value="Add" class="btn btn-primary m-1">
-                </form>
-                   
-               </div>
-           </div>
-
-
-           <div class="card mt-3">
-               <div class="card-header">
-                    Course List
-               </div>
-               <div class="card-body">
-                   
-                   <ul>
-                        @foreach ($AllCourse as $course)
-                            <li class="btn-link">
-                                <a href="?id={{ $course->id }}">{{ $course->name }}</a>
-                            </li>
-                       @endforeach
-                   </ul>
-
-               </div>
-
-           </div>
-           <div class="card mt-3">
-                <div class="card-header">
-                    Add Subject
-                </div>
-
-               <div class="card-body">
-
-                <form action='course?cmd=addsubject' method="POST">
-                    @csrf
-
-                    <label class="form-control-label mt-1">Code </label>
-                    <input type="text" name="subcode" class="form-control" />
-
-                    <label class="form-control-label mt-1">Name </label>
-                    <input type="text" name="name" class="form-control" />
-                    <label class="form-control-label mt-1">Description</label>
-                    <input type="text" name="description" class="form-control" />
-
-                    <input type="submit" name="submit" value="Add" class="btn btn-primary m-1">
-                </form>
-                   
-               </div>
-           </div>
-
-        </div>
+        
         <div class="col-md-9">
             <div class="card">
                 
@@ -192,4 +163,48 @@
 
     </div>
 </div>
+@endsection
+
+
+@section('lpanel')
+<a href="/admin" class="btn btn-primary bg-inverse"> Back To Dashboard</a>
+
+ <div class="card mt-3">
+       <div class="card-subtitle m-3 font-weight-bold">
+            Course List
+       </div>
+       <div class="card-body">
+           
+           <ul>
+                @foreach ($AllCourse as $course)
+                    <li class="btn-link">
+                        <a href="?id={{ $course->id }}">{{ $course->name }}</a>
+                    </li>
+               @endforeach
+           </ul>
+
+       </div>
+
+   </div>
+
+      <div class="card mt-3">
+        <div class="card-subtitle m-3 font-weight-bold">
+            Add New Course
+        </div>
+
+       <div class="card-body">
+
+        <form action='course?cmd=addcourse' method="POST">
+            @csrf
+            <label class="form-control-label">Name</label>
+            <input type="text" name="course" class="form-control" />
+            <label class="form-control-label mt-1">Description</label>
+            <input type="text" name="description" class="form-control" />
+
+            <input type="submit" name="submit" value="Add" class="btn btn-primary m-1">
+        </form>
+           
+       </div>
+   </div>
+
 @endsection

@@ -1,31 +1,27 @@
 @extends('layouts.app')
 
+@section('lpanel')
+<a href="/admin" class="btn btn-primary"> Back To Dashboard</a>
+<div class="card mt-2"> 
+<div class="card-subtitle font-weight-bold m-3"> Select  User </div>
+    <ul class = "list-group p-lg-2">
+    @foreach ($user as $u)
+    <li class = "list-group-item">
+      <a href="/admin/add/{{ $u->id }}">
+      <span class="font-weight-bold"> {{ $u->email }} </span>
+      </a>
+
+    </li>
+    @endforeach
+    </ul>
+</div>
+@endsection
+
+
 @section('content')
-<a href="/admin" class="btn btn-primary bg-inverse"> Back To Dashboard</a>
 <div class="container">
-  
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="row">
-
-                <div class="col">
-                    
-                    <div class="card"> 
-                    <div class="card-header"> Select  User </div>
-                        <ul class = "list-group p-lg-2">
-                        @foreach ($user as $u)
-                        <li class = "list-group-item">
-                          <a href="/admin/add/{{ $u->id }}">
-                          <span class="text-capitalize"> -> {{ $u->name }} -> </span>
-                          
-                          <span class="font-weight-bold"> {{ $u->email }} </span>
-                          </a>
-
-                        </li>
-                        @endforeach
-                        </ul>
-                    </div>                
-                </div>
+        
                 <div class="col p-3 card">
                     <form action="/admin/edit" method='post' class="card-body">
                     @csrf
@@ -152,12 +148,11 @@
 
                     </form>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-4 ">
+        
+        <div class="col">
 
 
-            <div class="card">
+            <div class="card m-3 p-0 float-right">
                 
 
 

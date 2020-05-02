@@ -74,21 +74,19 @@ Route::get('profile/personal/edit', 'ProfileHandler@PersonalUpdate'); // persona
 Route::post('profile/personal/edit', 'ProfileHandler@SaveChange'); // Saved
 Route::get('profile/{user}', 'ProfileHandler@Index'); // Get details
 
-/*
- *  Student Side
+
+// *  Student Side
 Route::get('student/', 'student@index')->middleware('onlyStudent'); // Get Detail
 Route::get('student/syllabus/', 'student@syllabus')->middleware('onlyStudent'); // Get syllabus PDF
 Route::get('student/notification', 'student@notification')->middleware('onlyStudent'); // Notification Board
 Route::get('student/material', 'student@material')->middleware('onlyStudent'); // Video, PDF and Other Stuff To Share
 
 
-* Teacher Side
+// Teacher Side
 Route::get('teacher/', 'teacher@index')->middleware('onlyTeacher');
 Route::get('teacher/syllabus', 'teacher@syllabus')->middleware('onlyTeacher');
 Route::get('teacher/notification', 'teacher@notification')->middleware('onlyTeacher');
 Route::get('teacher/material', 'teacher@material')->middleware('onlyTeacher');
 
 
-*
-*/
 

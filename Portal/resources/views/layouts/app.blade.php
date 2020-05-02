@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="background: #ffffff;">
     @if($message ?? '')
     <div class="alert alert-primary w-100">{{$message ?? '' }}</div>
     @endif
@@ -38,20 +38,20 @@
 
 
 
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <div id="app" style="background: #57606f;">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}" style="color: #ffffff">
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon" style="color: #ffffff"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav mr-auto" >
 
                     </ul>
 
@@ -60,7 +60,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}" style="color: #ffffff">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
@@ -70,7 +70,7 @@
                         @else
                         
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre  style="color: #ffffff">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -96,10 +96,25 @@
                 </div>
             </div>
         </nav>
-
+<!--
         <main class="py-4">
             @yield('content')
         </main>
+-->
     </div>
+
+<div class="row py-2 mx-1">
+    <div class="col-sm-2">
+        @yield('lpanel')
+    </div>
+    <div class="col-sm-8">
+        
+        @yield('content')
+    </div>
+    <div class="col-sm-2">
+        @yield('rpanel')
+    </div>
+
+</div>
 </body>
 </html>

@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
-
+@section('lpanel')
+<a href="/admin" class="btn btn-primary bg-inverse"> Back To Dashboard</a>
+@endsection
 
 @section('content')
-<a href="/admin" class="btn btn-primary bg-inverse"> Back To Dashboard</a>
 <div class="container">
 <div class="row justify-content-center">
 <div class="col-lg-12">
 
 	<div class="card">
-		<div class="card-header">Requests</div>
+		<div class="card-subtitle m-3 font-weight-bold">Requests</div>
        <div class="row font-weight-bold m-2">
        	
        	<div class="col-sm-1"> S.No </div>
@@ -63,7 +64,7 @@
 
 <div class="col-lg-12 mt-3">
 	<div class="card">
-	<div class="card-header">Active</div>
+	<div class="card-subtitle m-3 font-weight-bold">Active</div>
        <div class="row m-2 font-weight-bold">
        	
        	<div class="col-sm-1"> S.No </div>
