@@ -1,28 +1,22 @@
 @extends('layouts.app')
 
 
+@section('lpanel')
+
+<div class="container">
+    <div class="card-subtitle">Panels </div>
+    <a href="/teacher" class="btn-block btn btn-link">Teacher</a>
+    <a href="/student" class="btn-block btn btn-link">Student</a>
+    
+</div>
+@endsection
 
 @section('content')
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card">
-                        
-                        <a href="/teacher" class="btn btn-outline-primary">Teacher Panel</a>
-                        <a href="/student" class="btn btn-outline-secondary">Student Panel</a>
-                        <a href="/admin" class="btn btn-outline-success">Admin Panel</a>
-                        <a href="/profile" class="btn btn-outline-info">Profile Panel</a>
-                        <a href="/upload" class="btn btn-outline-warning">Document Panel</a>
-                        <a href="/notice" class="btn btn-outline-danger">Notification Panel</a>
-
-                    </div>
-        </div>
-        <div class="col-md-8 border border-secondary rounded p-3">
-            
-            <div class="container">
-            <h2 class="font-weight-bold">Notifications</h2>    
-            </div>
+        <div class="col">
+            Notifications
 
             
             
@@ -37,26 +31,35 @@
             @foreach($notices as $notice)
             <div class="card mt-3">
                 
-                <div class="card-subtitle p-2">
+                <div class="card-subtitle font-weight-bold m-3">
                     {{ $notice->title}}
-                    <span class="badge badge-light float-right">{{ $notice->created_at}}</span>
+                    <span class="badge float-right">{{ $notice->created_at}}
+
+
+                    </span>
+                
                 </div>
-                <div class="card-body">
-                    {{ $notice->message}}
+                <div class="collapse card-body" id="message{{ $notice->id }}">
+
+                        {{ $notice->message}}
+
                 </div>
 
-                <div class="card-footer">
-                    <div class="badge badge-primary p-2">
+                <div class="card-footer bg-white">
+                    <div class="badge badge-light badge-pill p-2">
                         {{ $notice->name}}
                     </div>
+                    <a data-toggle="collapse" href="#message{{ $notice->id }}" class="btn-link">Show</a>
 
                         
-                    <div class="badge badge-dark p-2 float-right">
+                    <div class="badge badge-light p-2 float-right">
                         
                         {{ $notice->email}}
                     </div>  
+
                 </div>
             </div>
+
 
             @endforeach
                     

@@ -24,7 +24,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function Index(){
+    public function Index(Request $request){
     /*
         +"id": "1",
          +"message": "This Is Text Two Notification",
@@ -36,7 +36,12 @@ class HomeController extends Controller
     */
 
     $notice = DB::table('notices')->join('users', 'users.id', 'notices.user_id')->get();
-    
+    $role = $request->user()->role()->first()->access; 
+
+    if ($role==='high') {
+        return redirect('/admin');
+
+    }
     // check if user account is active or not
     if(!Auth::user()->getactive()){
 
@@ -47,7 +52,8 @@ class HomeController extends Controller
 
         return view('HomePage',[
             'notices'=>$notice]);
-        }   
+        }
+
     }
 
     public function Notice(Request $request){
@@ -72,7 +78,7 @@ class HomeController extends Controller
         }
             
         $notice = DB::table('notices')
-        ->select('users.id',
+        ->select('notices.id',
             'users.email',
             'users.name', 
             'notices.message',

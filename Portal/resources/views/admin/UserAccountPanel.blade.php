@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('lpanel')
-<a href="/admin" class="btn btn-primary"> Back To Dashboard</a>
 <div class="card mt-2"> 
 <div class="card-subtitle font-weight-bold m-3"> Select  User </div>
     <ul class = "list-group p-lg-2">
@@ -237,89 +236,4 @@
 </div>
 
 
-<!--
-            </div>
-        <div class="col-md-7 border border-dark rounded p-3 m-5">
-            
-
-                  <div class="banner">
-                    <h1>New User</h1>
-                  </div>
-            <form action="/admin/add", method="post">
-                  @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control " name="name" value="" required autocomplete="name" autofocus>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control " name="email" value="" required autocomplete="email">
-
-                                                            </div>
-                        </div>
-
-                        
-
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control " name="password" required autocomplete="new-password">
-
-                                                            </div>
-                        </div>
-
-                        
-                        <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">State</label>
-                             <select id="active" name="active">
-                                  <option value="1" selected>Active</option>
-                                  <option value="0">Deactive</option>
-                            </select> 
-                        </div>
-
-
-                        <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">Role</label>
-                             <select id="role" name="role">
-                                  <option value="student" selected>Student</option>
-                                  <option value="teacher">Teacher</option>
-                            </select> 
-                        </div>
-
-
-                        <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">Access</label>
-                             <select id="access" name="access">
-                                  <option value="low" selected>Student</option>
-                                  <option value="median">Teacher</option>
-                                  <option value="high">Admin</option>
-                            </select> 
-                        </div>
-
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-            </form>
-
-        </div>
-
-      </div>
-
-    </div>
-</div>
--->
 @endsection

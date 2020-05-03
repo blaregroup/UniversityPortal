@@ -5,16 +5,14 @@
 
 
 <div class="container">
-    <div class="row">
+    <div class="row mt-4">
 
       <div class="col-md-6">
         
             <div class="card">
-                <div class="card-header">{{ $info->fname }}</div>
+                <h4 class="card-subtitle m-3">{{ $info->fname }}</h4>
                 <div class="card-body">
-                <div class="border-dark border rounded-circle text-center text-capitalize m-5 badge-info" style="width:150px;height:150px;font-size: 100px;">{{ $info->name[0] }}</div>
                 <div>
-                <hr>             
                 <p><strong>User ID : </strong> {{ $info->id }}</p>
                 <p><strong>Name : </strong> {{ $info->name }}</p>
                 <p><strong>Full Name : </strong> {{ $info->fname }} </p>

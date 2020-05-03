@@ -20,12 +20,11 @@ class onlyStudent
         if(Auth::check()){
 
             // if user had low access
-            if(Auth::user()->getaccess()==="low"){
+            if(Auth::user()->getaccess()!==false){
 
                 // allow admin
                 return $next($request);
             }
-
 
         }   
         return redirect('login');

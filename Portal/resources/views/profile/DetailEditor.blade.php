@@ -41,7 +41,7 @@
         <div class="col-lg-6 col-md-offset-2 col-md-8 col-lg-offset-3">
 
             <div class="card">
-                <div class="card-header"> Personal Detail Editor </div>
+                <div class="card-header"> Editor </div>
 
                 <div class="card-body">
 
@@ -52,7 +52,7 @@
 
                         <div class="item mt-2">
                           <p>Full Name<span class="required">*</span></p>
-                          <div class="name-item">
+                          <div class="item">
                             <input type="text" name="fname" value="{{ $info->fname }}" required/>
                           </div>
                         </div>
@@ -67,7 +67,7 @@
                         <div class="item mt-2">
                           <p>DOB<span class="required">*</span></p>
                           <div class="name-item">
-                            <input type="text" name="dob" value="{{ $info->dob }}" required/>
+                            <input type="text" name="dob" value="{{ $info->dob }}" placeholder="01/01/1999" required/>
                           </div>
                         </div>
 

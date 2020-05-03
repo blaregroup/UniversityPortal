@@ -4,14 +4,15 @@
 
 @section('lpanel')
 
-<div class="card">
-    <div class="card-subtitle m-2"> Controls</div>
-    <a href="/admin/add" class="btn btn-outline-primary btn-sm"> Users</a>
-    <a href="/admin/perm" class="btn btn-outline-danger btn-sm"> Privilage</a>
-    <a href="/upload" class="btn btn-outline-success btn-sm"> Uploads</a>
-    <a href="/profile/personal" class="btn btn-outline-info btn-sm">Profile</a>
-    <a href="/admin/course" class="btn btn-outline-dark btn-sm">Course</a>
-    <a href="/notice" class="btn btn-outline-success btn-sm"> Notification</a>
+<div class="card mt-5">
+    <div class="card-subtitle m-4"> Controls</div>
+
+    <a href="/admin/add" class="bg-secondary text-white text-center font-weight-bold p-3"> Users</a>
+    <a href="/admin/perm" class="bg-secondary text-white text-center font-weight-bold p-3"> Privilage</a>
+    <a href="/upload" class="bg-secondary text-white text-center font-weight-bold p-3"> Uploads</a>
+    <a href="/profile/personal" class="bg-secondary text-white text-center font-weight-bold p-3">Profile</a>
+    <a href="/admin/course" class="bg-secondary text-white text-center font-weight-bold p-3">Course</a>
+    <a href="/notice" class="bg-secondary text-white text-center font-weight-bold p-3"> Notification</a>
 </div>
 
 

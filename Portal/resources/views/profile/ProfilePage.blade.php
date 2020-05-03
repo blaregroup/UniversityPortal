@@ -3,18 +3,16 @@
 
 
 @section('content')
-<a href="/home" class="btn btn-primary bg-inverse"> Back To Home</a>
 <div class="container">
 
 
 <div class="row">
     <div class="col-md-5">
         <div class="card">
-                <div class="card-header">{{ $info->fname }}</div>
+                <h3 class="card-subtitle m-4 font-weight-bold">{{ $info->fname }}</h3>
                 <div class="card-body">
-                    <div class="border-dark border rounded-circle text-center text-capitalize m-5 badge-info" style="width:150px;height:150px;font-size: 100px;">{{ $info->name[0] }}</div>
-                    <div>             
-                    
+                                
+                    <div>
                         <p><strong>Name : </strong> {{ $info->name }}</p>
                         <p><strong>Full Name : </strong> {{ $info->fname }} </p>
                         <p><strong>Description : </strong> {{ $info->description }}</p>
@@ -29,8 +27,15 @@
                     </div>
                     
                 </div>
-            
+        
+
+
         </div>
+
+    </div>
+
+    <div class="col-md-3">
+         <div class="border rounded-circle text-center text-capitalize float-right" style="width:150px;height:150px;font-size: 100px;">{{ $info->name[0] }}</div>
     </div>
 </div>
 

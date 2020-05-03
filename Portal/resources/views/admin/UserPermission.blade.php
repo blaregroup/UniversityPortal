@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('lpanel')
-<a href="/admin" class="btn btn-primary bg-inverse"> Back To Dashboard</a>
 @endsection
 
 @section('content')

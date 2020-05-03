@@ -167,7 +167,6 @@
 
 
 @section('lpanel')
-<a href="/admin" class="btn btn-primary bg-inverse"> Back To Dashboard</a>
 
  <div class="card mt-3">
        <div class="card-subtitle m-3 font-weight-bold">
