@@ -193,6 +193,51 @@
 
 
                     <div class="form-group row">
+                        <label class="col-md-4 col-form-label">Role</label>
+                        <select id="role" name="role" class="col-md-8 form-control">
+                            <option value="student" onclick="toggle_student();" selected>Student</option>
+                            <option value="teacher" onclick="toggle_teacher();">Teacher</option>
+                        </select> 
+                    </div>
+
+                    <div class="form-group row" id="cou_sub_toggle">
+                        
+
+                    </div>
+
+
+                    <script type="text/javascript">
+                        function toggle_student() {
+                            // body...
+                            document.getElementById('cou_sub_toggle').innerHTML=`
+                            <label class="col-md-4 col-form-label">Course</label>
+                        
+                            <select id="role" name="course" class="col-md-8 form-control">
+                                
+                                <option value="bca" >BCA</option>
+                                <option value="bca" >MCA</option>
+                                <option value="bca" >MSC</option>
+                            </select> 
+                        
+                            `;
+                        };
+
+                        function toggle_teacher() {
+                            // body...
+                            document.getElementById('cou_sub_toggle').innerHTML=`
+                        <label class="col-md-4 col-form-label">Subject</label>
+                        
+                        <select id="role" name="subject" class="col-md-8 form-control">
+                            <option value="subo1" >Sub01</option>
+                            <option value="subo1" >Sub02</option>
+                            <option value="subo1" >Sub03</option>
+                        </select> 
+                            `;
+                        }
+                        toggle_student();
+                    </script>
+
+                    <div class="form-group row">
                         <label class="col-md-4 col-form-label">State</label>
                         <select id="active" name="active" class="col-md-8 form-control">
                             <option value="1" selected>Active</option>
@@ -201,13 +246,6 @@
                     </div>
 
 
-                    <div class="form-group row">
-                        <label class="col-md-4 col-form-label">Role</label>
-                        <select id="role" name="role" class="col-md-8 form-control">
-                            <option value="student" selected>Student</option>
-                            <option value="teacher">Teacher</option>
-                        </select> 
-                    </div>
 
 
                     <div class="form-group row">

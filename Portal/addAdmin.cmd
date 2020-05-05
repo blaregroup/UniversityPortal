@@ -29,8 +29,8 @@ $user3->save();
 
 # create role record
 $role1 = $user1->createRole($role="admin", $access="high", $active="1");
-$role2 = $user2->createRole($role="student", $access="low", $active="0");
-$role3 = $user3->createRole($role="teacher", $access="median", $active="0");
+$role2 = $user2->createRole($role="student", $access="low", $active="1");
+$role3 = $user3->createRole($role="teacher", $access="median", $active="1");
 
 
 # create profiles for users
@@ -74,8 +74,17 @@ $course4->create_subject('BSC1', 'BSC_SUB1', 'BSC_SUB_DESCRIPTION');
 $course4->create_subject('BSC2', 'BSC_SUB2', 'BSC_SUB_DESCRIPTION');
 $course4->create_subject('BSC3', 'BSC_SUB3', 'BSC_SUB_DESCRIPTION');
 
+# assign course_id to students and Teachers
 $role2->course_id='1';
 $role3->course_id='2';
 
 $role2->save();
 $role3->save();
+
+$user3->join_subject('1');
+$user3->join_subject('2');
+$user3->join_subject('3');
+$user3->join_subject('4');
+$user3->join_subject('5');
+
+

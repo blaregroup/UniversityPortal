@@ -5,6 +5,6 @@
 @section('content')
 
 <div class="container">
-    <p class="align-middle"> This is Contact Page
+    <p class="align-middle"> This is Contact Page</p>
 </div>
 @endsection

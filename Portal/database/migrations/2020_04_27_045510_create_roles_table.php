@@ -25,12 +25,13 @@ class CreateRolesTable extends Migration
             $table->string('role');
             $table->string('access');
             $table->Integer('active');
+            $table->string('enroll')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('course_id')->nullable()->unsigned();
             $table->foreign('course_id')->nullable()->references('id')->on('courses');
-            $table->bigInteger('subject_id')->nullable()->unsigned();
-            $table->foreign('subject_id')->nullable()->references('id')->on('subjects');
+            //$table->bigInteger('subject_id')->nullable()->unsigned();
+            //$table->foreign('subject_id')->nullable()->references('id')->on('subjects');
 
             $table->timestamps();
         });

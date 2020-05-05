@@ -4,9 +4,11 @@
 @section('lpanel')
 
 <div class="container">
-    <div class="card-subtitle">Panels </div>
-    <a href="/teacher" class="btn-block btn btn-link">Teacher</a>
-    <a href="/student" class="btn-block btn btn-link">Student</a>
+    <div class="card-subtitle">Controls </div>
+    <a href="/home" class="btn-block btn btn-link">Home</a>
+    <a href="/{{ Auth::user()->role()->first()->role }}" class="btn-block btn btn-link">Panel</a>
+
+    <a href="/{{ Auth::user()->role()->first()->role }}/account" class="btn-block btn btn-link">Account</a>
     
 </div>
 @endsection

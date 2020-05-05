@@ -73,20 +73,19 @@ Route::get('profile/personal', 'ProfileHandler@Personal'); // personal info
 Route::get('profile/personal/edit', 'ProfileHandler@PersonalUpdate'); // personal info
 Route::post('profile/personal/edit', 'ProfileHandler@SaveChange'); // Saved
 Route::get('profile/{user}', 'ProfileHandler@Index'); // Get details
-
+Route::match(['get','post'], '/message','Message@Index')->middleware('onlyStudent');
 
 // *  Student Side
 Route::get('student/', 'StudentHandler@Index')->middleware('onlyStudent'); // Get Detail
 Route::get('student/syllabus/', 'StudentHandler@syllabus')->middleware('onlyStudent'); // Get syllabus PDF
-Route::get('student/notification', 'StudentHandler@notification')->middleware('onlyStudent'); // Notification Board
-Route::get('student/material', 'StudentHandler@material')->middleware('onlyStudent'); // Video, PDF and Other Stuff To Share
+Route::match(['get','post'],'student/account', 'StudentHandler@AccountUpdate')->middleware('onlyStudent'); // Notification Board
+Route::get('student/material', 'StudentHandler@Material')->middleware('onlyStudent'); // Video, PDF and Other Stuff To Share
 
 
 // Teacher Side
-Route::get('teacher/', 'TeacherHandler@index')->middleware('onlyTeacher');
+Route::get('teacher/', 'TeacherHandler@Index')->middleware('onlyTeacher');
 Route::get('teacher/syllabus', 'TeacherHandler@syllabus')->middleware('onlyTeacher');
-Route::get('teacher/notification', 'TeacherHandler@notification')->middleware('onlyTeacher');
-Route::get('teacher/material', 'TeacherHandler@material')->middleware('onlyTeacher');
+Route::match(['get','post'],'teacher/account', 'TeacherHandler@AccountUpdate')->middleware('onlyTeacher');
 
 
 

@@ -244,6 +244,12 @@ class User extends Authenticatable
 
 
 
+    public function messages($sendto){
+        return Message::where('sender_id',$this->id)->get();
+    }
+
+
+
     public function upload($name, $description, $originalname, $pathname){
         
         

@@ -34,8 +34,8 @@ class HomeController extends Controller
          +"name": "Administrator",
          +"email": "admin@nothing.com",
     */
-
-    $notice = DB::table('notices')->join('users', 'users.id', 'notices.user_id')->get();
+        //dd();
+    $notice = DB::table('notices')->select('notices.id','notices.message','notices.created_at','users.name','users.email','notices.title')->join('users', 'users.id', 'notices.user_id')->get();
     $role = $request->user()->role()->first()->access; 
 
     if ($role==='high') {

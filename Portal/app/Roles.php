@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Roles extends Model
@@ -26,7 +26,7 @@ class Roles extends Model
     }
 
     public function subject(){
-        return $this->belongsTo('App\Subject');
+        return $this->belongsToMany('App\Subject');
     }
 
 
@@ -36,9 +36,12 @@ class Roles extends Model
     }
 
     public function join_subject($id){
-        $this->subject_id = $id;
-        return $this->save();
+        return DB::table('roles_subject')->insert(['roles_id'=>$this->id, 'subject_id'=>$id]);
 
+    }
+
+    public function remove_subject($id){
+        return DB::table('roles_subject')->where('roles_id',$this->id)->where('subject_id',$id);
     }
 
 

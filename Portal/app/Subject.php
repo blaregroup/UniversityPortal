@@ -28,4 +28,8 @@ class Subject extends Model
     	return $this->belongsTo('App\Course');
     }
 
+    public function role(){
+        return $this->belongsToMany('App\Roles');
+    }
+
 }
