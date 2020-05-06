@@ -11,7 +11,7 @@ class StudentHandler extends Controller
     */
     // index
    	public function index(){
-   		return 'StudentIndex';
+   		return view('student.StudentPanel');
    	}
 
    	// personal

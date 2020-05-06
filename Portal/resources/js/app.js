@@ -30,3 +30,18 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+function loadSidebar(role)
+{
+		if(role='high')
+		{
+			console.log('high');
+		}
+		else if(role='low'){
+			console.log('low');
+		}
+		else if(role='median')
+		{
+			console.log('median');
+		}
+}

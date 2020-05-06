@@ -9,9 +9,26 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts 
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    -->
+    <!-- Scripts -->
+    <!--<script src="{{ asset('js/app.js') }}" defer></script>-->
+    <script type="text/javascript">
+        function loadSidebar(role)
+        {
+                if(role='high')
+                {
+                    console.log('high');
+                }
+                else if(role='low'){
+                    console.log('low');
+                }
+                else if(role='median')
+                {
+                    console.log('median');
+                }
+        }
+    </script>
+    
+
     <!-- Fonts -->
     <!--<link rel="dns-prefetch" href="//fonts.gstatic.com">-->
     <!--<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">-->
@@ -24,6 +41,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
 </head>
 <body style="background: #ffffff;">
@@ -55,7 +73,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon" style="color: #ffffff"></span>
                 </button>
-                <a class="border border-right-0 border-top-0 border-bottom-0 ml-3 pl-4 text-white " href="/home"> Home</a>
+                <a class="border border-right-0 border-top-0 border-bottom-0 ml-3 pl-4 text-white " id="home-link" href="/home"> Home</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto" >
@@ -71,7 +89,7 @@
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}" style="color: #ffffff">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -83,10 +101,10 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <div>
-                                    <a class="dropdown-item" href="/home"> Home</a>
-                                    <a class="dropdown-item" href="/profile">Profile</a>
-                                    <a class="dropdown-item" href="/upload">Upload</a>
-                                    <a class="dropdown-item" href="/notice">Notification</a>
+                                    <a class="dropdown-item" href="/home"><span class="fa fa-home"></span> Home</a>
+                                    <a class="dropdown-item" href="/profile"><span class="fa fa-user-circle"></span> Profile</a>
+                                    <a class="dropdown-item" href="/upload"><span class="fa fa-cloud-upload"></span> Upload</a>
+                                    <a class="dropdown-item" href="/notice"><span class="fa fa-bell"></span> Notification</a>
                                 </div>
                                 <hr>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -114,7 +132,21 @@
 
 <div class="row py-2 mx-1 mt-3">
     <div class="col-sm-2">
-        @yield('lpanel')
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+          <div class="list-group list-group-flush">
+            <a href="/home" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-home"></span> Home</a>
+            <a href="/profile/personal" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-user-circle"></span> Profile</a>
+            <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-edit"></span> Assignments</a>
+            <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open"></span> Notices</a>
+            
+            @yield('lpanel')
+                <script>loadSidebar('high');</script>
+          </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        
+
     </div>
     <div class="col-sm-8">
         

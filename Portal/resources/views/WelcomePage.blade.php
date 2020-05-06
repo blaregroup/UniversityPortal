@@ -20,7 +20,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
-
 </head>
 
 
@@ -34,13 +33,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto" >
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about" style="color: #dfe4ea;">About</a>
+            <a class="nav-link js-scroll-trigger " href="/about" style="color: #dfe4ea;">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#projects" style="color: #dfe4ea;">Projects</a>
+            <a class="nav-link js-scroll-trigger" href="#Projects" style="color: #dfe4ea;">Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#signup" style="color: #dfe4ea;">Contact</a>
+            <a class="nav-link js-scroll-trigger" href="/contact" style="color: #dfe4ea;">Contact</a>
           </li>
         </ul>
       </div>
@@ -54,14 +53,17 @@
 
 
 
-<div class="container text-center" style="margin-top: 20%;">
-    <p style="color: #f1f2f6;font-family: 'Merienda', cursive;">
+<div class="container text-center " style="margin-top: 20%;">
+    <h1 style="color: #f1f2f6;font-family: 'Merienda', cursive;" class="pb-2">
+        {{ config('app.name', 'University Portal ') }}
+    </h1>
+    <p style="color: #f1f2f6;font-family: 'Merienda', cursive;" class="lead">
         A Platform To Build Modern Education In A Systematic Manner
     </p>
 
-    <a href="/login" class="btn btn-lg btn-primary">Sign In</a>
-    <p style="color: #f1f2f6;font-family: 'Merienda', cursive;"> or </p>
-    <a href="/register" class="btn btn-lg btn-primary">Sign Up</a>
+    <a href="/login" class="btn btn-lg btn-primary mb-2">Sign In</a>
+    <p style="color: #f1f2f6;font-family: 'Merienda', cursive; " > or </p>
+    <a href="/register" class="btn btn-lg btn-primary mt-n2" >Sign Up</a>
 </div>
 
 

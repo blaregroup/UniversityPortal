@@ -4457,6 +4457,7 @@ input[type=button].btn-block {
 
 .nav-tabs .nav-item {
   margin-bottom: -1px;
+  
 }
 
 .nav-tabs .nav-link {
@@ -4468,6 +4469,7 @@ input[type=button].btn-block {
 .nav-tabs .nav-link:hover,
 .nav-tabs .nav-link:focus {
   border-color: #e9ecef #e9ecef #dee2e6;
+
 }
 
 .nav-tabs .nav-link.disabled {

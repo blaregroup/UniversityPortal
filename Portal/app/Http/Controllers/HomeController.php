@@ -42,6 +42,10 @@ class HomeController extends Controller
         return redirect('/admin');
 
     }
+    else if($role==='low' && Auth::user()->getactive()){
+        //if student is active then return student home page
+        return redirect('/student');
+    }
     // check if user account is active or not
     if(!Auth::user()->getactive()){
 
