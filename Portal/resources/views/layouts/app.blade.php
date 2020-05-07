@@ -136,9 +136,12 @@
 
 <div class="row py-2 mx-1 mt-3">
     <div class="col-sm-2">
+        @auth
+        <button onclick="window.history.back();" class="btn btn-light">Back</button>
+        @endauth
+       
        @yield('lpanel')
         
-
     </div>
     <div class="col-sm-8">
         

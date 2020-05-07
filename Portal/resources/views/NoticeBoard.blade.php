@@ -3,6 +3,9 @@
 
 
 @section('lpanel')
+
+	@if(Auth::user()->Role()->first()->role !== 'student')
+
 	<div class="card mt-2">
 		
 		<div class="card-subtitle font-weight-bold m-3">
@@ -22,7 +25,7 @@
 
 		</div>
 	</div>
-
+	@endif
 @endsection
 
 @section('content')
@@ -35,7 +38,7 @@
 			<div class="card mt-3">
 				
 				<div class="card-subtitle font-weight-bold m-3">
-					{{ $loop->index }}. {{ $notice->title}}
+					{{ $notice->title}}
 					<span class="badge float-right">{{ $notice->created_at}}
 
 
@@ -76,7 +79,9 @@
 
 
 @section('rpanel')
-
+	
+	@if(Auth::user()->Role()->first()->role !== 'student')
+	
 	<div class="card mr-2">
 		<div class="card-subtitle font-weight-bold m-3">
 			Create Notice
@@ -101,5 +106,6 @@
 		</div>				
 	</div>
 
-
+	@endif
+	
 @endsection
