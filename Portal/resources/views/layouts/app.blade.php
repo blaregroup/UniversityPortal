@@ -138,7 +138,6 @@
     <div class="col-sm-2">
         @auth
         <button onclick="window.history.back();" class="btn btn-light m-2">Back</button>
-        @endauth
        
 
     @if(Auth::user()->Role()->first()->role!=='admin')
@@ -158,6 +157,7 @@
     <!-- /#sidebar-wrapper -->
 
     @endif
+        @endauth
 
 
 
