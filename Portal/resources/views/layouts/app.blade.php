@@ -11,23 +11,6 @@
 
     <!-- Scripts -->
     <!--<script src="{{ asset('js/app.js') }}" defer></script>-->
-    <!--<script type="text/javascript">
-        function loadSidebar(role)
-        {
-                if(role='high')
-                {
-                    console.log('high');
-                }
-                else if(role='low'){
-                    console.log('low');
-                }
-                else if(role='median')
-                {
-                    console.log('median');
-                }
-        }
-    </script>
-    -->
     
 
     <!-- Fonts -->
@@ -43,7 +26,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
+
+
+
 </head>
 <body style="background: #ffffff;">
     @if($message ?? '')
@@ -67,7 +53,7 @@
     <div id="app" style="background: #57606f;">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}" style="color: #ffffff">
+                <a class="navbar-brand " href="{{ url('/') }}" style="color: #ffffff">
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
@@ -114,7 +100,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <span class="m-2 fa fa-sign-out"></span>{{ __(' Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -134,38 +120,68 @@
 -->
     </div>
 
-<div class="row py-2 mx-1 mt-3">
-    <div class="col-sm-2">
+<div class="row py-0 mx-0 mt-0 ml-n3" >
+    <div class="col-sm-2" >
         @auth
-        <button onclick="window.history.back();" class="btn btn-light m-2">Back</button>
+        <!--<button onclick="window.history.back();" class="btn btn-light m-2">Back</button>-->
        
-
-    @if(Auth::user()->Role()->first()->role!=='admin')
-     <!-- Sidebar -->
-        <div class="bg-light border-right" id="sidebar-wrapper">
-                <div class="list-group list-group-flush">
-
-                <a href="/home" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-home m-2"></span> Home</a>
+        <!-- Sidebar -->
+        <div class="bg-secondary border-right  " id="sidebar-wrapper" style="min-height: 100vh;">
+            <div class="list-group list-group-flush">
+                <a href="/home" class="list-group-item list-group-item-action text-white  bg-secondary "><span class="fa fa-home m-2 "></span> Home</a>
                 
                 <a href="/profile/personal" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-user-circle m-2"></span> Profile</a>
+        
+            <!-- Admin Sidebar menus -->
+            @if(Auth::user()->Role()->first()->role=='admin')
+                <a href="/admin/add" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="m-2 fa fa-users"></span>  Users</a>        
+                <a href="/admin/perm" class="list-group-item list-group-item-action text-white  bg-secondary"> Privilage</a>
+                <a href="/upload" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="m-2 fa fa-cloud-upload"></span> Uploads</a>
+                <a href="/admin/course" class="list-group-item list-group-item-action text-white  bg-secondary">Course</a>
+                <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"> Notification</a>
+            @endif
+
+            <!-- Student Sidebar menus -->
+            @if(Auth::user()->Role()->first()->role=='student')
+                    
                 <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-calendar m-2"></span> Time Table</a>
                 <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-book m-2"></span> Study Material</a>
                <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-edit m-2"></span> Assignments</a>
                <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open m-2"></span> Notices</a>
-              </div>
+    
+            @endif
+
+            <!-- Teacher Sidebar menus -->
+            @if(Auth::user()->Role()->first()->role=='teacher')
+                    
+                <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-calendar m-2"></span> Time Table</a>
+                <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-book m-2"></span> Study Material</a>
+               <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-edit m-2"></span> Assignments</a>
+               <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open m-2"></span> Notices</a>
+    
+            @endif
+
+            
+
         </div>
+            </div>
     <!-- /#sidebar-wrapper -->
 
-    @endif
+    
         @endauth
 
 
 
        @yield('lpanel')
         
+
+
     </div>
-    <div class="col-sm-8">
-        
+    <div class="col-sm-8 ml-n2 ">
+        @auth
+        <button onclick="window.history.back();" class="btn btn-secondary m-2"><span class="fa fa-arrow-left"></span> Back</button>
+        @endauth
+
         @yield('content')
     </div>
     <div class="col-sm-2">
@@ -173,5 +189,8 @@
     </div>
 
 </div>
+
+
+
 </body>
 </html>

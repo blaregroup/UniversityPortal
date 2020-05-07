@@ -3,6 +3,7 @@
 
 
 @section('lpanel')
+
 <div class="card text-center p-5">
 <div class="card-subtitle font-weight-bold m-4 text-center">Subjects</div>
 
@@ -13,6 +14,7 @@
 @endforeach
 
 </div>
+
 @endsection
 
 

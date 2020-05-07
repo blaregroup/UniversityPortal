@@ -3,7 +3,7 @@
 
 
 @section('lpanel')
-
+<!--
 <div class="card mt-5">
     <div class="card-subtitle m-4"> Controls</div>
 
@@ -14,7 +14,7 @@
     <a href="/admin/course" class="bg-secondary text-white text-center font-weight-bold p-3">Course</a>
     <a href="/notice" class="bg-secondary text-white text-center font-weight-bold p-3"> Notification</a>
 </div>
-
+-->
 
 @endsection
 
