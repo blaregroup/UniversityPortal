@@ -38,10 +38,10 @@ $user1->createProfile();
 $user2->createProfile();
 $user3->createProfile();
 
-$user1->createNotification("TitleOne", "This Is Text Two Notification");
-$user1->createNotification("TitleTwo", "This Is Text Two Notification");
-$user2->createNotification("TitleThree", "This Is Text Two Notification");
-$user3->createNotification("TitleFour", "This Is Text Two Notification");
+$user1->createNotification("TitleOne", "industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum");
+$user1->createNotification("TitleTwo", "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc");
+$user2->createNotification("TitleThree", "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc");
+$user3->createNotification("TitleFour", "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc");
 
 
 
@@ -76,15 +76,16 @@ $course4->create_subject('BSC3', 'BSC_SUB3', 'BSC_SUB_DESCRIPTION');
 
 # assign course_id to students and Teachers
 $role2->course_id='1';
-$role3->course_id='2';
 
 $role2->save();
 $role3->save();
 
-$user3->join_subject('1');
-$user3->join_subject('2');
-$user3->join_subject('3');
-$user3->join_subject('4');
-$user3->join_subject('5');
+
+# Teacher 
+$user3->Role()->first()->join_subject('1');
+$user3->Role()->first()->join_subject('2');
+$user3->Role()->first()->join_subject('3');
+$user3->Role()->first()->join_subject('4');
+$user3->Role()->first()->join_subject('5');
 
 
