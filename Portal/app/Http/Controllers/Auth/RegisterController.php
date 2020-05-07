@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\Profile;
-use App\Rules\rolecheck;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -66,20 +65,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-     
+        //dd($data);
         // create user account
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);
-        if($data['role']==='student'){
-            $user->createRole($role="student", $access="low", $active="0");
-        }else{
-            $user->createRole($role="teacher", $access="median", $active="0");
-        }
+
+        $user->createRole($role="student", $access="low", $active="0");
         
         $user->createProfile();
+        
+        $user->Role()->first()->join_course($data['course']);
         return $user;
 
     }

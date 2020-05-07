@@ -30,7 +30,7 @@ Route::get('/contact', function () {
  });
 
 // Login route
-Auth::routes();
+Auth::routes(['reset' => false]);
 
 // Home Controller
 Route::get('/home', 'HomeController@Index')->name('home');
@@ -42,6 +42,9 @@ Route::get('/home', 'HomeController@Index')->name('home');
 Route::get( 'admin/', 			'AdminHandler@Index')->middleware('onlyAdmin'); // Index
 Route::get( 'admin/perm/', 		'AdminHandler@permission')->middleware('onlyAdmin');
 Route::get( 'admin/add/{id?}', 	'AdminHandler@AllUser')->middleware('onlyAdmin');
+Route::get('admin/account', function(){
+		return redirect('admin/add/1');
+});
 Route::match(['get','post'], 'admin/course', 	'AdminHandler@Course')->middleware('onlyAdmin');
 Route::post('admin/add', 		'AdminHandler@AddUser')->middleware('onlyAdmin');
 Route::post('admin/edit', 		'AdminHandler@Edit')->middleware('onlyAdmin');

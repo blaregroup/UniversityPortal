@@ -102,10 +102,13 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <div>
-                                    <a class="dropdown-item" href="/home"><span class="fa fa-home"></span> Home</a>
-                                    <a class="dropdown-item" href="/profile"><span class="fa fa-user-circle"></span> Profile</a>
-                                    <a class="dropdown-item" href="/upload"><span class="fa fa-cloud-upload"></span> Upload</a>
-                                    <a class="dropdown-item" href="/notice"><span class="fa fa-bell"></span> Notification</a>
+                                    <a class="dropdown-item" href="/home"><span class="fa fa-home m-2"></span> Home</a>
+                                    <a class="dropdown-item" href="/profile"><span class="m-2 fa fa-user-circle"></span> Profile</a>
+                                    <a class="dropdown-item" href="/upload"><span class="m-2 fa fa-cloud-upload"></span> Upload</a>
+                                    <a class="dropdown-item" href="/notice"><span class="m-2 fa fa-bell"></span> Notification</a>
+                                    <hr>
+                                    <a class="dropdown-item" href="/{{ Auth::user()->Role()->first()->role }}/account"><span class="m-2 fa fa-user"></span> Change Password</a>
+
                                 </div>
                                 <hr>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -133,7 +136,7 @@
 
 <div class="row py-2 mx-1 mt-3">
     <div class="col-sm-2">
-       @yield('lpanel');
+       @yield('lpanel')
         
 
     </div>

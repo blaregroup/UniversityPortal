@@ -52,7 +52,7 @@
 					<div class="badge badge-light badge-pill p-2">
 						{{ $notice->name}}
 					</div>
-					<a data-toggle="collapse" href="#message{{ $notice->id }}" class="btn-link">Show</a>
+					<a data-toggle="collapse" href="#message{{ $notice->id }}" class="btn-link bi bi-arrow-up-down">Show</a>
 
 						
 					<div class="badge badge-light p-2 float-right">

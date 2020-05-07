@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -38,17 +39,19 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Role</label>
-                            <div class="col-md-6">
-                            <select id="role" name="role">
-                                  <option value="student" selected>Student</option>
-                                  <option value="teacher">Teacher</option>
-                            </select> 
-                            </div>
-                        </div>                        
+                        <label for="course" class="col-md-4 col-form-label text-md-right">Course</label>
+                        <select id="course" name="course" class="form-control my-2 col-md-6" required>
+                        <option value="">None</option>
+                        @foreach($Course as $obj )
+                        
+                        {{ $obj->name }}
+                            <option value={{ $obj->id }}>{{ $obj->name }}</option>                        
+                        @endforeach
+                            
+                        </select>
 
+                        </div>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -71,7 +74,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-
+                        <p class="text-center text-danger font-weight-bold">Note: Only For Students</p>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

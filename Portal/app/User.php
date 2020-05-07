@@ -51,8 +51,8 @@ class User extends Authenticatable
         if($this->Profile()->first()==null){
             Profile::create([
                 'user_id'=>$this->id,
-                'fname' =>'new user number'.$this->id,
-                'description'=>"Empty"
+                'fname' =>'User ID '.$this->id,
+                'description'=>"Empty Description"
             ]);
 
             return true;
