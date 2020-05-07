@@ -137,9 +137,30 @@
 <div class="row py-2 mx-1 mt-3">
     <div class="col-sm-2">
         @auth
-        <button onclick="window.history.back();" class="btn btn-light">Back</button>
+        <button onclick="window.history.back();" class="btn btn-light m-2">Back</button>
         @endauth
        
+
+    @if(Auth::user()->Role()->first()->role!=='admin')
+     <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+                <div class="list-group list-group-flush">
+
+                <a href="/home" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-home m-2"></span> Home</a>
+                
+                <a href="/profile/personal" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-user-circle m-2"></span> Profile</a>
+                <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-calendar m-2"></span> Time Table</a>
+                <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-book m-2"></span> Study Material</a>
+               <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-edit m-2"></span> Assignments</a>
+               <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open m-2"></span> Notices</a>
+              </div>
+        </div>
+    <!-- /#sidebar-wrapper -->
+
+    @endif
+
+
+
        @yield('lpanel')
         
     </div>

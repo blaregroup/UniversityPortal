@@ -2,7 +2,7 @@
 
 
 @section('lpanel')
-
+<!--
 <div class="container">
     <div class="card-subtitle">Controls </div>
     <a href="/home" class="btn-block btn btn-link">Home</a>
@@ -11,6 +11,9 @@
     <a href="/{{ Auth::user()->role()->first()->role }}/account" class="btn-block btn btn-link">Account</a>
     
 </div>
+
+-->
+
 @endsection
 
 @section('content')
