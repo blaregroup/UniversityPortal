@@ -73,7 +73,7 @@
 
 
     <div id="app" style="background: #57606f;" >
-        <nav class="navbar navbar-expand-md  navbar-light shadow-sm bg-secondary fixed-top" >
+        <nav class="navbar navbar-expand-md  navbar-light shadow-sm fixed-top" style="background: #2f3542" >
             <div class="container">
                 <div class="navbar-brand">
                     <a  href="{{ url('/') }}" style="color: #ffffff">
@@ -146,7 +146,7 @@
     </div>
 
     
-        <div class="navbar navbar-expand-md   shadow-sm bg-secondary position-fixed" style="z-index: 1; width:100%; top:55px;left:0;height:50px;">
+        <div class="navbar navbar-expand-md   shadow-sm position-fixed" style="z-index: 1;background: #57606f; width:100%; top:55px;left:0;height:50px;">
             <button onclick="window.history.back();" class="btn btn-secondary "><span class="fa fa-arrow-left"></span> Back</button>
         @auth
             <!-- student/teacher toggle button-->
@@ -186,7 +186,7 @@
 
             <!-- Teacher Sidebar menus -->
             @if(Auth::user()->Role()->first()->role=='teacher')
-            <div class="bg-secondary border-right position-fixed" id="sidebar-wrapper"  style="top:105px;left:0px;">
+            <div class="bg-secondary border-right position-fixed" id="sidebar-wrapper" >
                 <div class="list-group list-group-flush" style="width:13rem;">
                     <a href="/home" class="list-group-item list-group-item-action text-white  bg-secondary "><span class="fa fa-home m-2 "></span> Home</a>
                     
