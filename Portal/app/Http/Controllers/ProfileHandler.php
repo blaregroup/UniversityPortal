@@ -90,7 +90,7 @@ class ProfileHandler extends Controller
         */
         // check profile exists
         if($profile){
-            return view('profile.ProfilePage', ['info'=>$profile
+            return view('profile.ProfilePage', ['info'=>$profile,'course'=>User::find($id)->role()->first()->course()->first()
             ]);
         }
         else{

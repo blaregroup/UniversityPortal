@@ -186,7 +186,7 @@
 
             <!-- Teacher Sidebar menus -->
             @if(Auth::user()->Role()->first()->role=='teacher')
-            <div class="bg-secondary border-right position-fixed" id="sidebar-wrapper" >
+            <div class="bg-secondary border-right position-fixed" id="sidebar-wrapper" style="top:105px;left:0px;">
                 <div class="list-group list-group-flush" style="width:13rem;">
                     <a href="/home" class="list-group-item list-group-item-action text-white  bg-secondary "><span class="fa fa-home m-2 "></span> Home</a>
                     

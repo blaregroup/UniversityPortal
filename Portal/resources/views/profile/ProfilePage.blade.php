@@ -4,43 +4,37 @@
 
 @section('content')
 <div class="container">
-
-
-<div class="row">
-    <div class="col-md-5">
-        <div class="card">
-                <h3 class="card-subtitle m-4 font-weight-bold">{{ $info->fname }}</h3>
+    <div class="card-group">
+            
+            <div class="card col-md-4">
+                <img src="/profilepic.png" class=" p-3  rounded-circle" alt="Profile Pic"/>
                 <div class="card-body">
-                                
-                    <div>
-                        <p><strong>Name : </strong> {{ $info->name }}</p>
-                        <p><strong>Full Name : </strong> {{ $info->fname }} </p>
-                        <p><strong>Description : </strong> {{ $info->description }}</p>
-                        <p><strong>Role  :  </strong> {{ $info->role}}</p>
-                        <p><strong>Email : </strong> {{ $info->email }}</p>
-                        <p><strong>Phone : </strong> {{ $info->phone }}</p>
-                        <p><strong>DOB : </strong> {{ $info->dob }}</p>
-                        <p><strong>Gender : </strong> {{ $info->gender }}</p>
-                        <p><strong>Mother Name : </strong> {{ $info->mother_name }}</p>
-                        <p><strong>Father Name : </strong> {{ $info->father_name }}</p>
-                        
-                    </div>
-                    
+                  <h3 class="card-title text-center">{{ $info->fname }}</h3>
                 </div>
+
+            </div>
         
 
-
-        </div>
-
+       
+            <div class="card col-md-8">
+                <div class="card-header bg-secondary text-white " >
+                    <h4>Personal Detail</h4>
+                </div>
+                <div class="card-body">
+                  <div class="card-text pl-2">
+                    <p><strong>Account Type : </strong> {{ $info->role }}</p>
+                    <p><strong>Id : </strong> {{ $info->user_id }} </p>
+                    @if(Auth::user()->Role()->first()->role=='student')
+                      <p><strong>Course : </strong> {{ $course->name}} </p>
+                    @endif
+                    <p><strong>DOB : </strong> {{ $info->dob }}</p>
+                    <p><strong>Gender : </strong> {{ $info->gender }}</p>
+                    <p><strong>Email : </strong> {{ $info->email }}</p>
+                    <p><strong>Phone : </strong> {{ $info->phone }}</p>
+                  </div>
+            </div>
+           
     </div>
-
-    <div class="col-md-3">
-         <div class="border rounded-circle text-center text-capitalize float-right" style="width:150px;height:150px;font-size: 100px;">{{ $info->name[0] }}</div>
-    </div>
-</div>
-
-
-
 
 </div>
 
