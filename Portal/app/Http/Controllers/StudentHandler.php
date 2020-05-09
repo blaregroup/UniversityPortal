@@ -14,9 +14,23 @@ class StudentHandler extends Controller
    		return view('student.StudentPanel');
    	}
 
-   	// personal
-   	public function syllabus(){
-   		return 'Syllabus';
+   	// course detail
+   	public function course(Request $request){
+      $id =  $request->user()->id;
+      //$course = User::find($id)->first()->course()->first();
+
+      if(User::find($id)->Role()->first()->course_id){
+
+            return view('student.StudentCoursePanel', ['course'=>User::find($id)->Role()->first()->course()->first(),
+                'subjects'=>User::find($id)->Role()->first()->course()->first()->subject()->get()
+            ]);
+        
+        }
+        else{
+
+            return 'Course Page Not Generated Yet';    
+        }
+   		//return view('student.StudentCoursePanel');
    	}
 
    	// personal update

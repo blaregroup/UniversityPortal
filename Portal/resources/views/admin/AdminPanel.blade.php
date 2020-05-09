@@ -3,18 +3,19 @@
 
 
 @section('lpanel')
-<!--
-<div class="card mt-5">
-    <div class="card-subtitle m-4"> Controls</div>
+    <div class="bg-secondary border-right position-fixed " id="sidebar-wrapper" style="left:0;top:105px;" >
+        <div class="list-group list-group-flush" style="width:13rem;">
+            <a href="/home" class="list-group-item list-group-item-action text-white  bg-secondary "><span class="fa fa-home m-2 "></span> Home</a>
+            
+            <a href="/profile/personal" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-user-circle m-2"></span> Profile</a>
+            <a href="/admin/add" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="m-2 fa fa-users"></span>  Users</a>        
+            <a href="/admin/perm" class="list-group-item list-group-item-action text-white  bg-secondary"> Privilage</a>
+            <a href="/upload" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="m-2 fa fa-cloud-upload"></span> Uploads</a>
+            <a href="/admin/course" class="list-group-item list-group-item-action text-white  bg-secondary">Course</a>
+            <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"> Notification</a>
+        </div>
+    </div>
 
-    <a href="/admin/add" class="bg-secondary text-white text-center font-weight-bold p-3"> Users</a>
-    <a href="/admin/perm" class="bg-secondary text-white text-center font-weight-bold p-3"> Privilage</a>
-    <a href="/upload" class="bg-secondary text-white text-center font-weight-bold p-3"> Uploads</a>
-    <a href="/profile/personal" class="bg-secondary text-white text-center font-weight-bold p-3">Profile</a>
-    <a href="/admin/course" class="bg-secondary text-white text-center font-weight-bold p-3">Course</a>
-    <a href="/notice" class="bg-secondary text-white text-center font-weight-bold p-3"> Notification</a>
-</div>
--->
 
 @endsection
 

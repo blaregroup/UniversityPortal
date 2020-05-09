@@ -80,7 +80,7 @@ Route::match(['get','post'], '/message','Message@Index')->middleware('onlyStuden
 
 // *  Student Side
 Route::get('student/', 'StudentHandler@Index')->middleware('onlyStudent'); // Get Detail
-Route::get('student/syllabus/', 'StudentHandler@syllabus')->middleware('onlyStudent'); // Get syllabus PDF
+Route::get('student/course/', 'StudentHandler@course')->middleware('onlyStudent'); // Get syllabus PDF
 Route::match(['get','post'],'student/account', 'StudentHandler@AccountUpdate')->middleware('onlyStudent'); // Notification Board
 Route::get('student/material', 'StudentHandler@Material')->middleware('onlyStudent'); // Video, PDF and Other Stuff To Share
 

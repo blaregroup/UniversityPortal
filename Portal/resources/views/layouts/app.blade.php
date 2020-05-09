@@ -27,11 +27,33 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <style type="text/css">
+        
+        #sidebar-wrapper {
+          min-height: 100%;
+          z-index: 2;
+          -webkit-transition: margin .25s ease-out;
+          -moz-transition: margin .25s ease-out;
+          -o-transition: margin .25s ease-out;
+          transition: margin .25s ease-out;
+        }
 
+        #menu-toggle{display: none;}
+        .admin-menu-toggle{display: none;}
+
+        @media (max-width: 1240px) {
+
+          #menu-toggle{ display: block; }    
+          .admin-menu-toggle{ display: block; }
+          #sidebar-wrapper { margin-left: -13rem; }
+          #wrapper.toggled #sidebar-wrapper { margin-left: 0rem;}
+          
+        }
+    </style>
 
 
 </head>
-<body style="background: #ffffff;">
+<body style="background: #ffffff; ">
     @if($message ?? '')
     <div class="alert alert-primary w-100">{{$message ?? '' }}</div>
     @endif
@@ -50,17 +72,20 @@
 
 
 
-    <div id="app" style="background: #57606f;">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+    <div id="app" style="background: #57606f;" >
+        <nav class="navbar navbar-expand-md  navbar-light shadow-sm bg-secondary fixed-top" >
             <div class="container">
-                <a class="navbar-brand " href="{{ url('/') }}" style="color: #ffffff">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-
+                <div class="navbar-brand">
+                    <a  href="{{ url('/') }}" style="color: #ffffff">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
+                    <a class="border border-right-0 border-top-0 border-bottom-0 ml-3 pl-4 text-white " id="home-link" href="/home"> Home</a>
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon" style="color: #ffffff"></span>
+                    <span class="fa fa-user" style="color: #ffffff"></span>
+                    <span class="fa fa-caret-down" style="color: #ffffff"></span>
                 </button>
-                <a class="border border-right-0 border-top-0 border-bottom-0 ml-3 pl-4 text-white " id="home-link" href="/home"> Home</a>
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto" >
@@ -120,77 +145,96 @@
 -->
     </div>
 
-<div class="row py-0 mx-0 mt-0 ml-n3" >
-    <div class="col-sm-2" >
+    
+        <div class="navbar navbar-expand-md   shadow-sm bg-secondary position-fixed" style="z-index: 1; width:100%; top:55px;left:0;height:50px;">
+            <button onclick="window.history.back();" class="btn btn-secondary "><span class="fa fa-arrow-left"></span> Back</button>
         @auth
-        <!--<button onclick="window.history.back();" class="btn btn-light m-2">Back</button>-->
-       
-        <!-- Sidebar -->
-        <div class="bg-secondary border-right  " id="sidebar-wrapper" style="min-height: 100vh;">
-            <div class="list-group list-group-flush">
-                <a href="/home" class="list-group-item list-group-item-action text-white  bg-secondary "><span class="fa fa-home m-2 "></span> Home</a>
-                
-                <a href="/profile/personal" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-user-circle m-2"></span> Profile</a>
-        
-            <!-- Admin Sidebar menus -->
-            @if(Auth::user()->Role()->first()->role=='admin')
-                <a href="/admin/add" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="m-2 fa fa-users"></span>  Users</a>        
-                <a href="/admin/perm" class="list-group-item list-group-item-action text-white  bg-secondary"> Privilage</a>
-                <a href="/upload" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="m-2 fa fa-cloud-upload"></span> Uploads</a>
-                <a href="/admin/course" class="list-group-item list-group-item-action text-white  bg-secondary">Course</a>
-                <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"> Notification</a>
+            <!-- student/teacher toggle button-->
+            @if(Auth::user()->Role()->first()->role!='admin')     
+             <button class="btn btn-primary" id="menu-toggle"><span class="fa fa-bars"></span> Menu</button>
             @endif
-
+            <!--admin toggle button-->
+            @if(Auth::user()->Role()->first()->role=='admin')     
+             <button class="btn btn-primary " id="menu-toggle"  class="admin-menu-toggle"><span class="fa fa-bars"></span> Menu</button>
+            @endif
+        @endauth
+        </div>
+    
+<div class="row py-0 mx-0  mb-2 " id="wrapper" style="margin-top: 120px;" >
+        
+    <div class="col-sm-2" >
+       
+              
+        <!-- Sidebar -->
+        @auth           
             <!-- Student Sidebar menus -->
             @if(Auth::user()->Role()->first()->role=='student')
+            <div class="bg-secondary border-right position-fixed " id="sidebar-wrapper" style="top:105px;left:0px;">
+                <div class="list-group list-group-flush" style="width:13rem;">
+                    <a href="/home" class="list-group-item list-group-item-action text-white  bg-secondary "><span class="fa fa-home m-2 "></span> Home</a>
                     
-                <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-calendar m-2"></span> Time Table</a>
-                <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-book m-2"></span> Study Material</a>
-               <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-edit m-2"></span> Assignments</a>
-               <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open m-2"></span> Notices</a>
-    
+                    <a href="/profile/personal" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-user-circle m-2"></span> Profile</a>
+            
+                    <a href="/student/course/" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-graduation-cap m-2"></span> Course Detail</a> 
+                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-calendar m-2"></span> Time Table</a>
+                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-book m-2"></span> Study Material</a>
+                   <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-edit m-2"></span> Assignments</a>
+                   <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open m-2"></span> Notices</a>
+                </div>
+            </div>
             @endif
 
             <!-- Teacher Sidebar menus -->
             @if(Auth::user()->Role()->first()->role=='teacher')
+            <div class="bg-secondary border-right position-fixed " id="sidebar-wrapper" >
+                <div class="list-group list-group-flush" style="width:13rem;">
+                    <a href="/home" class="list-group-item list-group-item-action text-white  bg-secondary "><span class="fa fa-home m-2 "></span> Home</a>
                     
-                <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-calendar m-2"></span> Time Table</a>
-                <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-book m-2"></span> Study Material</a>
-               <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-edit m-2"></span> Assignments</a>
-               <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open m-2"></span> Notices</a>
-    
+                    <a href="/profile/personal" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-user-circle m-2"></span> Profile</a>
+                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-calendar m-2"></span> Time Table</a>
+                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-book m-2"></span> Study Material</a>
+                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-edit m-2"></span> Assignments</a>
+                    <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open m-2"></span> Notices</a>
+                 </div>
+            </div>
             @endif
 
             
 
-        </div>
-            </div>
+        @endauth   
     <!-- /#sidebar-wrapper -->
-
-    
-        @endauth
+        
 
 
 
        @yield('lpanel')
-        
-
-
     </div>
-    <div class="col-sm-8 ml-n2 ">
-        @auth
-        <button onclick="window.history.back();" class="btn btn-secondary m-2"><span class="fa fa-arrow-left"></span> Back</button>
-        @endauth
-
+    
+    <div class="col-sm-8"   >
+           
         @yield('content')
+        
     </div>
-    <div class="col-sm-2">
+
+    <div class="col-sm-2" >
         @yield('rpanel')
     </div>
 
 </div>
 
 
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+
+    });
+  </script>
 
 </body>
 </html>
