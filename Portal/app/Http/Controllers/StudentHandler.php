@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
+use App\User;
 use Illuminate\Http\Request;
 
 class StudentHandler extends Controller
@@ -16,13 +17,13 @@ class StudentHandler extends Controller
 
    	// course detail
    	public function course(Request $request){
-      $id =  $request->user()->id;
+      //$id =  $request->user()->id;
       //$course = User::find($id)->first()->course()->first();
 
-      if(User::find($id)->Role()->first()->course_id){
+      if($request->user()->Role()->first()->course_id){
 
-            return view('student.StudentCoursePanel', ['course'=>User::find($id)->Role()->first()->course()->first(),
-                'subjects'=>User::find($id)->Role()->first()->course()->first()->subject()->get()
+            return view('student.StudentCoursePanel', ['course'=>$request->user()->Role()->first()->course()->first(),
+                'subjects'=>$request->user()->Role()->first()->course()->first()->subject()->get()
             ]);
         
         }

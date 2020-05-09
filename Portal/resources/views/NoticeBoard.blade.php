@@ -4,7 +4,7 @@
 
 @section('lpanel')
 
-	@if(Auth::user()->Role()->first()->role !== 'student')
+	@if(Auth::user()->Role()->first()->role === 'admin')
 
 	<div class="card mt-2">
 		
@@ -26,6 +26,7 @@
 		</div>
 	</div>
 	@endif
+
 @endsection
 
 @section('content')
@@ -55,13 +56,16 @@
 					<div class="badge badge-light badge-pill p-2">
 						{{ $notice->name}}
 					</div>
-					<a data-toggle="collapse" href="#message{{ $notice->id }}" class="btn-link bi bi-arrow-up-down">Show</a>
-
+					
 						
 					<div class="badge badge-light p-2 float-right">
 						
 						{{ $notice->email}}
 					</div>	
+
+				</div>
+				<div class="bg-light text-right">
+				 <a data-toggle="collapse" href="#message{{ $notice->id }}" class="bg-light"><span class="fa fa-bars m-1 text-dark"></span>Show</a>
 
 				</div>
 			</div>
@@ -106,6 +110,29 @@
 		</div>				
 	</div>
 
+	@endif
+
+	@if(Auth::user()->Role()->first()->role === 'teacher')
+
+	<div class="card mt-2">
+		
+		<div class="card-subtitle font-weight-bold m-3">
+			Remove
+		</div>
+
+		<div class="card-body">
+			@foreach ($mynotice as $notice)
+				<li class="list-group-item">
+				<span>{{ $notice->title }}</span>
+
+				<a href="/notice/delete?id={{ $notice->id }}" class="btn btn-outline-danger badge-pill btn-sm rounded float-right"> Delete </a>
+				</li>
+			
+
+			@endforeach
+
+		</div>
+	</div>
 	@endif
 	
 @endsection

@@ -39,11 +39,11 @@
 <div class="container">
     <div class="row">
         
-        <div class="col-md-9">
+        <div class="col">
             <div class="card">
                 
-                <div class="card-header">
-                    Course Control Panel
+                <div class="card-subtitle m-4 font-weight-bold" style="font-weight: bolder; font-size: large;">
+                    Course Detail
                 </div>
 
                 @if($Course ?? '')
@@ -72,6 +72,11 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
+                                  
+                                  <i class="fa fa-bookmark" aria-hidden="true"></i>
+
+
+
                                     Subjects
                                 </div>
                                 <div class="card-body">
@@ -80,6 +85,22 @@
                                    @if($Subject ?? '')
 
                     
+                                           <div class="row m-1 border border-top-0 mb-2" style="font-weight: bolder;">
+                                            
+                                             <div class="col-md-2">
+                                                 Code
+                                             </div>
+                                             <div class="col-md-2">
+                                               Name  
+                                             </div>
+                                             <div class="col-md-4">
+                                               Description  
+                                             </div>
+                                             <div class="col-md-3">
+                                               Created At  
+                                             </div>
+                                         </div>
+
                                         @foreach ($Subject as $sub)
                                          <div class="row m-1">
                                             
@@ -110,11 +131,27 @@
                         <div class="col-md-12 mt-3">
                             <div class="card">
                                 <div class="card-header">
-                                    Add New Subjects
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    Add Subjects
                                 </div>
                                 <div class="card-body">
                                     @if($AllSubject ?? '')
 
+<div class="row m-1 border border-top-0 mb-2" style="font-weight: bolder;">
+                                            
+                                             <div class="col-md-2">
+                                                 Code
+                                             </div>
+                                             <div class="col-md-2">
+                                               Name  
+                                             </div>
+                                             <div class="col">
+                                               Description  
+                                             </div>
+                                             <div class="col-md-3">
+                                               Created At  
+                                             </div>
+                                         </div>
 
                                     <form action='course?cmd=addsubject&id={{ $Course->id }}' method="POST">
                                         @csrf
@@ -143,7 +180,8 @@
                                         <input type="submit" name="submit" value="Attach" class="btn float-right btn-outline-success m-1">
                                     </form>
                                         
-                                        <p class="text-danger">Note: Linking to new course will detached from old subject.</p>
+                                        <p class="text-danger"><i class="fa fa-info-circle" aria-hidden="true"></i>
+Note: Linking to new course will detached from old subject.</p>
 
                                     @endif
                                 </div>
@@ -176,7 +214,7 @@
            
            <ul>
                 @foreach ($AllCourse as $course)
-                    <li class="btn-link">
+                    <li class="list-unstyled">
                         <a href="?id={{ $course->id }}">{{ $course->name }}</a>
                     </li>
                @endforeach

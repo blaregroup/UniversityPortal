@@ -9,10 +9,14 @@
             
             <a href="/profile/personal" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-user-circle m-2"></span> Profile</a>
             <a href="/admin/add" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="m-2 fa fa-users"></span>  Users</a>        
-            <a href="/admin/perm" class="list-group-item list-group-item-action text-white  bg-secondary"> Privilage</a>
+            <a href="/admin/perm" class="list-group-item list-group-item-action text-white  bg-secondary"> 
+                <span class=" fa fa-user-secret m-2"></span>
+            Privilage</a>
             <a href="/upload" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="m-2 fa fa-cloud-upload"></span> Uploads</a>
-            <a href="/admin/course" class="list-group-item list-group-item-action text-white  bg-secondary">Course</a>
-            <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"> Notification</a>
+            <a href="/admin/course" class="list-group-item list-group-item-action text-white bg-secondary">
+                <span class=" fa fa-book m-2"></span>Course</a>
+            <a href="/notice" class="list-group-item list-group-item-action text-white bg-secondary"> 
+                <span class="fa fa-envelope m-2"></span> Notification</a>
         </div>
     </div>
 

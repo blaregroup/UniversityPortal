@@ -175,26 +175,26 @@
                     
                     <a href="/profile/personal" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-user-circle m-2"></span> Profile</a>
             
-                    <a href="/student/course/" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-graduation-cap m-2"></span> Course Detail</a> 
-                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-calendar m-2"></span> Time Table</a>
-                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-book m-2"></span> Study Material</a>
+                    <a href="/student/course/" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-graduation-cap m-2"></span> Course</a> 
+                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-calendar m-2"></span> Schedule</a>
+                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-book m-2"></span> Study</a>
                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-edit m-2"></span> Assignments</a>
-                   <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open m-2"></span> Notices</a>
+                   <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open m-2"></span> Notification</a>
                 </div>
             </div>
             @endif
 
             <!-- Teacher Sidebar menus -->
             @if(Auth::user()->Role()->first()->role=='teacher')
-            <div class="bg-secondary border-right position-fixed " id="sidebar-wrapper" >
+            <div class="bg-secondary border-right position-fixed" id="sidebar-wrapper"  style="top:105px;left:0px;">
                 <div class="list-group list-group-flush" style="width:13rem;">
                     <a href="/home" class="list-group-item list-group-item-action text-white  bg-secondary "><span class="fa fa-home m-2 "></span> Home</a>
                     
                     <a href="/profile/personal" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-user-circle m-2"></span> Profile</a>
-                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-calendar m-2"></span> Time Table</a>
-                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-book m-2"></span> Study Material</a>
+                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-calendar m-2"></span> Schedule</a>
+                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-book m-2"></span> Study</a>
                     <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-edit m-2"></span> Assignments</a>
-                    <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open m-2"></span> Notices</a>
+                    <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open m-2"></span> Notificaton</a>
                  </div>
             </div>
             @endif
