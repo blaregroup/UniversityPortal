@@ -7,7 +7,13 @@
     <div class="card-group">
             
             <div class="col-md-4">
-                <img src="https://img1.looper.com/img/gallery/how-thanos-knew-who-tony-stark-was-in-avengers-infinity-war/intro-1533262156.jpg" class="  img-fluid img-thumbnail card-img" alt="Profile Pic"/>
+                @if($info->pic)
+                    <img src="/{{$info->pic}}" class="  img-fluid img-thumbnail card-img" alt="Profile Pic"/>
+                @else
+                    <img src="https://img1.looper.com/img/gallery/how-thanos-knew-who-tony-stark-was-in-avengers-infinity-war/intro-1533262156.jpg" class="  img-fluid img-thumbnail card-img" alt="Profile Pic"/>
+                @endif
+
+
                 <div class="card-body">
                   <h3 class="card-title text-center">{{ $info->fname }}</h3>
                 </div>

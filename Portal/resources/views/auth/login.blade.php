@@ -2,10 +2,10 @@
 
 
 @section('content')
-<div class="jumbotron" style="background: #2c3e50;">
+<div class="jumbotron bg-white">
     <div class="row justify-content-center">
         <div class="col-md-7">
-            <div class="p-2" style="background: white; opacity: 100%;">
+            <div class="p-2" style="background: white;">
                 <div class="card-subtitle font-weight-bold m-2 text-center">{{ __('Login') }}</div>
 
                 <div class="card-body">
