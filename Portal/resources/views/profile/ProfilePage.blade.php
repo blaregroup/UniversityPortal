@@ -22,7 +22,7 @@
         
 
        
-            <div class="col-md-6">
+            <div class="col">
                 <div class="card-header text-white " style="background: #130f40;">
                     <h4>Details</h4>
                 </div>
