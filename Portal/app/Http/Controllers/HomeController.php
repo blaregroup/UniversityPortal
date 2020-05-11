@@ -101,7 +101,8 @@ class HomeController extends Controller
 
 
         return view('NoticeBoard', ['notices'=>$notice, 
-            'mynotice'=>$notices]);
+            'mynotice'=>$notices
+        ]);
         
     }
 

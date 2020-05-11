@@ -76,10 +76,10 @@
         <nav class="navbar navbar-expand-md  navbar-light shadow-sm fixed-top" style="background: #2f3542" >
             <div class="container">
                 <div class="navbar-brand">
-                    <a  href="{{ url('/') }}" style="color: #ffffff">
+                    <a  href="{{ url('/') }}" style="color: #ffffff;">
                         {{ config('app.name', 'Laravel') }}
                     </a>
-                    <a class="border border-right-0 border-top-0 border-bottom-0 ml-3 pl-4 text-white " id="home-link" href="/home"> Home</a>
+                    
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="fa fa-user" style="color: #ffffff"></span>
@@ -146,18 +146,21 @@
     </div>
 
     
-        <div class="navbar navbar-expand-md   shadow-sm position-fixed" style="z-index: 1;background: #636e72; width:100%; top:55px;left:0;height:50px;">
-            <button onclick="window.history.back();" class="btn btn-secondary "><span class="fa fa-arrow-left"></span> Back</button>
+        <div class="navbar navbar-expand-md   shadow-sm position-fixed" style="z-index: 1;background: #3B3B98; width:100%; top:55px;left:0;height:50px;">
+            <button onclick="window.history.back();" class="btn text-white "><span class="fa fa-arrow-left m-1"></span> Back</button>
+
         @auth
             <!-- student/teacher toggle button-->
             @if(Auth::user()->Role()->first()->role!='admin')     
-             <button class="btn btn-primary" id="menu-toggle"><span class="fa fa-bars"></span> Menu</button>
+             <button class="btn text-white" id="menu-toggle"><span class="fa fa-bars "></span> Menu</button>
             @endif
             <!--admin toggle button-->
             @if(Auth::user()->Role()->first()->role=='admin')     
-             <button class="btn btn-primary " id="menu-toggle"  class="admin-menu-toggle"><span class="fa fa-bars"></span> Menu</button>
+             <button class="btn text-white " id="menu-toggle"  class="admin-menu-toggle"><span class="fa fa-bars"></span> Menu</button>
             @endif
         @endauth
+        <a class="border border-right-0 border-top-0 border-bottom-0 ml-3 pl-4 text-white " id="home-link" href="/home"> <i class="fa fa-home m-1" aria-hidden="true"></i>
+Home</a>
         </div>
     
 <div class="row py-0 mx-0  mb-2 " id="wrapper" style="margin-top: 120px;" >

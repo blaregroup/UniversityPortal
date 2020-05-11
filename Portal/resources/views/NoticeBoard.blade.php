@@ -4,28 +4,7 @@
 
 @section('lpanel')
 
-	@if(Auth::user()->Role()->first()->role === 'admin')
-
-	<div class="card mt-2">
-		
-		<div class="card-subtitle font-weight-bold m-3">
-			Remove
-		</div>
-
-		<div class="card-body">
-			@foreach ($mynotice as $notice)
-				<li class="list-group-item">
-				<span>{{ $notice->title }}</span>
-
-				<a href="/notice/delete?id={{ $notice->id }}" class="btn btn-outline-danger badge-pill btn-sm rounded float-right"> Delete </a>
-				</li>
-			
-
-			@endforeach
-
-		</div>
-	</div>
-	@endif
+	
 
 @endsection
 
@@ -40,6 +19,8 @@
 				
 				<div class="card-subtitle font-weight-bold m-3">
 					{{ $notice->title}}
+
+
 					<span class="badge float-right">{{ $notice->created_at}}
 
 
@@ -64,8 +45,17 @@
 					</div>	
 
 				</div>
-				<div class="text-right">
-				 <a data-toggle="collapse" href="#message{{ $notice->id }}" class="badge"><span class="fa fa-toggle-on mr-1" aria-hidden="true"></span></a>
+				<div class="jumbotron-fluid m-2">
+
+				@if(Auth::user()->id == $notice->user_id )
+
+				<a href="/notice/delete?id={{ $notice->id }}" class="badge badge-light ml-2">
+					<i class="fa fa-trash p-2" aria-hidden="true"> Delete</i>
+
+				</a>
+
+				@endif
+				 <a data-toggle="collapse" href="#message{{ $notice->id }}" class="badge float-right badge-light mr-2"><span class="fa fa-toggle-on p-1" aria-hidden="true"></span></a>
 
 				</div>
 			</div>
@@ -112,27 +102,6 @@
 
 	@endif
 
-	@if(Auth::user()->Role()->first()->role === 'teacher')
-
-	<div class="card mt-2">
-		
-		<div class="card-subtitle font-weight-bold m-3">
-			Remove
-		</div>
-
-		<div class="card-body">
-			@foreach ($mynotice as $notice)
-				<li class="list-group-item">
-				<span>{{ $notice->title }}</span>
-
-				<a href="/notice/delete?id={{ $notice->id }}" class="btn btn-outline-danger badge-pill btn-sm rounded float-right"> Delete </a>
-				</li>
-			
-
-			@endforeach
-
-		</div>
-	</div>
-	@endif
+	
 	
 @endsection

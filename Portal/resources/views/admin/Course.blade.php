@@ -3,34 +3,30 @@
 @section('rpanel')
 
 
-<div class="mt-3">
 
 
-  
-   <div class="card mt-3">
-        <div class="card-subtitle m-3 font-weight-bold">
-            Add Subject
-        </div>
+<div class="card mt-3">
+    <div class="card-subtitle m-3 font-weight-bold">
+        Add Subject
+    </div>
 
-       <div class="card-body">
+   <div class="card-body">
 
-        <form action='course?cmd=addsubject' method="POST">
-            @csrf
+    <form action='course?cmd=addsubject' method="POST">
+        @csrf
 
-            <label class="form-control-label mt-1">Code </label>
-            <input type="text" name="subcode" class="form-control" />
+        <label class="form-control-label mt-1">Code </label>
+        <input type="text" name="subcode" class="form-control" />
 
-            <label class="form-control-label mt-1">Name </label>
-            <input type="text" name="name" class="form-control" />
-            <label class="form-control-label mt-1">Description</label>
-            <input type="text" name="description" class="form-control" />
+        <label class="form-control-label mt-1">Name </label>
+        <input type="text" name="name" class="form-control" />
+        <label class="form-control-label mt-1">Description</label>
+        <input type="text" name="description" class="form-control" />
 
-            <input type="submit" name="submit" value="Add" class="btn btn-primary m-1">
-        </form>
-           
-       </div>
+        <input type="submit" name="submit" value="Add" class="btn btn-primary m-2">
+    </form>
+       
    </div>
-
 </div>
 
 @endsection
