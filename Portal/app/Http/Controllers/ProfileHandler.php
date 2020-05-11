@@ -8,6 +8,8 @@ use DB;
 use App\User;
 use App\Profile;
 use App\Subject;
+use App\Course;
+
 
 
 class ProfileHandler extends Controller
@@ -180,6 +182,8 @@ class ProfileHandler extends Controller
     */
     public function PersonalUpdate(Request $request){
 
+
+
         // Get user profile object from profile table through foreign key of user object
         $id =  $request->user()->id;
         // Get user profile object from profile table through foreign key of user object
@@ -208,12 +212,28 @@ class ProfileHandler extends Controller
     */
 
     public function SaveChange(Request $request){
-        
-        $value = $request->except('_token');
-        //dd($request->user()->id);
+        if ($request->File('profilepic')) {
+            if ($request->file('profilepic')->isValid()) {
+                # code...
+            }
+            $path = $request->file('profilepic')->store('public');
+            $profile = $request->user()->profile()->first();
+            $profile->pic = $path;
+            $profile->save();
+            return redirect('/profile');
 
-        DB::table('profiles')->where('user_id', $request->user()->id)->update($value);
+            
+            # code...
+        }
+        else{
+        dd($request->profilepic);
+        $value = $request->except('_token','profilepic','submit');
+        //dd(DB::table('profiles')->where('user_id', $request->user()->id)->get());
+
+        $request->user()->profile()->first()->update($value);
             
         return redirect('/profile/personal/edit');
+
+        }
     }
 }

@@ -25,7 +25,7 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-
+            $table->string('pic')->nullable();
             $table->string('fname');                    // fullname
             $table->longText('description');            // description
             $table->enum('gender', ['male', 'female'])->nullable(); // gender

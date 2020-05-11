@@ -138,15 +138,15 @@
                 </div>
             </div>
         </nav>
-<!--
+{{--
         <main class="py-4">
             @yield('content')
         </main>
--->
+--}}
     </div>
 
     
-        <div class="navbar navbar-expand-md   shadow-sm position-fixed" style="z-index: 1;background: #57606f; width:100%; top:55px;left:0;height:50px;">
+        <div class="navbar navbar-expand-md   shadow-sm position-fixed" style="z-index: 1;background: #636e72; width:100%; top:55px;left:0;height:50px;">
             <button onclick="window.history.back();" class="btn btn-secondary "><span class="fa fa-arrow-left"></span> Back</button>
         @auth
             <!-- student/teacher toggle button-->

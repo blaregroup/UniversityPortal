@@ -64,8 +64,8 @@
 					</div>	
 
 				</div>
-				<div class="bg-light text-right">
-				 <a data-toggle="collapse" href="#message{{ $notice->id }}" class="bg-light"><span class="fa fa-bars m-1 text-dark"></span>Show</a>
+				<div class="text-right">
+				 <a data-toggle="collapse" href="#message{{ $notice->id }}" class="badge"><span class="fa fa-toggle-on mr-1" aria-hidden="true"></span></a>
 
 				</div>
 			</div>

@@ -7,7 +7,6 @@
 
     public function Profile()
     public function createNotification($message)
-
     public function Notice(){
     public function removeNotification($id)
     public function createRole($role="student", $access="low", $active="0")

@@ -29,7 +29,8 @@ class Profile extends Model
         'phone',
         'mphone',
         'fphone',
-        'alphone'
+        'alphone',
+        'pic'
     ];
 
 

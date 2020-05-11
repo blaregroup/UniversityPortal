@@ -6,8 +6,8 @@
 <div class="container">
     <div class="card-group">
             
-            <div class="card col-md-4">
-                <img src="/profilepic.png" class=" p-3  rounded-circle" alt="Profile Pic"/>
+            <div class="col-md-4">
+                <img src="https://img1.looper.com/img/gallery/how-thanos-knew-who-tony-stark-was-in-avengers-infinity-war/intro-1533262156.jpg" class="  img-fluid img-thumbnail card-img" alt="Profile Pic"/>
                 <div class="card-body">
                   <h3 class="card-title text-center">{{ $info->fname }}</h3>
                 </div>
@@ -16,24 +16,27 @@
         
 
        
-            <div class="card col-md-8">
-                <div class="card-header bg-secondary text-white " >
-                    <h4>Personal Detail</h4>
+            <div class="col-md-6">
+                <div class="card-header text-white " style="background: #130f40;">
+                    <h4>Details</h4>
                 </div>
                 <div class="card-body">
                   <div class="card-text pl-2">
-                    <p><strong>Account Type : </strong> {{ $info->role }}</p>
-                    <p><strong>Id : </strong> {{ $info->user_id }} </p>
-                    @if(Auth::user()->Role()->first()->role=='student')
-                      <p><strong>Course : </strong> {{ $course->name}} </p>
+                    <p><strong>Name </strong><br> {{ $info->name }} </p>
+                    <p><strong>Description </strong><br> {{ $info->description}}</p>
+                    <hr class="jumbotron-hr">
+                    <p><strong>Gender </strong><br> {{ $info->gender }}</p>
+                    <p><strong>DOB </strong><br> {{ $info->dob }}</p>
+                    <p><strong>Email </strong><br> {{ $info->email }}</p>
+                    <p><strong>Phone </strong><br> {{ $info->phone }}</p>
+                    @if($course)
+                      <p><strong>Course </strong><br> {{ $course->name}} </p>
                     @endif
-                    <p><strong>DOB : </strong> {{ $info->dob }}</p>
-                    <p><strong>Gender : </strong> {{ $info->gender }}</p>
-                    <p><strong>Email : </strong> {{ $info->email }}</p>
-                    <p><strong>Phone : </strong> {{ $info->phone }}</p>
                   </div>
+                </div>
             </div>
-           
+        
+
     </div>
 
 </div>
