@@ -40,7 +40,7 @@
         #home-link{margin-left:20px; padding-left:20px; color:white;border-left: 1px solid white;}
         #menu-toggle{display: none;}
         .admin-menu-toggle{display: none;}
-        .card-img{width:50%;height:50%;}
+        
 
         @media (max-width: 1240px) {
 
@@ -49,7 +49,7 @@
           #sidebar-wrapper { margin-left: -13rem; }
           #wrapper.toggled #sidebar-wrapper { margin-left: 0rem;}
           #home-link{margin-left:0px;padding-left: 0px; border-left:none; }
-          .card-img{width:auto;height:auto;}
+          
           
         }
     </style>

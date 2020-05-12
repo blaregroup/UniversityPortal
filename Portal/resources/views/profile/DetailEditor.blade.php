@@ -2,7 +2,16 @@
 
 @section('content')
 
+<style type="text/css">
+  .card-img{width:50%;height:50%;}
 
+        @media (max-width: 1240px) {
+
+         
+          .card-img{width:auto;height:auto;}
+          
+        }
+</style>
 
 <div class="container bootstrap snippets">
   <div class="card"> 
