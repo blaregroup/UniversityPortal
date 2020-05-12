@@ -8,7 +8,7 @@
             
                 <div class="col-md-4">
                     @if($info->pic)
-                    <img src="/{{$info->pic}}" class=" p-2 mt-2 img-fluid img-thumbnail card-img" alt="Profile Pic"/>
+                    <img src="/{{$info->pic}}" class=" p-2 mt-2 img-fluid img-thumbnailcard-img" alt="Profile Pic"/> 
                     @else
                     <img src="https://img1.looper.com/img/gallery/how-thanos-knew-who-tony-stark-was-in-avengers-infinity-war/intro-1533262156.jpg" class=" p-2 mt-2 img-fluid img-thumbnail card-img" alt="Profile Pic"/>
                     @endif

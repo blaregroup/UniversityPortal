@@ -37,9 +37,10 @@
           -o-transition: margin .25s ease-out;
           transition: margin .25s ease-out;
         }
-
+        #home-link{margin-left:20px; padding-left:20px; color:white;border-left: 1px solid white;}
         #menu-toggle{display: none;}
         .admin-menu-toggle{display: none;}
+        .card-img{width:50%;height:50%;}
 
         @media (max-width: 1240px) {
 
@@ -47,6 +48,8 @@
           .admin-menu-toggle{ display: block; }
           #sidebar-wrapper { margin-left: -13rem; }
           #wrapper.toggled #sidebar-wrapper { margin-left: 0rem;}
+          #home-link{margin-left:0px;padding-left: 0px; border-left:none; }
+          .card-img{width:auto;height:auto;}
           
         }
     </style>
@@ -148,7 +151,7 @@
     
         <div class="navbar navbar-expand-md   shadow-sm position-fixed" style="z-index: 1;background: #3B3B98; width:100%; top:55px;left:0;height:50px;">
             <button onclick="window.history.back();" class="btn text-white "><span class="fa fa-arrow-left m-1"></span> Back</button>
-
+            <a class=" " id="home-link" href="/home"> <i class="fa fa-home m-1" aria-hidden="true"></i>Home</a>
         @auth
             <!-- student/teacher toggle button-->
             @if(Auth::user()->Role()->first()->role!='admin')     
@@ -159,8 +162,7 @@
              <button class="btn text-white " id="menu-toggle"  class="admin-menu-toggle"><span class="fa fa-bars"></span> Menu</button>
             @endif
         @endauth
-        <a class="border border-right-0 border-top-0 border-bottom-0 ml-3 pl-4 text-white " id="home-link" href="/home"> <i class="fa fa-home m-1" aria-hidden="true"></i>
-Home</a>
+        
         </div>
     
 <div class="row py-0 mx-0  mb-2 " id="wrapper" style="margin-top: 120px;" >
@@ -172,32 +174,32 @@ Home</a>
         @auth           
             <!-- Student Sidebar menus -->
             @if(Auth::user()->Role()->first()->role=='student')
-            <div class="bg-secondary border-right position-fixed " id="sidebar-wrapper" style="top:105px;left:0px;">
+            <div class=" border-right position-fixed " id="sidebar-wrapper" style="top:105px;left:0px;background: #30336b">
                 <div class="list-group list-group-flush" style="width:13rem;">
-                    <a href="/home" class="list-group-item list-group-item-action text-white  bg-secondary "><span class="fa fa-home m-2 "></span> Home</a>
+                    <a href="/home" class="list-group-item list-group-item-action text-white  " style="background: #30336b;"><span class="fa fa-home m-2 "></span> Home</a>
                     
-                    <a href="/profile/personal" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-user-circle m-2"></span> Profile</a>
+                    <a href="/profile/personal" style="background: #30336b;" class="list-group-item list-group-item-action text-white"><span class="fa fa-user-circle m-2"></span> Profile</a>
             
-                    <a href="/student/course/" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-graduation-cap m-2"></span> Course</a> 
-                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-calendar m-2"></span> Schedule</a>
-                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-book m-2"></span> Study</a>
-                   <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-edit m-2"></span> Assignments</a>
-                   <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open m-2"></span> Notification</a>
+                    <a href="/student/course/" style="background: #30336b;" class="list-group-item list-group-item-action text-white "><span class="fa fa-graduation-cap m-2"></span> Course</a> 
+                    <a href="" style="background: #30336b;" class="list-group-item list-group-item-action text-white"><span class="fa fa-calendar m-2"></span> Schedule</a>
+                    <a href=""  style="background: #30336b;" class="list-group-item list-group-item-action text-white  "><span class="fa fa-book m-2"></span> Study</a>
+                   <a href="" style="background: #30336b;" class="list-group-item list-group-item-action text-white "><span class="fa fa-edit m-2"></span> Assignments</a>
+                   <a href="/notice" style="background: #30336b;" class="list-group-item list-group-item-action text-white  "><span class="fa fa-envelope-open m-2"></span> Notification</a>
                 </div>
             </div>
             @endif
 
             <!-- Teacher Sidebar menus -->
             @if(Auth::user()->Role()->first()->role=='teacher')
-            <div class="bg-secondary border-right position-fixed" id="sidebar-wrapper" style="top:105px;left:0px;">
-                <div class="list-group list-group-flush" style="width:13rem;">
-                    <a href="/home" class="list-group-item list-group-item-action text-white  bg-secondary "><span class="fa fa-home m-2 "></span> Home</a>
+            <div class=" border-right position-fixed" id="sidebar-wrapper" style="top:105px;left:0px;background: #30336b">
+                <div class="list-group list-group-flush" style="width:13rem;>
+                    <a href="/home" class="list-group-item list-group-item-action text-white " style="background: #30336b;"><span class="fa fa-home m-2 "></span> Home</a>
                     
-                    <a href="/profile/personal" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-user-circle m-2"></span> Profile</a>
-                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-calendar m-2"></span> Schedule</a>
-                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-book m-2"></span> Study</a>
-                    <a href="" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-edit m-2"></span> Assignments</a>
-                    <a href="/notice" class="list-group-item list-group-item-action text-white  bg-secondary"><span class="fa fa-envelope-open m-2"></span> Notificaton</a>
+                    <a href="/profile/personal" style="background: #30336b;" class="list-group-item list-group-item-action text-white "><span class="fa fa-user-circle m-2"></span> Profile</a>
+                    <a href="" style="background: #30336b;" class="list-group-item list-group-item-action text-white "><span class="fa fa-calendar m-2"></span> Schedule</a>
+                    <a href="" style="background: #30336b;" class="list-group-item list-group-item-action text-white"><span class="fa fa-book m-2"></span> Study</a>
+                    <a href="" style="background: #30336b;" class="list-group-item list-group-item-action text-white "><span class="fa fa-edit m-2"></span> Assignments</a>
+                    <a href="/notice" style="background: #30336b;" class="list-group-item list-group-item-action text-white"><span class="fa fa-envelope-open m-2"></span> Notificaton</a>
                  </div>
             </div>
             @endif
