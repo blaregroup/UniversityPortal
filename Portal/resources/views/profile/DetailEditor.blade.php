@@ -18,7 +18,7 @@
       
      
           <div class="card-header text-left" style="background: #30336b;color:white;">
-              <h4>Edit Profile </h4>
+              <h4><span class="fa fa-user mr-2"></span>Edit Profile </h4>
           </div>
           
           

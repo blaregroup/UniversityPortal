@@ -4,41 +4,57 @@
 
 @section('content')
 <div class="container">
-
-	<div class="col-md-6">
-          <div class="card m-3">
-              <div class="card-header">Course</div>
-              <div class="card-body">
+  <div col-md-10>
+      <div class="card">
+          <div class="card-header text-white" style="background: #130f40;"><h4><span class="fa fa-graduation-cap mr-2"></span>Course Detail</h4></div>
+          <div class="card-title text-center mt-3 mb-0">
                   @if ($course)
-                    <p><strong>Name  :  </strong> {{ $course->name}}</p>
-                    <p><strong>Description  :  </strong> {{ $course->Description}}</p>    
+                    <h4><strong>Enrolled Course :  </strong> {{ $course->name}}</h4>
+                    
                   @endif
-              </div>
           </div>
-          {{--
-          <div class="card m-3">
-              <div class="card-header">Role</div>
-              <div class="card-body">
-                <p><strong>Role  :  </strong> {{ $info->role}}</p>
-                <p><strong>Access</strong> {{ $info->access }}</p>
-                <p><strong>Create At</strong> {{ $info->created_at }}</p>
-                <p><strong>Last Update</strong> {{ $info->updated_at }}</p>
-                
-              </div>
-          </div>
-			--}}
-          <div class="card m-3">
-              <div class="card-header">Subject</div>
-              <div class="card-body">
-                  @if ($subjects)
+          <hr/>
+          <div class="card-body mt-0">
+            <div class="table-responsive">
+              <table class="table ">
+                <caption style="caption-side: top;" >
+                  <h4 >Subject List :-</h4>
+                  
+                </caption>
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Sr.</th>
+                    <th scope="col">Subject Name</th>
+                    <th scope="col">Sem/Year</th>
+                    <th scopr="col">Syllabus</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                    @if ($subjects)
+                        @php ($i=1)
                     @foreach ($subjects as $sub)
-                        <p><strong>Name  :  </strong> {{ $sub->name}}</p>
+                        <tr>
+                          <td>{{$i}}</td>
+                          <td>{{ $course->name}}</td>
+                          <td>Null</td>
+                          <td><button class="btn btn-primary"><span class="fa fa-download mr-2"></span>Download</button></td>
+                        </tr>
+                        @php ($i++)
                     @endforeach
                   @endif
-              </div>
-          </div>
+                    
+                  
+                  
+                </tbody>
+              </table>
+            </div>
 
+          </div>
       </div>
+
+  </div>
+
 
 
 </div>

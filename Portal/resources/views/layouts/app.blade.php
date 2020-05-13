@@ -111,6 +111,7 @@
                         
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre  style="color: #ffffff">
+                                    <span class="fa fa-user mr-1"></span>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -192,7 +193,7 @@
             <!-- Teacher Sidebar menus -->
             @if(Auth::user()->Role()->first()->role=='teacher')
             <div class=" border-right position-fixed" id="sidebar-wrapper" style="top:105px;left:0px;background: #30336b">
-                <div class="list-group list-group-flush" style="width:13rem;>
+                <div class="list-group list-group-flush" style="width:13rem;">
                     <a href="/home" class="list-group-item list-group-item-action text-white " style="background: #30336b;"><span class="fa fa-home m-2 "></span> Home</a>
                     
                     <a href="/profile/personal" style="background: #30336b;" class="list-group-item list-group-item-action text-white "><span class="fa fa-user-circle m-2"></span> Profile</a>

@@ -34,7 +34,7 @@
            
                 <div class="col">
                     <div class="card-header text-white " style="background: #130f40;">
-                        <h4>Details</h4>
+                        <h4><span class="fa fa-user mr-2"></span>Details</h4>
                     </div>
                     <div class="card-body">
                       <div>
