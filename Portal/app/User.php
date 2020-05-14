@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use DB;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -39,23 +39,45 @@ class User extends Authenticatable
 
 
     /*
+    
     To create new profile
 
     */
-    public function createProfile(){
+    public function createProfile(
+        $fname="FULLNAME", 
+        $description="", 
+        $gender="male",
+        $dob="01/01/1999", 
+        $mother_name="",
+        $father_name="",
+        $phone="",
+        $mphone="",
+        $fphone="",
+        $alphone=""
+        ){
         /*
         Table name  : profiles
         Column name : user_id, fname, description, gender, dob, mother_name, father_name, phone, mphone, fphone, alphone 
         */
 
         if($this->Profile()->first()==null){
-            Profile::create([
-                'user_id'=>$this->id,
-                'fname' =>'User ID '.$this->id,
-                'description'=>"Empty Description"
-            ]);
 
-            return true;
+            $obj = Profile::create([
+                'user_id'=>$this->id,
+                'fname'=>$fname,
+                'description'=>$description,
+                'gender'=>$gender,
+                'dob'=>$dob,
+                'mothername'=>$mother_name,
+                'fathername'=>$father_name,
+                'phone'=>$phone,
+                'mphone'=>$mphone,
+                'fphone'=>$fphone,
+                'alphone'=>$alphone
+
+            ]);        
+            
+            return $obj;
         }else{
 
             return false;
@@ -82,11 +104,14 @@ class User extends Authenticatable
 
         */
 
-        return Notice::create([
-            'title'=>$title,
-            'user_id'=>$this->id,
-            'message'=>$message
-        ]);
+
+        $obj = new Notice;
+        $obj->title=$title;
+        $obj->user_id=$this->id;
+        $obj->message=$message;
+        $obj->save();    
+
+        return $obj;
     }
 
    
@@ -136,13 +161,16 @@ class User extends Authenticatable
 
         if($this->Role()->first()==null){
 
-            Roles::create([
-                'role'=>$role,
-                'access'=>$access,
-                'active'=>$active,
-                'user_id'=>$this->id
-            ]);
-            return $this->Role()->first();
+            $obj = new Roles;
+
+            $obj->role=$role;
+            $obj->access=$access;
+            $obj->active=$active;
+            $obj->notice_chk='1';
+            $obj->user_id=$this->id;
+            $obj->save();
+
+            return $obj;
         }else{
             return false;
         }

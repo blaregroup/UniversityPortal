@@ -55,7 +55,7 @@
 				</a>
 
 				@endif
-				 <a data-toggle="collapse" href="#message{{ $notice->id }}" class="badge float-right badge-light mr-2"><span class="fa fa-toggle-on p-1" aria-hidden="true"></span></a>
+				 <a data-toggle="collapse" href="#message{{ $notice->id }}" class="badge float-right badge-light mr-2"><span class="fa fa-eye p-1" aria-hidden="true"></span></a>
 
 				</div>
 			</div>

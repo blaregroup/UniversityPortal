@@ -7,8 +7,8 @@
     <div class="card-group">
             
             <div class="col-md-4">
-                @if($info->pic)
-                    <img src="/{{$info->pic}}" class="  img-fluid img-thumbnail card-img" alt="Profile Pic"/>
+                @if($info->document_id)
+                    <img src="/{{$info->document_id}}" class="  img-fluid img-thumbnail card-img" alt="Profile Pic"/>
                 @else
                     <img src="https://img1.looper.com/img/gallery/how-thanos-knew-who-tony-stark-was-in-avengers-infinity-war/intro-1533262156.jpg" class="  img-fluid img-thumbnail card-img" alt="Profile Pic"/>
                 @endif

@@ -23,20 +23,27 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->string('pic')->nullable();
+
             $table->string('fname');                    // fullname
             $table->longText('description');            // description
-            $table->enum('gender', ['male', 'female'])->nullable(); // gender
-            $table->date('dob')->nullable();                        // date of birth
-            $table->string('mother_name')->nullable();              // mother name
-            $table->string('father_name')->nullable();              // father name
+            $table->enum('gender', ['male', 'female']); // gender
+            $table->date('dob');                        // date of birth
+            $table->string('mothername')->nullable();              // mother name
+            $table->string('fathername')->nullable();              // father name
 
+            // phone numbers
             $table->char('phone', 10)->nullable();                  // personal number
             $table->char('mphone', 10)->nullable();     // mother number
             $table->char('fphone', 10)->nullable();     // father number
             $table->char('alphone', 10)->nullable();    // alternate numbers
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
+            // profile pic added
+            $table->unsignedBigInteger('document_id')->nullable();
+
+
 
             $table->timestamps();
         });

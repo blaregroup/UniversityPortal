@@ -31,8 +31,8 @@
               
                   
                       <div class="form-group text-center">
-                        @if($info->pic)
-                          <img src="/{{$info->pic}}" class=" p-2 mt-2 img-fluid  img-thumbnail card-img" alt="Profile Pic"/> 
+                        @if($info->document_id)
+                          <img src="/{{$info->document_id}}" class=" p-2 mt-2 img-fluid  img-thumbnail card-img" alt="Profile Pic"/> 
                         @else
                         <img src="https://img1.looper.com/img/gallery/how-thanos-knew-who-tony-stark-was-in-avengers-infinity-war/intro-1533262156.jpg" class=" p-2 mt-2 img-fluid img-thumbnail card-img " alt="Profile Pic"/>
                         @endif
@@ -88,7 +88,7 @@
                                 <div class="form-group">
                                   <label class="col-md-5 control-label">Father name:</label>
                                   <div class="col-md-9">
-                                    <input class="form-control" type="text" name="father_name" value="{{ $info->father_name }}" required/>
+                                    <input class="form-control" type="text" name="fathername" value="{{ $info->fathername }}" required/>
                                   </div>
                                 </div>   
                                 <div class="form-group">
@@ -100,7 +100,7 @@
                                 <div class="form-group">
                                   <label class="col-md-5 control-label">Mother name:</label>
                                   <div class="col-md-9">
-                                    <input class="form-control" type="text" name="mother_name" value="{{ $info->mother_name }}" required/>
+                                    <input class="form-control" type="text" name="mothername" value="{{ $info->mothername }}" required/>
                                   </div>
                                 </div>   
                                 <div class="form-group">

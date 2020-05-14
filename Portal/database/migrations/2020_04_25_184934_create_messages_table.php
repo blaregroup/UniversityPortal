@@ -24,11 +24,26 @@ class CreateMessagesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('sender_id');
             $table->foreign('sender_id')->references('id')->on('users');
+
             $table->unsignedBigInteger('receiver_id');
             $table->foreign('receiver_id')->references('id')->on('users');
+
             $table->longText('text');
             $table->timestamps();
         });
+
+        Schema::create('message_status', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('message_id');
+            $table->foreign('message_id')->references('id')->on('messages');
+
+            $table->unsignedBigInteger('receiver_id');
+            $table->foreign('receiver_id')->references('id')->on('users');
+            
+            $table->Integer('status');
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -39,5 +54,6 @@ class CreateMessagesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('messages');
+        Schema::dropIfExists('message_status');
     }
 }

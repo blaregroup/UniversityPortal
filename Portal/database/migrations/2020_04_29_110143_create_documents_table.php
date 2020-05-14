@@ -16,9 +16,16 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->longText('Description');
+            $table->longText('description');
             $table->string('originalname');
             $table->string('hashname');
+            $table->enum('type', ['PP',
+                            'UL',
+                            'AS',
+                            'TT',
+                            'SS']);
+
+            
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

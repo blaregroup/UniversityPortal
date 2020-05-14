@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('lpanel')
+@section('rpanel')
 <div class="card mt-2"> 
 <div class="card-subtitle font-weight-bold m-3"> Select  User </div>
     <ul class = "list-group p-lg-2">
     @foreach ($user as $u)
-    <li class = "list-group-item">
+    <li class = "nav">
       <a href="/admin/add/{{ $u->id }}">
-      <span class="font-weight-bold"> {{ $u->email }} </span>
+      <span class="mx-2 border border-right-0 mr-3"> {{ $u->email }} </span>
       </a>
 
     </li>

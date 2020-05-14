@@ -26,7 +26,6 @@ class Subject extends Migration
             $table->string('name');
             $table->longText('description');
             $table->bigInteger('course_id')->nullable()->unsigned();
-            $table->foreign('course_id')->nullable()->references('id')->on('courses');
             $table->timestamps();
         });
     }

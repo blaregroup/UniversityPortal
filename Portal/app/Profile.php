@@ -22,15 +22,15 @@ class Profile extends Model
         'user_id',
         'fname', 
         'description', 
-        'gender',
-        'dob', 
-        'mother_name',
-        'father_name',
+        'mothername',
+        'fathername',
         'phone',
         'mphone',
         'fphone',
         'alphone',
-        'pic'
+        'document_id',
+        'gender',
+        'dob'
     ];
 
 

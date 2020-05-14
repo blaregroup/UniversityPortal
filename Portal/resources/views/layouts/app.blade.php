@@ -58,19 +58,19 @@
 </head>
 <body style="background: #ffffff; ">
     @if($message ?? '')
-    <div class="alert alert-primary w-100">{{$message ?? '' }}</div>
+    <div class="alert alert-primary w-100 fixed-bottom text-center">{{$message ?? '' }}</div>
     @endif
 
     @if($error ?? '')
-    <div class="alert alert-danger w-100">{{ $error ?? '' }}</div>
+    <div class="alert alert-danger w-100 fixed-bottom text-center">{{ $error ?? '' }}</div>
     @endif
 
     @if($warning ?? '')
-    <div class="alert alert-warning w-100">{{$warning ?? '' }}</div>
+    <div class="alert alert-warning w-100 fixed-bottom text-center">{{$warning ?? '' }}</div>
     @endif    
 
     @if($success ?? '')
-    <div class="alert alert-success w-100">{{$success ?? '' }}</div>
+    <div class="alert alert-success w-100 fixed-bottom text-center">{{$success ?? '' }}</div>
     @endif
 
 

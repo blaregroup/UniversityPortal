@@ -13,8 +13,9 @@ class Roles extends Model
      * @var array
      */
     protected $fillable = [
-        'role', 'active', 'access', 'user_id','course_id','subject_id'
+        'role', 'active', 'access', 'user_id','course_id','notice_chk'
     ];
+
 
     public function User(){
     	return $this->belongsTo('App\User');

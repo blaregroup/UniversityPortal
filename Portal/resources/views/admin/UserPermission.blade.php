@@ -5,11 +5,27 @@
 
 @section('content')
 <div class="container">
-<div class="row justify-content-center">
-<div class="col-lg-12">
+<div class="row w-100">
 
-	<div class="card">
-		<div class="card-subtitle m-3 font-weight-bold">Requests</div>
+
+
+<ul class="nav nav-tabs w-100 py-2" style="background: #474787;">
+    <li class="active">
+    	<a data-toggle="tab" href="#menu1" class="btn m-2 btn-light">Grant</a>
+    </li>
+    <li><a data-toggle="tab" href="#menu2" class="btn m-2 btn-light">Revoke</a></li>
+</ul>
+
+
+
+  <div class="tab-content w-100">
+  	
+  	<div class="tab-pane active in" id="menu1">
+  		
+	<div class="col-lg-12 mt-3">
+
+	<div class="card border border-danger">
+		<h3 class="card-subtitle m-3 font-weight-bold">Requests</h3>
        <div class="row font-weight-bold m-2">
        	
        	<div class="col-sm-1"> S.No </div>
@@ -61,9 +77,15 @@
 </div>
 
 
+
+  	</div>
+
+  	<div class="tab-pane fade" id="menu2">
+  		
+
 <div class="col-lg-12 mt-3">
-	<div class="card">
-	<div class="card-subtitle m-3 font-weight-bold">Active</div>
+	<div class="card border border-success">
+	<h3 class="card-subtitle m-3 font-weight-bold">Active</h3>
        <div class="row m-2 font-weight-bold">
        	
        	<div class="col-sm-1"> S.No </div>
@@ -114,5 +136,11 @@
 
 	</div>
 </div>
+
+
+  	</div>
+  </div>
+
+
 
 @endsection

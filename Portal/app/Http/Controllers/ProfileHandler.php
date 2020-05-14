@@ -226,7 +226,7 @@ class ProfileHandler extends Controller
             # code...
         }
         else{
-        dd($request->profilepic);
+        //dd($request->profilepic);
         $value = $request->except('_token','profilepic','submit');
         //dd(DB::table('profiles')->where('user_id', $request->user()->id)->get());
 
