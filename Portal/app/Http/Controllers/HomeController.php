@@ -95,7 +95,7 @@ class HomeController extends Controller
             'users', 
             'users.id', 
             'notices.user_id')
-        ->get();
+        ->orderBy('notices.id', 'DESC')->get();
 
         $notices = Notice::where('user_id', $request->user()->id)->get();
 

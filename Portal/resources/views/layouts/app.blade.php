@@ -27,6 +27,40 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <script type="text/javascript">
+        function make_request(url, data, callhere){
+            var xhttp = new XMLHttpRequest();
+            xhttp.open('GET', '/ajax/'+url, true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.setRequestHeader("Accept", "application/json");
+
+            if (!callhere) {
+
+            xhttp.onreadystatechange = function() {
+
+                if (this.readyState == 0) {
+                    document.getElementById('loader').hidden=false;
+                };
+
+                if (this.readyState == 3) {
+                    document.getElementById('loader').hidden=true;
+                };
+
+                if (this.readyState == 4 && this.status == 200) {
+                    //document.getElementById("demo").innerHTML =
+                    console.log(this.responseText);
+                    }
+                console.log(this.readyState);
+                };
+
+            }
+            //xhttp.setRequestHeader("_token", "{{ csrf_token()}}");
+            return  xhttp.send(data);
+
+        }
+
+    </script>
+
     <style type="text/css">
         
         #sidebar-wrapper {
@@ -163,6 +197,8 @@
         <div class="navbar navbar-expand-md   shadow-sm position-fixed" style="z-index: 1;background: #3B3B98; width:100%; top:55px;left:0;height:50px;">
             <button onclick="window.history.back();" class="btn text-white "><span class="fa fa-arrow-left m-1"></span> Back</button>
             <a class=" " id="home-link" href="/home"> <i class="fa fa-home m-1" aria-hidden="true"></i>Home</a>
+
+
         @auth
             <!-- student/teacher toggle button-->
             @if(Auth::user()->Role()->first()->role!='admin')     
@@ -173,6 +209,11 @@
              <button class="btn text-white " id="menu-toggle"  class="admin-menu-toggle"><span class="fa fa-bars"></span> Menu</button>
             @endif
         @endauth
+
+<div class="clearfix ml-3">
+  <div class="spinner-border text-light" id="loader" role="status" hidden=true>
+  </div>
+</div>
         
         </div>
     

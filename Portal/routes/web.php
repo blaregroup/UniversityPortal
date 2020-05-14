@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+
 // homepage
 Route::get('/', function () {
     return view('WelcomePage');
@@ -28,6 +29,17 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('ContactPage');
  });
+
+
+
+
+// ajax api
+Route::get('/ajax/notice/create', 'AjaxServe@createNotice');
+
+
+
+
+
 
 // Login route
 Auth::routes(['reset' => false]);
