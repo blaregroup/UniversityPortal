@@ -41,6 +41,13 @@
         #menu-toggle{display: none;}
         .admin-menu-toggle{display: none;}
         
+     #sidebar-wrapper a {
+            background-color: #30336b;
+        }  
+      #sidebar-wrapper a:hover {
+            background-color: #6468b5;
+        }
+    #sidebar-wrapper .active{background-color: #6468b5; border:none;}
 
         @media (max-width: 1240px) {
 
@@ -50,9 +57,12 @@
           #wrapper.toggled #sidebar-wrapper { margin-left: 0rem;}
           #home-link{margin-left:0px;padding-left: 0px; border-left:none; }
           
+
           
         }
     </style>
+
+    
 
 
 </head>
@@ -177,15 +187,15 @@
             @if(Auth::user()->Role()->first()->role=='student')
             <div class=" border-right position-fixed " id="sidebar-wrapper" style="top:105px;left:0px;background: #30336b">
                 <div class="list-group list-group-flush" style="width:13rem;">
-                    <a href="/home" class="list-group-item list-group-item-action text-white  " style="background: #30336b;"><span class="fa fa-home m-2 "></span> Home</a>
+                    <a href="/home" class="list-group-item list-group-item-action text-white "><span class="fa fa-home m-2 "></span> Home</a>
                     
-                    <a href="/profile/personal" style="background: #30336b;" class="list-group-item list-group-item-action text-white"><span class="fa fa-user-circle m-2"></span> Profile</a>
+                    <a href="/profile/personal" class="list-group-item list-group-item-action text-white"><span class="fa fa-user-circle m-2"></span> Profile</a>
             
-                    <a href="/student/course/" style="background: #30336b;" class="list-group-item list-group-item-action text-white "><span class="fa fa-graduation-cap m-2"></span> Course</a> 
-                    <a href="" style="background: #30336b;" class="list-group-item list-group-item-action text-white"><span class="fa fa-calendar m-2"></span> Schedule</a>
-                    <a href=""  style="background: #30336b;" class="list-group-item list-group-item-action text-white  "><span class="fa fa-book m-2"></span> Study</a>
-                   <a href="" style="background: #30336b;" class="list-group-item list-group-item-action text-white "><span class="fa fa-edit m-2"></span> Assignments</a>
-                   <a href="/notice" style="background: #30336b;" class="list-group-item list-group-item-action text-white  "><span class="fa fa-envelope-open m-2"></span> Notification</a>
+                    <a href="/student/course/"  class="list-group-item list-group-item-action text-white "><span class="fa fa-graduation-cap m-2"></span> Course</a> 
+                    <a href=""  class="list-group-item list-group-item-action text-white"><span class="fa fa-calendar m-2"></span> Schedule</a>
+                    <a href=""   class="list-group-item list-group-item-action text-white  "><span class="fa fa-book m-2"></span> Study</a>
+                   <a href=""  class="list-group-item list-group-item-action text-white "><span class="fa fa-edit m-2"></span> Assignments</a>
+                   <a href="/notice"  class="list-group-item list-group-item-action text-white  "><span class="fa fa-envelope-open m-2"></span> Notification</a>
                 </div>
             </div>
             @endif
@@ -194,13 +204,13 @@
             @if(Auth::user()->Role()->first()->role=='teacher')
             <div class=" border-right position-fixed" id="sidebar-wrapper" style="top:105px;left:0px;background: #30336b">
                 <div class="list-group list-group-flush" style="width:13rem;">
-                    <a href="/home" class="list-group-item list-group-item-action text-white " style="background: #30336b;"><span class="fa fa-home m-2 "></span> Home</a>
+                    <a href="/home" class="list-group-item list-group-item-action text-white "><span class="fa fa-home m-2 "></span> Home</a>
                     
-                    <a href="/profile/personal" style="background: #30336b;" class="list-group-item list-group-item-action text-white "><span class="fa fa-user-circle m-2"></span> Profile</a>
-                    <a href="" style="background: #30336b;" class="list-group-item list-group-item-action text-white "><span class="fa fa-calendar m-2"></span> Schedule</a>
-                    <a href="" style="background: #30336b;" class="list-group-item list-group-item-action text-white"><span class="fa fa-book m-2"></span> Study</a>
-                    <a href="" style="background: #30336b;" class="list-group-item list-group-item-action text-white "><span class="fa fa-edit m-2"></span> Assignments</a>
-                    <a href="/notice" style="background: #30336b;" class="list-group-item list-group-item-action text-white"><span class="fa fa-envelope-open m-2"></span> Notificaton</a>
+                    <a href="/profile/personal" class="list-group-item list-group-item-action text-white "><span class="fa fa-user-circle m-2"></span> Profile</a>
+                    <a href=""  class="list-group-item list-group-item-action text-white "><span class="fa fa-calendar m-2"></span> Schedule</a>
+                    <a href="" class="list-group-item list-group-item-action text-white"><span class="fa fa-book m-2"></span> Study</a>
+                    <a href=""  class="list-group-item list-group-item-action text-white "><span class="fa fa-edit m-2"></span> Assignments</a>
+                    <a href="/notice" class="list-group-item list-group-item-action text-white"><span class="fa fa-envelope-open m-2"></span> Notificaton</a>
                  </div>
             </div>
             @endif
@@ -233,13 +243,15 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Menu Toggle Script -->
+  <!-- Menu Toggle Script & Menu selection Script-->
   <script>
+    //menu toggle script
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
 
-    });
+    })
+    
   </script>
 
 </body>
