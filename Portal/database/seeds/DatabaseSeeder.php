@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
 
 		# creating numbers of teachers
 		for($x=0; $x<$no_of_teachers ; $x++){
-		        $obj = User::create(['name'=>'TeacherID'.$x,
+		        $obj = User::create(['name'=>'TeacherName '.$x,
 		              'email'=>'teacher'.$x.'@nothing.com',
 		              'password'=>Hash::make('admin@123')
 		        ]);
@@ -56,9 +56,9 @@ class DatabaseSeeder extends Seeder
 		}
 
 		
-		# creating numbers of teachers
+		# creating numbers of students
 		for($x=0; $x<$no_of_students; $x++){
-		        $obj = User::create(['name'=>'StudentID'.$x,
+		        $obj = User::create(['name'=>'StudentName '.$x,
 		              'email'=>'student'.$x.'@nothing.com',
 		              'password'=>Hash::make('admin@123')
 		        ]);
@@ -94,9 +94,24 @@ class DatabaseSeeder extends Seeder
     	#            Section Three, Generate Their Profiles
     	#=====================================================================
 
+			//Admin profile
+			$admin->createProfile(
+				$fname=$admin->name,
+		        $description=Str::random(50),
+		        $gender="male",
+    			$dob="01/01/1999", 
+		        $mother_name=Str::random(8),
+		        $father_name=Str::random(8),
+		        $phone="".rand(1000000000,9999999999),
+		        $mphone="".rand(1000000000,9999999999),
+		        $fphone="".rand(1000000000,9999999999),
+		        $alphone="".rand(1000000000,9999999999)
+			);
+
+
 			foreach($teachers as $teacher){
 			        $teacher->createProfile(
-			        $fname=Str::random(15),
+			        $fname=$teacher->name,
 			        $description=Str::random(50),
 			        $gender="male",
         			$dob="01/01/1999", 
@@ -113,7 +128,7 @@ class DatabaseSeeder extends Seeder
 
 			foreach($students as $student){
 			        $student->createProfile(
-					$fname=Str::random(15),
+					$fname=$student->name,
 			        $description=Str::random(50),
 			        $gender="male",
         			$dob="01/01/1999", 

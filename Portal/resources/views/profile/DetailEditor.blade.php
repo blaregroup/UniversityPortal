@@ -86,25 +86,25 @@
                             <div class="col-md-6 ">    
 
                                 <div class="form-group">
-                                  <label class="col-md-5 control-label">Father name:</label>
+                                  <label class="col-md-5 control-label">Father name : </label>
                                   <div class="col-md-9">
                                     <input class="form-control" type="text" name="fathername" value="{{ $info->fathername }}" required/>
                                   </div>
                                 </div>   
                                 <div class="form-group">
-                                  <label class="col-md-5 control-label">Father's Phone:</label>
+                                  <label class="col-md-5 control-label">Father's Phone : </label>
                                   <div class="col-md-9">
                                     <input class="form-control" type="text" name="fphone" value="{{ $info->fphone }}" required/>
                                   </div>
                                 </div>                               
                                 <div class="form-group">
-                                  <label class="col-md-5 control-label">Mother name:</label>
+                                  <label class="col-md-5 control-label">Mother name :</label>
                                   <div class="col-md-9">
                                     <input class="form-control" type="text" name="mothername" value="{{ $info->mothername }}" required/>
                                   </div>
                                 </div>   
                                 <div class="form-group">
-                                  <label class="col-md-5 control-label">Mother's Phone:</label>
+                                  <label class="col-md-5 control-label">Mother's Phone : </label>
                                   <div class="col-md-9">
                                     <input class="form-control" type="text" name="mphone" value="{{ $info->mphone }}" required/>
                                   </div>

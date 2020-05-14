@@ -24,7 +24,8 @@
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">Sr.</th>
-                    <th scope="col">Subject Name</th>
+                    <th scope="col">Sub. code</th>
+                    <th scope="col">Sub. Name</th>
                     <th scope="col">Sem/Year</th>
                     <th scopr="col">Syllabus</th>
                   </tr>
@@ -36,7 +37,8 @@
                     @foreach ($subjects as $sub)
                         <tr>
                           <td>{{$i}}</td>
-                          <td>{{ $course->name}}</td>
+                          <td>{{$sub->subcode}}</td>
+                          <td>{{ $sub->name}}</td>
                           <td>Null</td>
                           <td><button class="btn btn-primary"><span class="fa fa-download mr-2"></span>Download</button></td>
                         </tr>

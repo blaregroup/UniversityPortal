@@ -231,8 +231,9 @@ class ProfileHandler extends Controller
         //dd(DB::table('profiles')->where('user_id', $request->user()->id)->get());
 
         $request->user()->profile()->first()->update($value);
-            
-        return redirect('/profile/personal/edit');
+          
+
+        return redirect('/profile/personal');
 
         }
     }
