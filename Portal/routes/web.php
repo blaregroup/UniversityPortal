@@ -57,12 +57,13 @@ Route::get( 'admin/add/{id?}', 	'AdminHandler@AllUser')->middleware('onlyAdmin')
 Route::get('admin/account', function(){
 		return redirect('admin/add/1');
 });
+Route::get('admin/manageuser','AdminHandler@ManageUser')->middleware('onlyAdmin');  //manage user link
 Route::match(['get','post'], 'admin/course', 	'AdminHandler@Course')->middleware('onlyAdmin');
 Route::post('admin/add', 		'AdminHandler@AddUser')->middleware('onlyAdmin');
 Route::post('admin/edit', 		'AdminHandler@Edit')->middleware('onlyAdmin');
 Route::post('admin/activate', 	'AdminHandler@Grant')->middleware('onlyAdmin');
 Route::post('admin/deactivate', 'AdminHandler@rGrant')->middleware('onlyAdmin');
-
+Route::post('admin/updateuser', 'AdminHandler@SaveChange')->middleware('onlyAdmin'); // update Profile
 
 /*
 Notice

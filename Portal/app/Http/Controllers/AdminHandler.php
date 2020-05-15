@@ -19,6 +19,60 @@ class AdminHandler extends Controller
     	return view('admin.AdminPanel');
     }
 
+
+     /* Manage Users*/
+     public function ManageUser(){
+        
+        $users = DB::table('users')->select('users.name','users.email','roles.access','users.id','roles.role','roles.active')->join('roles','users.id','roles.user_id')->get();
+        $profile = DB::table('users')->select('*')->join('profiles','profiles.user_id','users.id')->join('roles','roles.user_id','users.id')->where('users.id','1')->first();
+
+        
+
+        return view('admin.ManageUser',['users'=>$users , 'info'=>$profile]);
+     }
+     public function SaveChange(Request $request){
+        
+        $value = $request->except('_token');
+        DB::table('users')
+            ->where('id','1')
+            ->update([
+            'name' => $value['name'],
+            'email'=>$value['email'],
+
+            ]);
+
+        DB::table('roles')
+            ->where('user_id', '1')
+            ->update([
+                'role'=>$value['role'],
+                'access'=>$value['access'],
+                'active'=>$value['active']
+            ]);
+
+        DB::table('profiles')
+            ->where('user_id','1')
+            ->update([
+                'fname'=>$value['name'],
+                'description'=>$value['description'],
+                'gender'=>$value['gender'],
+                'dob'=>$value['dob'],
+                'mothername'=>$value['mothername'],
+                'fathername'=>$value['fathername'],
+                'phone'=>$value['phone'],
+                'mphone'=>$value['mphone'],
+                'fphone'=>$value['fphone'],
+                'alphone'=>$value['alphone']
+            ]);        
+
+        if($request->password!=null){
+            // update user details into users table Including new password
+            DB::table('users')
+                ->where('id', $request->id)
+                ->update(['password' => Hash::make($request->password)]);
+        }
+        return redirect('admin/manageuser');
+    }
+
     /*
 
     This Function Retreive All User Detail and Present 

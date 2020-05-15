@@ -12,6 +12,9 @@
             <a href="/admin/perm" class="list-group-item list-group-item-action text-white"> 
                 <span class=" fa fa-user-secret m-2" style="background: #30336b;"></span>
             Privilage</a>
+            <a href="/admin/manageuser" class="list-group-item list-group-item-action text-white"> 
+                <span class=" fa fa-user-secret m-2" style="background: #30336b;"></span>
+            Manage Users</a>
             <a href="/upload" class="list-group-item list-group-item-action text-white"><span class="m-2 fa fa-cloud-upload"></span> Uploads</a>
             <a href="/admin/course" class="list-group-item list-group-item-action text-white" >
                 <span class=" fa fa-book m-2"></span>Course</a>
