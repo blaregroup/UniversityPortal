@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 
 class AjaxServe extends Controller
@@ -19,6 +19,23 @@ class AjaxServe extends Controller
 
 
     	return json_encode($request->input());
+    }
+
+    public function userProfile(Request $request){
+        $profile = DB::table('users')->select('*')->join('profiles','profiles.user_id','users.id')->join('roles','roles.user_id','users.id')->where('users.id',
+            $request->input('id'))->first();
+
+        return view('ajax.userProfile',['info'=>$profile]);
+    }
+
+    // 
+    public function userConfig(Request $request){
+        $info = DB::table('users')
+            ->join('roles','users.id','roles.user_id')
+            ->where('users.id', $request->input('id'))
+            ->first();
+
+        return view('ajax.UserConfig',['info'=>$info]);
     }
 
 

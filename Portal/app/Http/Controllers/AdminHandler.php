@@ -23,34 +23,20 @@ class AdminHandler extends Controller
      /* Manage Users*/
      public function ManageUser(){
         
-        $users = DB::table('users')->select('users.name','users.email','roles.access','users.id','roles.role','roles.active')->join('roles','users.id','roles.user_id')->get();
-        $profile = DB::table('users')->select('*')->join('profiles','profiles.user_id','users.id')->join('roles','roles.user_id','users.id')->where('users.id','1')->first();
+        $users = DB::table('users')->select('profiles.fname','users.email','roles.access','users.id','roles.role','roles.active')->join('roles','users.id','roles.user_id')->join('profiles','users.id','profiles.user_id')->paginate(15);
+        //->where('users.id', '!=','1')
+
 
         
 
-        return view('admin.ManageUser',['users'=>$users , 'info'=>$profile]);
+        return view('admin.ManageUser',['users'=>$users]);
      }
      public function SaveChange(Request $request){
         
         $value = $request->except('_token');
-        DB::table('users')
-            ->where('id','1')
-            ->update([
-            'name' => $value['name'],
-            'email'=>$value['email'],
-
-            ]);
-
-        DB::table('roles')
-            ->where('user_id', '1')
-            ->update([
-                'role'=>$value['role'],
-                'access'=>$value['access'],
-                'active'=>$value['active']
-            ]);
 
         DB::table('profiles')
-            ->where('user_id','1')
+            ->where('user_id',$value['valueid'])
             ->update([
                 'fname'=>$value['name'],
                 'description'=>$value['description'],
@@ -62,14 +48,9 @@ class AdminHandler extends Controller
                 'mphone'=>$value['mphone'],
                 'fphone'=>$value['fphone'],
                 'alphone'=>$value['alphone']
-            ]);        
+            ]);
 
-        if($request->password!=null){
-            // update user details into users table Including new password
-            DB::table('users')
-                ->where('id', $request->id)
-                ->update(['password' => Hash::make($request->password)]);
-        }
+        
         return redirect('admin/manageuser');
     }
 
@@ -81,38 +62,27 @@ class AdminHandler extends Controller
     @param $id Integer -> Users Table ID    
     
     */
-    public function AllUser($id='1'){
+    public function AllUser($id=null){
 
-        // request user complete information from table users and roles
-        $info = DB::table('users')
-            ->join('roles','users.id','roles.user_id')
-            ->where('users.id', $id)
-            ->first();
+
+        if ($id) {
+        $user = DB::table('users')
+            ->select('id', 'name', 'email')
+            ->where('id',$id)
+            ->paginate(15);
+
+
+        }else{
 
         // other users details from users table
         $user = DB::table('users')
             ->select('id', 'name', 'email')
-            ->get();
-        /*
+            ->paginate(15);
 
-         +"id": "1",
-         +"name": "Administrator",
-         +"email": "admin@nothing.com",
-         +"email_verified_at": null,
-         +"password": "$2y$10$PiIC.o38JaXH0VFuwkY9TO/9Ld7bMmcBu54N9AK/guKcsISVQscWm",
-         +"remember_token": null,
-         +"created_at": "2020-04-30 16:30:48",
-         +"updated_at": "2020-04-30 16:30:48",
-         +"role": "admin",
-         +"access": "high",
-         +"active": "1",
-         +"user_id": "1",
-         +"course_id": null,
-         +"subject_id": null,
+        }
+               
 
-        */
-
-        return view('admin.UserAccountPanel', ['info'=>$info, 'user'=>$user]);
+        return view('admin.UserAccountPanel', ['user'=>$user]);
     }
 
 
@@ -159,8 +129,6 @@ class AdminHandler extends Controller
         DB::table('roles')
             ->where('user_id', $request->id)
             ->update([
-                'role'=>$value['role'],
-                'access'=>$value['access'],
                 'active'=>$value['active']
             ]);
 

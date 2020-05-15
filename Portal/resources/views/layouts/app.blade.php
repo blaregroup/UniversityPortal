@@ -28,11 +28,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script type="text/javascript">
-        function make_request(url, data, callhere){
+
+        function start_loader(){
+            document.getElementById('loader').hidden=false;
+        };
+
+        function stop_loader(){
+            document.getElementById('loader').hidden=true;
+        };
+
+        function make_request(url, callhere){
             var xhttp = new XMLHttpRequest();
             xhttp.open('GET', '/ajax/'+url, true);
-            xhttp.setRequestHeader("Content-type", "application/json");
-            xhttp.setRequestHeader("Accept", "application/json");
+            //xhttp.setRequestHeader("Content-type", "application/json");
+            //xhttp.setRequestHeader("Accept", "application/json");
 
             if (!callhere) {
 
@@ -53,9 +62,11 @@
                 console.log(this.readyState);
                 };
 
-            }
+            }else{
+                xhttp.onreadystatechange = callhere;
+            };
             //xhttp.setRequestHeader("_token", "{{ csrf_token()}}");
-            return  xhttp.send(data);
+            return  xhttp.send();
 
         }
 

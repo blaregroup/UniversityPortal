@@ -1,152 +1,124 @@
 @extends('layouts.app')
 
 @section('rpanel')
-<div class="card mt-2"> 
-<div class="card-subtitle font-weight-bold m-3"> Select  User </div>
-    <ul class = "list-group p-lg-2">
-    @foreach ($user as $u)
-    <li class = "nav">
-      <a href="/admin/add/{{ $u->id }}">
-      <span class="mx-2 border border-right-0 mr-3"> {{ $u->email }} </span>
-      </a>
+<button class="btn btn-primary mx-2"><span class="fa fa-filter"></span> Filter</button>
 
-    </li>
-    @endforeach
-    </ul>
-</div>
 @endsection
 
 
 @section('content')
+
+<div class="container"> 
+    <div class="row">
+        <div class="col">
+        <div class="float-right">
+        {{ $user->withQueryString()->links()}}
+        
+      </div>
+      
+    </div>
+
+</div>
+
+<script type="text/javascript">
+function print_resp(){
+    if (this.readyState == 4){
+        start_loader();
+        $("#viewModal").modal()
+        document.getElementById('show_config_data').innerHTML=this.responseText;
+        stop_loader();
+
+    }
+};
+</script>
+
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-header text-white" style="background: #130f40;">
+            <h4 style="display:inline;"><span class="fa fa-users mr-2"></span> Account</h4>
+            <div class="float-right m-2">
+                <a class="btn btn-info" href="/admin/add">
+                    <span class="fa fa-server"></span> 
+                    Reset
+                </a>
+                <button class="btn btn-primary"><span class="fa fa-filter"></span> Filter</button>
+                <button class="btn btn-success"><span class="fa fa-user-plus"></span> New</button>
+            </div>
+        </div> 
+    </div>
+    
+
+
+    <div class="table-responsive">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scopr="col">Options</th>
+            
+          </tr>
+        </thead>
+        <tbody>        
+            @foreach ($user as $u)
+            <tr>
+              <td>{{ $loop->index}}</td>
+              <td>{{$u->id}}</td>
+              <td>{{ $u->name}}</td>
+              <td>{{$u->email}}</td>
+              <td>  
+                <div>
+
+                    <button class="btn btn-primary btn-sm m-1"   onclick="make_request('users/config?id={{ $u->id }}',print_resp)">
+                        <span class="fa fa-eye m-1"></span> Show</button> 
+
+
+                    <a href="/admin/add/{{ $u->id }}" class="btn btn-danger btn-sm m-1"><span class="fa fa-trash m-1"></span> Remove</a>
+
+                </div>
+                    
+              </td>
+            </tr>
+            @endforeach                
+        </tbody>
+        
+    </table>
+
+    </div>  
+
+</div>
+
+
+
+
+<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="viewProfileCenterTitle" aria-hidden="true">
+
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        View / Edit Config
+      </div>
+      <div class="modal-body" id="show_config_data">
+          HERE
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{--
+
+
+
+
 <div class="container">
     <div class="row justify-content-center">
         
-                <div class="col p-3 card">
-                    <form action="/admin/edit" method='post' class="card-body">
-                    @csrf
-                    <div class="banner">
-                    <h5 class="font-weight-normal"> 
-                        {{ $info->name }} 
-
-                    @if ($info->role==='admin')
-                        <p class="badge badge-pill badge-success"> Admin </p>
-                    @elseif ($info->role==='student')
-                        <p class="badge badge-pill badge-secondary"> Student </p>
-                    @else ($info->role==='teacher')
-                        <p class="badge badge-pill badge-warning"> Teacher </p>
-                    @endif
-                    </h5>
-                    </div>
-                    <input type="hidden" name="id" value="{{ $info->id }}" />
-                    <div class="item mt-2">
-                        <p>Name<span class="required">*</span></p>
-                        <div class="name-item">
-                            <input type="text" name="name" value="{{ $info->name }}" required/>
-                        </div>
-                    </div>
-
-                    <div class="item mt-3">
-                        <p>Email<span class="required">*</span></p>
-                        <div class="name-item">
-                            <input type="text" name="email" value="{{ $info->email }}" required/>
-                        </div>
-                    </div>
-
-                    <div class="item mt-3">
-                        <p>Reset Password</p>
-                        <div class="name-item">
-                            <input type="text" name="password" placeholder="Leave Blank For No Change" />
-                        </div>
-                    </div>
-
-
-
-                    <div class="form-group row mt-3">
-                        <label class="col-md-4 col-form-label">State</label>
-                        <select id="active" name="active" class="col-md-8 form-control">
-                            <option value="1"
-                            @if($info->active==='1')
-                            selected="1"
-                            @endif
-                            >Active</option>
-                            <option value="0"
-                            @if($info->active==='0')
-                            selected="0"
-                            @endif
-                            >Deactive</option>
-                        </select> 
-                    </div>
-
-
-                    <div class="form-group row mt-3">
-                        <label class="col-md-4 col-form-label">Role</label>
-                        <select id="role" name="role" class="col-md-8 form-control">
-                            <option value="student" 
-                            @if ($info->role==='student')
-
-                            selected="1"
-                            
-                            @endif
-
-                            >Student</option>
-                            <option value="teacher"
-
-                            @if($info->role==='teacher')
-                            selected="1"
-
-                            @endif
-
-                            >Teacher</option>
-
-                            <option value="admin"
-
-                            @if($info->role==='admin')
-                            selected="1"
-
-                            @endif
-
-                            >Admin</option>
-
-                        </select> 
-                    </div>
-
-
-                    <div class="form-group row mt-3">
-                        <label class="col-md-4 col-form-label">Access</label>
-                        <select id="access" name="access" class="col-md-8 form-control">
-                            <option value="low" 
-                            @if ($info->access==='low')
-
-                            selected="1"
-                            
-                            @endif
-
-                            >Low</option>
-                            <option value="median"
-
-                            @if ($info->access==='median')
-
-                            selected="1"
-                            
-                            @endif
-
-                            >Median</option>
-                            <option value="high"
-                            @if ($info->access==='high')
-                            selected="1"
-                            @endif
-
-                            >High</option>
-                        </select> 
-                    </div>
-
-
-                    <div class="btn btn-block mt-3">
-                        <button type="submit" href="/" class="btn btn-outline-danger">Save</button>
-                    </div>
-
-                    </form>
-                </div>
+               
         
         <div class="col">
 
@@ -272,6 +244,6 @@
         </div>
     </div>
 </div>
-
+--}}
 
 @endsection

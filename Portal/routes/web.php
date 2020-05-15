@@ -35,6 +35,8 @@ Route::get('/contact', function () {
 
 // ajax api
 Route::get('/ajax/notice/create', 'AjaxServe@createNotice');
+Route::get('/ajax/users/config', 'AjaxServe@userConfig');
+Route::get('/ajax/users/profile', 'AjaxServe@userProfile');
 
 
 
