@@ -8,24 +8,24 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <!--<script src="{{ asset('js/app.js') }}" defer></script>-->
     
 
-    <!-- Fonts -->
-    <!--<link rel="dns-prefetch" href="//fonts.gstatic.com">-->
-    <!--<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ asset('js/jquery-3.3.1.slim.min.js') }}"  type="text/javascript"></script>
+    <script src="{{ asset('js/popper.min.js') }}"  type="text/javascript"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"  type="text/javascript"></script>
+    
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!--<script src="{{ asset('js/app.js') }}" defer></script>-->
 
 
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <script type="text/javascript">
 
@@ -40,8 +40,6 @@
         function make_request(url, callhere){
             var xhttp = new XMLHttpRequest();
             xhttp.open('GET', '/ajax/'+url, true);
-            //xhttp.setRequestHeader("Content-type", "application/json");
-            //xhttp.setRequestHeader("Accept", "application/json");
 
             if (!callhere) {
 
@@ -56,7 +54,6 @@
                 };
 
                 if (this.readyState == 4 && this.status == 200) {
-                    //document.getElementById("demo").innerHTML =
                     console.log(this.responseText);
                     }
                 console.log(this.readyState);
@@ -65,7 +62,6 @@
             }else{
                 xhttp.onreadystatechange = callhere;
             };
-            //xhttp.setRequestHeader("_token", "{{ csrf_token()}}");
             return  xhttp.send();
 
         }
@@ -165,7 +161,7 @@
                         @else
                         
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre  style="color: #ffffff">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre  style="color: #ffffff;">
                                     <span class="fa fa-user mr-1"></span>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -291,10 +287,7 @@
 </div>
 
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  
   <!-- Menu Toggle Script & Menu selection Script-->
   <script>
     //menu toggle script
