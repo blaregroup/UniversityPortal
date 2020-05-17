@@ -29,6 +29,47 @@
    </div>
 </div>
 
+
+
+ <div class="card mt-3">
+       <div class="card-subtitle m-3 font-weight-bold">
+            Course List
+       </div>
+       <div class="card-body">
+           
+           <ul>
+                @foreach ($AllCourse as $course)
+                    <li class="list-unstyled">
+                        <a href="?id={{ $course->id }}">{{ $course->name }}</a>
+                    </li>
+               @endforeach
+           </ul>
+
+       </div>
+
+   </div>
+
+      <div class="card mt-3">
+        <div class="card-subtitle m-3 font-weight-bold">
+            Add New Course
+        </div>
+
+       <div class="card-body">
+
+        <form action='course?cmd=addcourse' method="POST">
+            @csrf
+            <label class="form-control-label">Name</label>
+            <input type="text" name="course" class="form-control" />
+            <label class="form-control-label mt-1">Description</label>
+            <input type="text" name="description" class="form-control" />
+
+            <input type="submit" name="submit" value="Add" class="btn btn-primary m-1">
+        </form>
+           
+       </div>
+   </div>
+
+   
 @endsection
 
 @section('content')
@@ -202,42 +243,5 @@ Note: Linking to new course will detached from old subject.</p>
 
 @section('lpanel')
 
- <div class="card mt-3">
-       <div class="card-subtitle m-3 font-weight-bold">
-            Course List
-       </div>
-       <div class="card-body">
-           
-           <ul>
-                @foreach ($AllCourse as $course)
-                    <li class="list-unstyled">
-                        <a href="?id={{ $course->id }}">{{ $course->name }}</a>
-                    </li>
-               @endforeach
-           </ul>
-
-       </div>
-
-   </div>
-
-      <div class="card mt-3">
-        <div class="card-subtitle m-3 font-weight-bold">
-            Add New Course
-        </div>
-
-       <div class="card-body">
-
-        <form action='course?cmd=addcourse' method="POST">
-            @csrf
-            <label class="form-control-label">Name</label>
-            <input type="text" name="course" class="form-control" />
-            <label class="form-control-label mt-1">Description</label>
-            <input type="text" name="description" class="form-control" />
-
-            <input type="submit" name="submit" value="Add" class="btn btn-primary m-1">
-        </form>
-           
-       </div>
-   </div>
 
 @endsection

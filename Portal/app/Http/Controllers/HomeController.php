@@ -99,7 +99,7 @@ class HomeController extends Controller
 
         $notices = Notice::where('user_id', $request->user()->id)->get();
 
-
+        $request->user()->all_notification_seen();
         return view('NoticeBoard', ['notices'=>$notice, 
             'mynotice'=>$notices
         ]);

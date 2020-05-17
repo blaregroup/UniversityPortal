@@ -217,11 +217,12 @@
             @endif
         @endauth
 
-<div class="clearfix ml-3">
-  <div class="spinner-border text-light" id="loader" role="status" hidden=true>
-  </div>
-</div>
-        
+        <div class="clearfix ml-3">
+          <div class="spinner-border text-light" id="loader" role="status" hidden=true>
+          </div>
+        </div>
+
+
         </div>
     
 <div class="row py-0 mx-0  mb-2 " id="wrapper" style="margin-top: 120px;" >
@@ -243,7 +244,12 @@
                     <a href=""  class="list-group-item list-group-item-action text-white"><span class="fa fa-calendar m-2"></span> Schedule</a>
                     <a href=""   class="list-group-item list-group-item-action text-white  "><span class="fa fa-book m-2"></span> Study</a>
                    <a href=""  class="list-group-item list-group-item-action text-white "><span class="fa fa-edit m-2"></span> Assignments</a>
-                   <a href="/notice"  class="list-group-item list-group-item-action text-white  "><span class="fa fa-envelope-open m-2"></span> Notification</a>
+                   <a href="/notice"  class="list-group-item list-group-item-action text-white  "><span class="fa fa-envelope-open m-2"></span> Notification
+                        <span class="badge badge-danger badge-pill">
+                        {{ Auth::user()->unseen_notifications()}}       
+                        </span> 
+
+                   </a>
                 </div>
             </div>
             @endif
@@ -258,11 +264,46 @@
                     <a href=""  class="list-group-item list-group-item-action text-white "><span class="fa fa-calendar m-2"></span> Schedule</a>
                     <a href="" class="list-group-item list-group-item-action text-white"><span class="fa fa-book m-2"></span> Study</a>
                     <a href=""  class="list-group-item list-group-item-action text-white "><span class="fa fa-edit m-2"></span> Assignments</a>
-                    <a href="/notice" class="list-group-item list-group-item-action text-white"><span class="fa fa-envelope-open m-2"></span> Notificaton</a>
+                    <a href="/notice" class="list-group-item list-group-item-action text-white"><span class="fa fa-envelope-open m-2"></span> Notificaton
+                        <span class="badge badge-danger badge-pill">
+                        {{ Auth::user()->unseen_notifications()}}       
+                        </span> 
+
+                    </a>
                  </div>
             </div>
             @endif
 
+            <!-- -->
+            @if(Auth::user()->Role()->first()->role=='admin')
+
+
+        <div class=" border-right position-fixed " id="sidebar-wrapper" style="left:0;top:105px; background: #30336b" >
+                <div class="list-group list-group-flush" style="width:13rem;">
+                    <a href="/home" class="list-group-item list-group-item-action text-white" ><span class="fa fa-home m-2 "></span> Home</a>
+                    
+                    <a href="/profile/personal" class="list-group-item list-group-item-action text-white"><span class="fa fa-user-circle m-2"></span> Profile</a>
+                    <a href="/admin/add" class="list-group-item list-group-item-action text-white"><span class="m-2 fa fa-users"></span>  Accounts</a>        
+                    <a href="/admin/perm" class="list-group-item list-group-item-action text-white"> 
+                        <span class=" fa fa-user-secret m-2" style="background: #30336b;"></span>
+                    Privilage</a>
+                    <a href="/admin/manageuser" class="list-group-item list-group-item-action text-white"> 
+                        <span class=" fa fa-address-book-o m-2" style="background: #30336b;"></span>
+                    Users</a>
+                    <a href="/upload" class="list-group-item list-group-item-action text-white"><span class="m-2 fa fa-cloud-upload"></span> Uploads</a>
+                    <a href="/admin/course" class="list-group-item list-group-item-action text-white" >
+                        <span class=" fa fa-book m-2"></span>Course</a>
+                    <a href="/notice" class="list-group-item list-group-item-action text-white"> 
+                        <span class="fa fa-envelope m-2"></span>
+                    Notification
+                        <span class="badge badge-danger badge-pill">
+                        {{ Auth::user()->unseen_notifications()}}       
+                        </span> 
+                </a>
+                </div>
+            </div>
+
+            @endif
             
 
         @endauth   

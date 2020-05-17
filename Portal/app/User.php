@@ -125,6 +125,16 @@ class User extends Authenticatable
         return $this->hasMany('App\Notice');
     }
 
+
+    public function all_notification_seen(){
+        return $this->role()->first()->update(['notice_chk'=>DB::table('notices')->count()]);
+    }
+
+
+    public function unseen_notifications(){
+        return DB::table('notices')->count()-$this->role()->first()->notice_chk;
+    }
+
     /*
     Delete notification 
 
