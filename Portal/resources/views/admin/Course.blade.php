@@ -73,14 +73,98 @@
 @endsection
 
 @section('content')
+<style>
+    .header-menu button{font-size: 15px;}
+  @media (max-width:1240px){
+
+    .header-menu{margin-top: 10px;width:100%; text-align: center; }
+    .header-menu button{display: inline;width:100px; padding-left: 3px;padding-right: 3px; font-size: 12px;}
+
+  }
+</style>
+
+
+<!----- Add Course Modal start ---->
+        <div class="modal fade" id="AddCourseModal" tabindex="-1" role="dialog" aria-labelledby="AddCourseCenterTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"> Add Course  </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="user_profile_content">
+                    <form action='course?cmd=addcourse' method="POST">
+                      @csrf
+                      <label class="form-control-label">Name</label>
+                      <input type="text" name="course" class="form-control" />
+                      <label class="form-control-label mt-1">Description</label>
+                      <input type="text" name="description" class="form-control" />
+                      <input type="submit" name="submit" value="Add" class="btn btn-primary m-2 float-right">
+                  </form>
+                  
+              </div>
+              
+            </div>
+          </div>
+        </div>
+<!------ Add Course end  ------>
+
+<!----- Add Subject Modal start ---->
+        <div class="modal fade" id="AddSubjectModal" tabindex="-1" role="dialog" aria-labelledby="AddSubjectModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"> Add Subjects  </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="user_profile_content">
+                    <form action='course?cmd=addsubject' method="POST">
+                        @csrf
+
+                        <label class="form-control-label mt-1">Code </label>
+                        <input type="text" name="subcode" class="form-control" />
+
+                        <label class="form-control-label mt-1">Name </label>
+                        <input type="text" name="name" class="form-control" />
+                        <label class="form-control-label mt-1">Description</label>
+                        <input type="text" name="description" class="form-control" />
+
+                         <input type="submit" name="submit" value="Add" class="btn btn-primary m-2 float-right">
+                    </form>
+                  
+              </div>
+              
+            </div>
+          </div>
+        </div>
+<!------ Add Subject end  ------>
+
 <div class="container">
     <div class="row">
         
         <div class="col">
             <div class="card">
-                
-                <div class="card-subtitle m-4 font-weight-bold" style="font-weight: bolder; font-size: large;">
-                    Course Detail
+                <div class="card-header text-white" style="background: #130f40;">
+                  <h4 style="display: inline;"><span class="fa fa-book mr-2"></span>Course Details</h4>
+                  <div class="float-right header-menu">
+                    <button class="btn btn-success btn-sm m-1 font-weight-bold" data-toggle="modal" data-target="#AddCourseModal"><span class="fa fa-plus-square mr-2"></span>New Course</button>
+                    <button class="btn btn-primary btn-sm m-1 font-weight-bold" data-toggle="modal" data-target="#AddSubjectModal"><span class="fa fa-plus-square mr-2"></span>New Subject</button>
+                  </div>
+                </div>
+                <div class="card-subtitle m-4 font-weight-bold text-center" style="font-weight: bolder; font-size: large;">
+                    <h4 class="form-control-label" style="display: inline;">Select Course </h4>
+                    
+                      <select id="select-course">
+                        <option value="none" class="form-control" selected="1">None</option>
+                        @foreach($AllCourse as $course)
+                         <option value="{{$course->name}}" class="form-control">{{$course->name}}</option>
+                         @endforeach
+                      </select>
+                    
                 </div>
 
                 @if($Course ?? '')
