@@ -50,8 +50,8 @@
 
         <div class="card">
             <div class="card-header text-white" style="background: #130f40;">
-                <h4 style="display:inline;"><span class="fa fa-users mr-2"></span> Manage User</h4>
-                <div class="float-right m-2">
+                <h4 style="display:inline;"><span class="fa fa-address-book mr-2"></span> Manage User</h4>
+                <div class="float-right">
                     <button class="btn btn-primary"><span class="fa fa-filter"></span> Filter</button>
                     {{--
                     <button class="btn btn-success"><span class="fa fa-user-plus"></span> Add user</button>
