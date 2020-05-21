@@ -73,10 +73,11 @@
         #sidebar-wrapper {
           min-height: 100%;
           z-index: 2;
-          -webkit-transition: margin .25s ease-out;
-          -moz-transition: margin .25s ease-out;
-          -o-transition: margin .25s ease-out;
-          transition: margin .25s ease-out;
+          -webkit-transition: margin .30s ease-out;
+          -moz-transition: margin .30s ease-out;
+          -o-transition: margin .30s ease-out;
+          transition: margin .30s ease-out;
+
         }
         #home-link{margin-left:20px; padding-left:20px; color:white;border-left: 1px solid white;}
         #menu-toggle{display: none;}
@@ -84,17 +85,27 @@
         
      #sidebar-wrapper a {
             background-color: #30336b;
+
+
         }  
       #sidebar-wrapper a:hover {
             background-color: #6468b5;
+            -webkit-transition: background-color .20s ease-in;
+          -moz-transition: background-color .20s ease-in;
+          -o-transition: background-color .20s ease-in;
+          transition: background-color .20s ease-in;
         }
-    #sidebar-wrapper .active{background-color: #6468b5; border:none;}
-
+    #sidebar-wrapper .active{background-color: #6468b5; border:none;
+       
+    }
+    .active-menu-design{
+            line-height: 30px;font-size: 30px;
+    }
         @media (max-width: 1240px) {
 
           #menu-toggle{ display: block; }    
           .admin-menu-toggle{ display: block; }
-          #sidebar-wrapper { margin-left: -13rem; }
+          #sidebar-wrapper { margin-left: -14.2rem; }
           #wrapper.toggled #sidebar-wrapper { margin-left: 0rem;}
           #home-link{margin-left:0px;padding-left: 0px; border-left:none; }
           
@@ -232,23 +243,43 @@
               
         <!-- Sidebar -->
         @auth           
+            @php ($classStr="fa fa-chevron-right active-menu-design")  {{--adding active menu class runtime--}}
             <!-- Student Sidebar menus -->
             @if(Auth::user()->Role()->first()->role=='student')
             <div class=" border-right position-fixed " id="sidebar-wrapper" style="top:105px;left:0px;background: #30336b">
                 <div class="list-group list-group-flush" style="width:13rem;">
-                    <a href="/home" class="list-group-item list-group-item-action text-white "><span class="fa fa-home m-2 "></span> Home</a>
+                    <a href="/home" class="list-group-item list-group-item-action text-white {{ (request()->is('student')) ? 'active' : '' }}">
+                        <span class="fa fa-home m-2 "></span> Home 
+                        <span class="{{ (request()->is('student')) ? $classStr: '' }} pull-right"></span>
+                    </a>
                     
-                    <a href="/profile/personal" class="list-group-item list-group-item-action text-white"><span class="fa fa-user-circle m-2"></span> Profile</a>
+                    <a href="/profile/personal" class="list-group-item list-group-item-action text-white {{ (request()->is('profile*')) ? 'active' : '' }}">
+                        <span class="fa fa-user-circle m-2"></span> Profile 
+                        <span class="{{ (request()->is('profile*')) ? $classStr: '' }} pull-right"></span>
+                    </a>
             
-                    <a href="/student/course/"  class="list-group-item list-group-item-action text-white "><span class="fa fa-graduation-cap m-2"></span> Course</a> 
-                    <a href=""  class="list-group-item list-group-item-action text-white"><span class="fa fa-calendar m-2"></span> Schedule</a>
-                    <a href=""   class="list-group-item list-group-item-action text-white  "><span class="fa fa-book m-2"></span> Study</a>
-                   <a href=""  class="list-group-item list-group-item-action text-white "><span class="fa fa-edit m-2"></span> Assignments</a>
-                   <a href="/notice"  class="list-group-item list-group-item-action text-white  "><span class="fa fa-envelope-open m-2"></span> Notification
+                    <a href="/student/course/"  class="list-group-item list-group-item-action text-white {{ (request()->is('student/course*')) ? 'active' : '' }}">
+                        <span class="fa fa-graduation-cap m-2"></span> Course 
+                        <span class="{{ (request()->is('student/course*')) ? $classStr: '' }} pull-right"></span>
+                    </a> 
+                    <a href=""  class="list-group-item list-group-item-action text-white {{ (request()->is('')) ? 'active' : '' }}">
+                        <span class="fa fa-calendar m-2"></span> Schedule 
+                        <span class="{{ (request()->is('')) ? $classStr: '' }} pull-right"></span>
+                    </a>
+                    <a href=""   class="list-group-item list-group-item-action text-white  {{ (request()->is('')) ? 'active' : '' }}">
+                        <span class="fa fa-book m-2"></span> Study 
+                        <span class="{{ (request()->is('')) ? $classStr: '' }} pull-right"></span>
+                    </a>
+                   <a href=""  class="list-group-item list-group-item-action text-white {{ (request()->is('p')) ? 'active' : '' }}">
+                        <span class="fa fa-edit m-2"></span> Assignments 
+                        <span class="{{ (request()->is('')) ? $classStr: '' }} pull-right"></span>
+                    </a>
+                   <a href="/notice"  class="list-group-item list-group-item-action text-white {{ (request()->is('notice*')) ? 'active' : '' }} ">
+                    <span class="fa fa-envelope-open m-2"></span> Notification
                         <span class="badge badge-danger badge-pill">
                         {{ Auth::user()->unseen_notifications()}}       
                         </span> 
-
+                        <span class="{{ (request()->is('notice*')) ? $classStr: '' }} pull-right"></span>
                    </a>
                 </div>
             </div>
@@ -258,17 +289,33 @@
             @if(Auth::user()->Role()->first()->role=='teacher')
             <div class=" border-right position-fixed" id="sidebar-wrapper" style="top:105px;left:0px;background: #30336b">
                 <div class="list-group list-group-flush" style="width:13rem;">
-                    <a href="/home" class="list-group-item list-group-item-action text-white "><span class="fa fa-home m-2 "></span> Home</a>
+                    <a href="/home" class="list-group-item list-group-item-action text-white {{ (request()->is('teacher')) ? 'active' : '' }}">
+                        <span class="fa fa-home m-2 "></span> Home 
+                        <span class="{{ (request()->is('teacher')) ? $classStr: '' }} pull-right"></span>
+                    </a>
                     
-                    <a href="/profile/personal" class="list-group-item list-group-item-action text-white "><span class="fa fa-user-circle m-2"></span> Profile</a>
-                    <a href=""  class="list-group-item list-group-item-action text-white "><span class="fa fa-calendar m-2"></span> Schedule</a>
-                    <a href="" class="list-group-item list-group-item-action text-white"><span class="fa fa-book m-2"></span> Study</a>
-                    <a href=""  class="list-group-item list-group-item-action text-white "><span class="fa fa-edit m-2"></span> Assignments</a>
-                    <a href="/notice" class="list-group-item list-group-item-action text-white"><span class="fa fa-envelope-open m-2"></span> Notificaton
+                    <a href="/profile/personal" class="list-group-item list-group-item-action text-white {{ (request()->is('profile*')) ? 'active' : '' }}">
+                        <span class="fa fa-user-circle m-2"></span> Profile 
+                        <span class="{{ (request()->is('profile*')) ? $classStr: '' }} pull-right"></span>
+                    </a>
+                    <a href=""  class="list-group-item list-group-item-action text-white {{ (request()->is('')) ? 'active' : '' }}">
+                        <span class="fa fa-calendar m-2"></span> Schedule 
+                        <span class="{{ (request()->is('')) ? $classStr: '' }} pull-right"></span>
+                    </a>
+                    <a href="" class="list-group-item list-group-item-action text-white {{ (request()->is('')) ? 'active' : '' }}">
+                        <span class="fa fa-book m-2"></span> Study 
+                        <span class="{{ (request()->is('')) ? $classStr: '' }} pull-right"></span>
+                    </a>
+                    <a href=""  class="list-group-item list-group-item-action text-white {{ (request()->is('')) ? 'active' : '' }}">
+                        <span class="fa fa-edit m-2"></span> Assignments 
+                        <span class="{{ (request()->is('')) ? $classStr: '' }} pull-right"></span>
+                    </a>
+                    <a href="/notice" class="list-group-item list-group-item-action text-white {{ (request()->is('/notice*')) ? 'active' : '' }}">
+                        <span class="fa fa-envelope-open m-2"></span> Notificaton
                         <span class="badge badge-danger badge-pill">
                         {{ Auth::user()->unseen_notifications()}}       
                         </span> 
-
+                        <span class="{{ (request()->is('/notice*')) ? $classStr: '' }} pull-right"></span>
                     </a>
                  </div>
             </div>
@@ -279,26 +326,45 @@
 
 
         <div class=" border-right position-fixed  " id="sidebar-wrapper" style="left:0;top:105px; background: #30336b" >
-                <div class="list-group list-group-flush" style="width:13.2rem;">
-                    <a href="/home" class="list-group-item list-group-item-action text-white" ><span class="fa fa-home m-2 "></span> Home</a>
+                <div class="list-group list-group-flush" style="width:14.2rem;">
+                    <a href="/home" class="list-group-item list-group-item-action text-white {{ (request()->is('admin')) ? 'active' : '' }}" >
+                        <span class="fa fa-home m-2 "></span> Home 
+                        <span class="{{ (request()->is('admin')) ? $classStr: '' }} pull-right"></span>
+                    </a>
                     
-                    <a href="/profile/personal" class="list-group-item list-group-item-action text-white"><span class="fa fa-user-circle m-2"></span> Profile</a>
-                    <a href="/admin/add" class="list-group-item list-group-item-action text-white"><span class="m-2 fa fa-users"></span> Control Accounts</a>        
-                    <a href="/admin/perm" class="list-group-item list-group-item-action text-white"> 
+                    <a href="/profile/personal" class="list-group-item list-group-item-action text-white {{ (request()->is('profile*')) ? 'active' : '' }}">
+                        <span class="fa fa-user-circle m-2"></span> Profile 
+                        <span class="{{ (request()->is('profile*')) ? $classStr: '' }} pull-right"></span>
+                    </a>
+                    <a href="/admin/add" class="list-group-item list-group-item-action text-white {{ (request()->is('admin/add*')) ? 'active' : '' }}">
+                        <span class="m-2 fa fa-users"></span> Manage Accounts 
+                        <span class="{{ (request()->is('admin/add*')) ? $classStr: '' }} pull-right"></span>
+                    </a>        
+                    <a href="/admin/perm" class="list-group-item list-group-item-action text-white {{ (request()->is('admin/perm*')) ? 'active' : '' }}"> 
                         <span class=" fa fa-user-secret m-2" style="background: #30336b;"></span>
-                    Privilage</a>
-                    <a href="/admin/manageuser" class="list-group-item list-group-item-action text-white"> 
+                        Privilage 
+                        <span class="{{ (request()->is('admin/perm*')) ? $classStr: '' }} pull-right"></span>
+                    </a>
+                    <a href="/admin/manageuser" class="list-group-item list-group-item-action text-white {{ (request()->is('admin/manageuser*')) ? 'active' : '' }}"> 
                         <span class=" fa fa-address-book-o m-2" style="background: #30336b;"></span>
-                    Manage Users Profile</a>
-                    <a href="/upload" class="list-group-item list-group-item-action text-white"><span class="m-2 fa fa-cloud-upload"></span> Uploads</a>
-                    <a href="/admin/course" class="list-group-item list-group-item-action text-white" >
-                        <span class=" fa fa-book m-2"></span>Course</a>
-                    <a href="/notice" class="list-group-item list-group-item-action text-white"> 
+                        Manage Profile 
+                        <span class="{{ (request()->is('admin/manageuser')) ? $classStr: '' }} pull-right"></span>
+                    </a>
+                    <a href="/upload" class="list-group-item list-group-item-action text-white {{ (request()->is('upload*')) ? 'active' : '' }}">
+                        <span class="m-2 fa fa-cloud-upload"></span> Uploads 
+                        <span class="{{ (request()->is('upload*')) ? $classStr: '' }} pull-right"></span>
+                    </a>
+                    <a href="/admin/course" class="list-group-item list-group-item-action text-white {{ (request()->is('admin/course*')) ? 'active' : '' }}" >
+                        <span class=" fa fa-book m-2"></span>Course 
+                        <span class="{{ (request()->is('admin/course*')) ? $classStr: 'course*' }} pull-right"></span>
+                    </a>
+                    <a href="/notice" class="list-group-item list-group-item-action text-white {{ (request()->is('notice*')) ? 'active' : '' }}"> 
                         <span class="fa fa-envelope m-2"></span>
                     Notification
                         <span class="badge badge-danger badge-pill">
                         {{ Auth::user()->unseen_notifications()}}       
                         </span> 
+                        <span class="{{ (request()->is('notice*')) ? $classStr: '' }} pull-right"></span>
                 </a>
                 </div>
             </div>

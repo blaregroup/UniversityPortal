@@ -168,7 +168,7 @@ Description :
                                   <th scope="col">#</th>
                                   <th scope="col">Sub Code</th>
                                   <th scope="col">Sub Name</th>
-                                  <th scope="col">Description</th>
+                                  <th scope="col" >Description</th>
                                   <th scopr="col">Created on</th>
                                 </tr>
                               </thead>
