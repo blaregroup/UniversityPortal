@@ -13,10 +13,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         
-        $no_of_teachers = 20;
-        $no_of_students = 150;
-        $no_of_notifications = 15;
-        $no_of_course = 6;
+        $no_of_teachers = 2;
+        $no_of_students = 50;
+        $no_of_notifications = 5;
+        $no_of_course = 3;
 
         $no_of_subjects = 5;
 

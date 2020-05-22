@@ -34,10 +34,13 @@ Route::get('/contact', function () {
 
 
 // ajax api
-Route::get('/ajax/notice/create', 'AjaxServe@createNotice');
-Route::get('/ajax/users/config', 'AjaxServe@userConfig');
-Route::get('/ajax/users/profile', 'AjaxServe@userProfile');
-
+Route::get('/ajax/notice/create', 'AjaxServe@createNotice')->middleware('onlyAdmin');
+Route::get('/ajax/users/config', 'AjaxServe@userConfig')->middleware('onlyAdmin');
+Route::get('/ajax/users/profile', 'AjaxServe@userProfile')->middleware('onlyAdmin');
+Route::get('/ajax/course/list', 'AjaxServe@courseList')->middleware('onlyAdmin');
+Route::get('/ajax/subject/list', 'AjaxServe@subjectList')->middleware('onlyAdmin');
+Route::get('/ajax/course/delete/{id}', 'AjaxServe@courseDelete')->middleware('onlyAdmin');
+Route::get('/ajax/subject/delete/{id}', 'AjaxServe@subjectDelete')->middleware('onlyAdmin');
 
 
 

@@ -2,10 +2,10 @@
 
 @section('rpanel')
 
-<div class="p-3" style="position: fixed;">
+<div class="p-3 mt-3" style="position: fixed;">
   
     <div class="add-button m-2 btn-block">
-      <button class="btn btn-outline-success btn-block btn-sm" data-toggle="modal" data-target="#AddCourseModal"><span class="fa fa-plus-square mr-2"></span> Course</button>
+      <button class="btn btn-outline-primary btn-block btn-sm" data-toggle="modal" data-target="#AddCourseModal"><span class="fa fa-plus-square mr-2"></span> Course</button>
       
     </div>
 
@@ -19,8 +19,14 @@
     </div>
 
 
+
+ <div class="add-button m-2 btn-block mt-5">
+    <button class="btn btn-outline-danger btn-sm btn-block " data-toggle="modal" data-target="#DeleteCourse" onclick="document.getElementById('DeleteCourseTitle').textContent='Delete Course';make_request('course/list', render_course_list)"><span class="fa fa-minus-square mr-2"></span>Course</button>
+    </div>
+
+
     <div class="add-button m-2 btn-block">
-    <button class="btn btn-outline-danger btn-sm btn-block " data-toggle="modal" data-target="#"><span class="fa fa-minus-square mr-2"></span>Subject</button>
+    <button class="btn btn-outline-danger btn-sm btn-block " data-toggle="modal" data-target="#DeleteCourse" onclick="document.getElementById('DeleteCourseTitle').textContent='Delete Subject';make_request('subject/list', render_course_list)"><span class="fa fa-minus-square mr-2"></span>Subject</button>
     </div>
 
   <div class="m-2 btn-block mt-5">
@@ -74,6 +80,44 @@
 </div>
 </div>
 <!------ Add Course end  ------>
+
+
+
+
+
+
+
+<!----- Delete Course ---->
+<div class="modal fade" id="DeleteCourse" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <h5 class="modal-title" id="DeleteCourseTitle"> Delete Course  </h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" id="delete_course_list">
+      
+    
+</div>
+
+</div>
+</div>
+</div>
+<!------ Delete Course end  ------>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!----- Add Subject Modal start ---->
 <div class="modal fade" id="AddSubjectModal" tabindex="-1" role="dialog" aria-labelledby="AddSubjectModalCenterTitle" aria-hidden="true">
@@ -266,6 +310,20 @@ Description :
 
 </div>
 </div>
+
+<script type="text/javascript">
+  function render_course_list(){
+
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+      document.getElementById("delete_course_list").innerHTML= this.responseText;
+   }
+
+  }
+
+</script>
+
+
 @endsection
 
 

@@ -288,14 +288,15 @@ class User extends Authenticatable
 
 
 
-    public function upload($name, $description, $originalname, $pathname){
+    public function upload($name, $description, $originalname, $pathname, $type){
         
         
         return Document::create([
             'name'=> $name, 
-            'Description'=>$description, 
+            'description'=>$description, 
             'originalname'=>$originalname, 
             'hashname'=>$pathname, 
+            'type'=>$type,
             'user_id'=>$this->id
         ]);
     }

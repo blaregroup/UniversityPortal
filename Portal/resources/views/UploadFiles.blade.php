@@ -29,7 +29,7 @@
     <tr>
       <th scope="row"> {{ $loop->index }}</th>
       <td>{{ $doc->name }}</td>
-      <td>{{ $doc->Description }} </td>
+      <td>{{ $doc->description }} </td>
       <td>{{ $doc->created_at }}</td>
       <td>{{ $doc->originalname}}</td>
       <td><a href="{{ $doc->hashname }}" target="_blank" class="btn btn-sm btn-success"> Preview </a></td>

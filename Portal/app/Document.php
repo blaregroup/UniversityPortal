@@ -11,10 +11,11 @@ class Document extends Model
     //
     protected $fillable = [
     	'name',
-    	'Description',
+    	'description',
     	'originalname',
     	'hashname',
-    	'user_id'
+    	'user_id',
+        'type'
     ];
 
 

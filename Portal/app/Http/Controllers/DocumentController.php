@@ -21,6 +21,7 @@ class DocumentController extends Controller
 	{
 		
 		$docs = $request->user()->uploads()->get();
+
 		// post value
 		if($request->method()==='POST'){
 			if ($request->input('submit')==='Delete' 
@@ -66,7 +67,7 @@ class DocumentController extends Controller
 
 
 		}
-		return view('UploadFiles',['docs'=>$request->user()->uploads()->get(),
+		return view('UploadFiles',['docs'=>$request->user()->uploads()->where('type','UL')->get(),
 		'formmode'=>$request->input('delete')]);
 		
 	}
@@ -77,11 +78,14 @@ class DocumentController extends Controller
 		if ($request->hasFile('docs')) {
 			if($request->file('docs')->isValid()){
 	    		$info = $request->except('_token', 'docs');
-	    		$path = $request->docs->store('public');
-	    		return $request->user()->upload($info['name'], 
+				$path = Storage::putFile('public', $request->file('docs'));
+	    		return $request
+	    		->user()
+	    		->upload($info['name'], 
 	    			$info['description'],
 	    			$request->docs->getClientOriginalName(),
-	    			$path);
+	    			$path,
+	    			'UL');
 
         	}
     		

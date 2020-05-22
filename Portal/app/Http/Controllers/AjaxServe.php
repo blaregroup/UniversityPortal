@@ -54,7 +54,27 @@ class AjaxServe extends Controller
 
     }
 
+    public function courseList(){
+        $courses = DB::table('courses')->select('id','name')->get();
+        return view('ajax.CourseList',['courses'=>$courses]);
+    }
 
+    public function subjectList(){
+        $subject = DB::table('subjects')->select('id','subcode','name')->get();
+        return view('ajax.SubjectList',['subjects'=>$subject]);
+    }
+
+
+    public function courseDelete($id){
+
+        DB::table('courses')->where('id',$id)->delete();
+        return 'done';
+    }
+
+    public function subjectDelete($id){
+        DB::table('subjects')->where('id',$id)->delete();
+        return 'done';
+    }
 
 
 }

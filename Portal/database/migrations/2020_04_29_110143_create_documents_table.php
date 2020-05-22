@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 class CreateDocumentsTable extends Migration
 {
     /**
@@ -19,6 +20,13 @@ class CreateDocumentsTable extends Migration
             $table->longText('description');
             $table->string('originalname');
             $table->string('hashname');
+
+            // PP = Profile Picture
+            // UL = Uploaded Documents
+            // AS = Assignment
+            // TT = Time Table Document
+            // SS = Syllabus Related Docs
+
             $table->enum('type', ['PP',
                             'UL',
                             'AS',
