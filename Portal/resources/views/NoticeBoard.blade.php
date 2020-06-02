@@ -58,7 +58,7 @@ Create</button>
 				</a>
 
 				@endif
-				 <a data-toggle="collapse" href="#message{{ $notice->id }}" class="badge float-right badge-light mr-2"><span class="fa fa-eye p-1" aria-hidden="true"></span></a>
+				 <a data-toggle="collapse" href="#message{{ $notice->id }}" class="badge float-right badge-light mr-2"><span class="fa fa-eye p-1 toggle-eye" aria-hidden="true"></span></a>
 
 				</div>
 			</div>
@@ -67,7 +67,12 @@ Create</button>
 		</div>
 	</div>
 
-
+<script>
+$('.toggle-eye').on('click', function() {
+  $(this).toggleClass('fa-eye fa-eye-slash');
+ 
+});
+</script>
 
 </div>
 

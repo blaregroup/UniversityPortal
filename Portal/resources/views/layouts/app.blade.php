@@ -356,7 +356,7 @@
                     </a>
                     <a href="/admin/course" class="list-group-item list-group-item-action text-white {{ (request()->is('admin/course*')) ? 'active' : '' }}" >
                         <span class=" fa fa-book m-2"></span>Course 
-                        <span class="{{ (request()->is('admin/course*')) ? $classStr: 'course*' }} pull-right"></span>
+                        <span class="{{ (request()->is('admin/course*')) ? $classStr: '' }} pull-right"></span>
                     </a>
                     <a href="/notice" class="list-group-item list-group-item-action text-white {{ (request()->is('notice*')) ? 'active' : '' }}"> 
                         <span class="fa fa-envelope m-2"></span>
