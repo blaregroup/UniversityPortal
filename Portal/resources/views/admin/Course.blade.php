@@ -1,29 +1,72 @@
 @extends('layouts.app')
+<style>
+.add-button button{font-size: 15px;}
+.subject-table{table-layout: fixed;}
+/*small screen*/
+@media (max-width:1240px){
 
+.add-button{margin-top: 10px;width:100%; text-align: center; }
+.add-button button{display: inline;width:100px; padding-left: 3px;padding-right: 3px; font-size: 12px;}
+.subject-table{table-layout: auto;}
+}
+
+
+</style>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+function SearchListFunction(id) {
+  // Declare variables
+  
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('searchInput');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById(id);
+  li = ul.getElementsByTagName('li');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+   
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      
+      li[i].style.display = "inline";
+
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+</script>
 @section('rpanel')
 
-<div class="p-3 mt-3 card" style="border-color: #2f3542;">
+<div class="p-1  mt-3 card" style="border:none;">
 
   @if($Subject ?? '')
   
   
                 
           
-          
-          <div class="card-header text-white font-weight-bold text-center " style="background: #2f3542;">
+          <div style="border:1px solid #2f3542;border-radius: 5px;">
+          <div class="card-header text-white font-weight-bold text-center p-1" style="background: #2f3542;">
             View Different Courses
           </div>
-          <div class="card-body">
-                <div class="btn-block">
+          <div class="card-body text-center">
+              
+              <input type="text" id="searchInput" class="form-control mb-2" onkeyup="SearchListFunction('subject-list-rightPanel')" placeholder="Search course.."/>
+               <ul style="list-style: none;" class="m-0 p-0" id="subject-list-rightPanel">
                @foreach($AllCourse as $course)
-                
-                  <a role ="button" href="/admin/course?id={{$course->id}}"class="btn btn-block btn-outline-primary m-1 btn-sm" style=" "><span class="fa fa-book mr-2"></span>{{$course->name}}</a>
-                
+                  <li class="p-0 m-0">  
+                    <a role ="button" href="/admin/course?id={{$course->id}}"class="btn btn-outline-primary m-1 btn-sm" style="font-size: 15px; width:90%;"><span class="fa fa-book mr-2"></span>{{$course->name}}</a>
+                  </li>
                @endforeach    
-                </div>
+                </ul> 
+              
                 
           </div>
-          
+          </div>
 
          
         
@@ -33,15 +76,7 @@
 @endsection
 
 @section('content')
-<style>
-.add-button button{font-size: 15px;}
-@media (max-width:1240px){
 
-.add-button{margin-top: 10px;width:100%; text-align: center; }
-.add-button button{display: inline;width:100px; padding-left: 3px;padding-right: 3px; font-size: 12px;}
-
-}
-</style>
 
 
 <!----- Add Course Modal start ---->
@@ -111,10 +146,72 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="user_profile_content">
+      @if($Course ?? '')
+      <div class="modal-body" >
+    
+          <form action="" method='POST' class="" role="form-horizontal">
 
+              <div class="form-group" >
+                  <label class="col-md-6 control-label">Course Name :</label>
+                  <div class="col-md-9">
+                    <input class="form-control" type="text" name="fname" value="{{ $Course->name }}" />
+                  </div>
+              </div>  
+              <div class="form-group" >
+                  <label class="col-md-5 control-label"> Course Description :</label>
+                  <div class="col-md-9">
+                    <input class="form-control" type="text" name="description" value="{{ $Course->description}}" required/>
+                  </div>
+              </div> 
+              <hr/>
+              @if($Subject ?? '')
+              <div class="col-md-12">
+                  <div class="card border-white">
+                      <div class="card-subtitle mt-1 ml-3 pb-0">
+                        <h5 style="display: inline;" ><i class="fa fa-bookmark m-2" aria-hidden="true"></i>Course Subjects  </h5>
+                          
+                      </div>
+                      <div class="card-body">
+                         
+                          <div class="table-responsive">
+                              <table class="table subject-table" style="font-size: 12px;">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th scope="col" style="width:5%;">#</th>
+                                      <th scope="col" style="width:12%;">Sub Code</th>
+                                      <th scope="col" style="width:18%;">Sub Name</th>
+                                      <th scope="col" style="width:45%;">Description</th>
+                                      <th scopr="col" style="width:20%;">Created on</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>        
+                                      @foreach ($Subject as $sub)
+                                      <tr>
+                                        <td><a href=""><span class="fa fa-trash " data-toggle="tooltip" data-placement="bottom" title="Remove Subject" style="color:red; font-size:14px;"></span></a></td>
+                                        <td>{{$sub->subcode }}</td>
+                                        <td class="text-capitalize">{{$sub->name}}</td>
+                                        <td class="text-capitalize">{{ $sub->description }}</td>
+                                        <td>{{$sub->created_at}}</td>
+                                          
+                                      </tr>
+                                      @endforeach                
+                                  </tbody>
+                                  
+                              </table>
+                              
+                          </div>
+
+                         @endif
+
+                      </div>
+                  </div>
+
+              </div>
+
+              <input type="submit" name="submit" value="Save Changes" class="btn btn-primary m-2 float-right">
+          </form>
       </div>
-      
+      @endif
     </div>
   </div>
 </div>
@@ -149,33 +246,37 @@
         </div>
        
     </div>
-<div class="card-body ml-1 font-weight-bold">
-Description : 
-<span class="font-weight-normal">{{ $Course->description }}</span>
-            
-</div>
-<button class="btn btn-warning btn-sm ml-5 mr-5 font-weight-bold" data-toggle="modal" data-target="#EditCourseModal"><span class="fa fa-pencil-square mr-2"></span>Edit Course</button>
- <div class="ml-4 mr-4 mb-0 pb-0">
-        <small class="text-muted ">Created On  {{ $Course->created_at }}</small>
-        <small class="text-muted pull-right ">Last Updated On {{ $Course->updated_at }}</small>
-        </div>
-<hr class="mt-1 mb-2 "/>
-@else
-<div class="card-subtitle  font-weight-bold text-center mb-3 pr-2" style="font-weight: bolder; font-size: large;  ">
+    <div class="card-body ml-1 font-weight-bold">
+    Description : 
+    <span class="font-weight-normal">{{ $Course->description }}</span>
+                
+    </div>
+    <button class="btn btn-warning btn-sm ml-5 mr-5 font-weight-bold" data-toggle="modal" data-target="#EditCourseModal"><span class="fa fa-pencil-square mr-2"></span>Edit Course</button>
+     <div class="ml-4 mr-4 mb-0 pb-0">
+            <small class="text-muted ">Created On  {{ $Course->created_at }}</small>
+            <small class="text-muted pull-right ">Last Updated On {{ $Course->updated_at }}</small>
+            </div>
+    <hr class="mt-1 mb-2 "/>
+    @else
+    <div class="card-subtitle  font-weight-bold text-center mb-3 pr-2" style="font-weight: bolder; font-size: large;  ">
                 
           
           
-          <div class="card-header">
+          <div class="card-title">
             Available Courses
+            <hr class="mb-0"/>
           </div>
           <div class="card-body">
-                <div class="btn-block">
+              
+                <input type="text" id="searchInput" class="form-control mb-2" onkeyup="SearchListFunction('subject-list-mainPanel')" placeholder="Search course.."/>
+                <ul style="list-style: none;" id="subject-list-mainPanel">
                @foreach($AllCourse as $course)
-                
-                  <a role ="button" href="/admin/course?id={{$course->id}}"class="btn btn-outline-primary m-1 btn-sm" style="font-size: 20px; width:auto;"><span class="fa fa-book mr-2"></span>{{$course->name}}</a>
-                
+                  <li style="display: inline;">  
+                    <a role ="button" href="/admin/course?id={{$course->id}}"class="btn btn-outline-primary m-1 btn-sm" style="font-size: 20px; width:auto;"><span class="fa fa-book mr-2"></span>{{$course->name}}</a>
+                  </li>
                @endforeach    
-                </div>
+                </ul>
+               
                
           </div>
           
@@ -184,7 +285,7 @@ Description :
         
     </div>
 
- @endif
+    @endif
 
 
   <div class="">
@@ -204,14 +305,14 @@ Description :
                     
                      
                       <div class="table-responsive">
-                          <table class="table">
+                          <table class="table subject-table" >
                               <thead class="thead-dark">
                                 <tr>
-                                  <th scope="col">#</th>
-                                  <th scope="col">Sub Code</th>
-                                  <th scope="col">Sub Name</th>
-                                  <th scope="col" >Description</th>
-                                  <th scopr="col">Created on</th>
+                                  <th scope="col" style="width:5%;">#</th>
+                                  <th scope="col" style="width:12%;">Sub Code</th>
+                                  <th scope="col" style="width:18%;">Sub Name</th>
+                                  <th scope="col" style="width:45%;">Description</th>
+                                  <th scopr="col" style="width:20%;">Created on</th>
                                 </tr>
                               </thead>
                               <tbody>        
