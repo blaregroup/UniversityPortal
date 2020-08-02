@@ -1,4 +1,4 @@
-![](docs/img/underbadge.png)
+![](https://img.shields.io/badge/UNDER-DEVELOPMENT-BLUE)
 
 # UniversityPortal
 A Web Application Platform For Colleges.
