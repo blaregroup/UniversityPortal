@@ -2,7 +2,7 @@
 A Web Application Platform For Colleges.
 
 ### About
-It is a Web Application for making communication between students and colleges to the next level. It is a complete package where Teachers can easily provide Assignments,Notes,Syllabus to students and Students can easily get the details of Syllabus,Assignments and they can check time table. College Faculty can also provide any notice to all the students of college at once. 
+It is a Web Application for making communication between students and colleges to the next level. It is a complete package where Teachers can easily provide Assignments,Notes,Syllabus to students and Students can easily get the details of Syllabus,Assignments,Time Table. College Faculty can also provide any notice to all the students of college at once. 
 
 
 ### Key Features
@@ -13,12 +13,15 @@ It is a Web Application for making communication between students and colleges t
 
 ### Application Preview
 ---
+**Home Page**
 ![Home Page ](docs/img/homepage.png "Home Page")
 ---
 ---
+**Profile Page**
 ![Profile Page](docs/img/profilepage.png "Profile Page")
 ---
 ---
+**Course Panel**
 ![Course Panel ](docs/img/coursepanel.png "Course Panel")
 ---
 
