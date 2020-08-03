@@ -1,9 +1,9 @@
 
 ![](https://img.shields.io/badge/UNDER-DEVELOPMENT-BLUE)
-![](https://img.shields.io/badge/PROTOTYPE-YELLOW)
-![](https://img.shields.io/badge/Laravel-informational)
+![](https://img.shields.io/badge/PHASE-PROTOTYPE-YELLOW)
+![](https://img.shields.io/badge/Framework-Laravel-informational)
 
-# UniversityPortal
+# University Portal
 A Laravel Based Web Application Platform For Universities, Colleges and Educational Institutes.
 
 ### Project Detail
@@ -96,8 +96,8 @@ This Project is Currently Under ![](https://img.shields.io/badge/PROTOTYPE-YELLO
 
 
 ### Developers/Author
-- Suraj Singh Bisht [Email](surajsinghbisht054@gmail.com) [Github](https://github.com/surajsinghbisht054) ![](https://img.shields.io/badge/ADMIN-GREEN)
-- Himanshu Sharma [Email](himanshusharma2972@gmail.com) [Github](https://github.com/himanshuthecoder)
+- Suraj Singh Bisht [Email](mailto:surajsinghbisht054@gmail.com?subject=[Github_University_Portal]) [Github](https://github.com/surajsinghbisht054) ![](https://img.shields.io/badge/ADMIN-GREEN)
+- Himanshu Sharma [Email](mailto:himanshusharma2972@gmail.com) [Github](https://github.com/himanshuthecoder)
 
 
 ### License
